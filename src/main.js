@@ -4,7 +4,6 @@ import App from './App.vue'
 import '@/assets/css/init.css'
 import '@/assets/icon/iconfont.css';
 
-
 Vue.config.productionTip = false
 
 new Vue({

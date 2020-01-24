@@ -5,12 +5,13 @@
         <div class="navbar-items-logo">MITTACY</div>
         <NavItem
           v-for="item in navItems"
-          :content = "item.content"
-          :icon = "item.icon"
-          :theUrl = "item.url"
-          :key = "item.content"
-        >
-        </NavItem>
+          :content="item.content"
+          :icon="item.icon"
+          :url="item.url"
+          :isActive="currentUrl === item.url"
+          :key="item.content"
+          @click.native="currentUrl = item.url"
+        ></NavItem>
       </div>
       <div class="navbar-login">
         <a target="_self">
@@ -22,34 +23,15 @@
 </template>
 
 <script>
-import NavItem from "./NavItem";
+import NavItem from "@/components/NavItem";
+import navItems from "@/menu";
 
 export default {
   name: "navbar",
   data() {
     return {
-      navItems: [
-        {
-          content: "首页",
-          icon: "icon-shouye",
-          url: "www.baidu.com"
-        },
-        {
-          content: "文章",
-          icon: "icon-16",
-          url: "_self"
-        },
-        {
-          content: "分类",
-          icon: "icon-fenlei-copy",
-          url: "_self"
-        },
-        {
-          content: "关于",
-          icon: "icon-ziyuan",
-          url: "_self"
-        }
-      ]
+      navItems,
+      currentUrl: '/'
     };
   },
   components: {
