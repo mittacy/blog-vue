@@ -1,6 +1,6 @@
 <template>
-    <div class="navbr-items-item">
-        <a target="theUrl">
+    <div class="navbar-items-item">
+        <a :target="theUrl">
             <i class="iconfont" :class="icon"></i>
             {{content}}
         </a>
@@ -23,12 +23,15 @@ export default {
             type: String,
             required: true
         },
+        // activeColor: {
+        //     type: String,
+        //     default: "#2d8cf0"
+        // },
         
     }
 }
 </script>
-
-<style>
+<style scoped>
 .navbar-items-item {
     display: -webkit-flex; /* Safari */
     display: flex;
@@ -43,9 +46,5 @@ export default {
 .navbar-items-item:hover {
     color: #2d8cf0;
     border-bottom: 2px solid #2d8cf0;;
-}
-.iconfont {
-    margin-right: 6px;
-    font-size: 16px;
 }
 </style>
