@@ -1,22 +1,16 @@
 <template>
-  <div class="navbar-items-item" :class="{'activeStyle': isActive}">
-    <a :target="url">
-      <i class="iconfont" :class="icon"></i>
-      {{content}}
-    </a>
-  </div>
+  <router-link :to="route" >
+    <i class="iconfont" :class="icon"></i>
+    {{content}}
+  </router-link>
 </template>
 
 <script>
 // import navItems from "@/menu";
 export default {
   name: "nav-item",
-  data() {
-    return {
-    };
-  },
   props: {
-    url: {
+    route: {
       type: String,
       default: "_self"
     },
@@ -28,14 +22,7 @@ export default {
       type: String,
       required: true
     },
-    isActive: {
-      type: Boolean,
-      default: false
-    }
-  },
-  created () {
-  },
-  methods: {}
+  }
 };
 </script>
 <style scoped>
@@ -49,12 +36,17 @@ export default {
   padding: 0 20px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  border-bottom: 2px solid #fff;
 }
 .navbar-items-item:hover {
   color: #2d8cf0;
   border-bottom: 2px solid #2d8cf0;
 }
-.activeStyle {
+.iconfont {
+  margin-right: 6px;
+  font-size: 16px;
+}
+.router-link-exact-active {
   color: #2d8cf0;
   border-bottom: 2px solid #2d8cf0;
 }

@@ -3,15 +3,14 @@
     <div class="navbar-main">
       <div class="navbar-items">
         <div class="navbar-items-logo">MITTACY</div>
-        <NavItem
+        <nav-item
+          class="navbar-items-item"
           v-for="item in navItems"
           :content="item.content"
           :icon="item.icon"
-          :url="item.url"
-          :isActive="currentUrl === item.url"
+          :route="item.route"
           :key="item.content"
-          @click.native="currentUrl = item.url"
-        ></NavItem>
+        ></nav-item>
       </div>
       <div class="navbar-login">
         <a target="_self">
@@ -31,7 +30,6 @@ export default {
   data() {
     return {
       navItems,
-      currentUrl: '/'
     };
   },
   components: {
@@ -66,14 +64,10 @@ export default {
   display: -webkit-flex; /* Safari */
   display: flex;
   height: inherit;
-  font-size: 14px;
-  color: #515a6e;
   align-items: center;
   padding: 0 20px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-}
-.navbar-items-logo {
   font-family: serif;
   font-weight: bold;
   font-size: 24px;
