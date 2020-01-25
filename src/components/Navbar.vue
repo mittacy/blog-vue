@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" :style="{zIndex: zindex}">
     <div class="navbar-main">
       <div class="navbar-items">
         <div class="navbar-items-logo">MITTACY</div>
@@ -11,9 +11,9 @@
           :key="item.content"
         ></nav-item>
       </div>
-      <router-link to="/" class="navbar-login">
+      <div class="navbar-login" @click="showLogin">
         <i class="iconfont icon-jiqiren"></i>登录
-      </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -29,8 +29,19 @@ export default {
       navItems,
     };
   },
+  props: {
+    zindex: {
+      type: Number,
+      default: 1000
+    }
+  },
   components: {
     NavItem
+  },
+  methods: {
+    showLogin() {
+      this.$emit('changeLoginStatus', false);
+    }
   }
 };
 </script>
@@ -40,6 +51,7 @@ export default {
   width: 100%;
   min-width: 1140px;
   border-bottom: 1px solid #dcdee2;
+  position: relative;
 }
 .navbar-main {
   display: -webkit-flex; /* Safari */
