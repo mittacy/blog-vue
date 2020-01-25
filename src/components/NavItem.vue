@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="route" >
+  <router-link class="navbar-items-item" :to="route" >
     <i class="iconfont" :class="icon"></i>
     {{content}}
   </router-link>

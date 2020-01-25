@@ -4,7 +4,6 @@
       <div class="navbar-items">
         <div class="navbar-items-logo">MITTACY</div>
         <nav-item
-          class="navbar-items-item"
           v-for="item in navItems"
           :content="item.content"
           :icon="item.icon"
@@ -12,11 +11,9 @@
           :key="item.content"
         ></nav-item>
       </div>
-      <div class="navbar-login">
-        <a target="_self">
-          <i class="iconfont icon-geren"></i>登录
-        </a>
-      </div>
+      <router-link to="/" class="navbar-login">
+        <i class="iconfont icon-jiqiren"></i>登录
+      </router-link>
     </div>
   </div>
 </template>
@@ -91,5 +88,6 @@ export default {
   height: 100%;
   font-size: 14px;
   transition: all 0.2s ease-in-out;
+  justify-content: center;
 }
 </style>
