@@ -11,7 +11,7 @@
           :key="item.content"
         ></nav-item>
       </div>
-      <div class="navbar-login" @click="showLogin">
+      <div class="navbar-login" :class="{hideLoginButton: loginStatus}" @click="showLogin">
         <i class="iconfont icon-jiqiren"></i>登录
       </div>
     </div>
@@ -33,6 +33,10 @@ export default {
     zindex: {
       type: Number,
       default: 1000
+    },
+    loginStatus: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -40,7 +44,7 @@ export default {
   },
   methods: {
     showLogin() {
-      this.$emit('changeLoginStatus', false);
+      this.$emit('changeLoginForm', false);
     }
   }
 };
@@ -101,5 +105,8 @@ export default {
   font-size: 14px;
   transition: all 0.2s ease-in-out;
   justify-content: center;
+}
+.hideLoginButton {
+  display: none;
 }
 </style>
