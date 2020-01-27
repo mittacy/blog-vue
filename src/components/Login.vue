@@ -19,18 +19,22 @@
       </div>
     </div>
     <div class="login-main-button">
-      <div class="login-button" @click="checkPassword">登录</div>
+      <div class="login-button" @click="checkPassword">登 录</div>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import {checkAdmin, getAdmin} from '@/request/api';
 export default {
   data () {
     return {
       username: '',
       password: '',
+      resJson: {
+        type: Object
+      }
     }
   },
   props: {
@@ -51,9 +55,12 @@ export default {
     hideLogin() {
       this.$emit('changeLoginForm', true);
     },
-    checkPassword() {
-      console.log("username -> ", this.username);
-      console.log("password -> ", this.password);
+    async checkPassword() {
+      const result = await checkAdmin({
+        admin: this.username,
+        password: this.password
+      })
+      console.log('data => ', result)
     }
   }
 }

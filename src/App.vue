@@ -16,7 +16,7 @@ export default {
     return {
       showRank: [1000, 1100, 1200],
       isHideLogin: false,
-      loginStatus: true
+      loginStatus: false
     }
   },
   components: {
