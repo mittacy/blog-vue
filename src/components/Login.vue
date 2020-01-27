@@ -26,15 +26,12 @@
 </template>
 
 <script>
-import {checkAdmin, getAdmin} from '@/request/api';
+import {checkAdmin} from '@/request/api';
 export default {
   data () {
     return {
       username: '',
       password: '',
-      resJson: {
-        type: Object
-      }
     }
   },
   props: {
@@ -56,11 +53,20 @@ export default {
       this.$emit('changeLoginForm', true);
     },
     async checkPassword() {
-      const result = await checkAdmin({
-        admin: this.username,
+      console.log("start")
+      let requestObj = {
+        name: this.username,
         password: this.password
-      })
-      console.log('data => ', result)
+      }
+      const result = await checkAdmin(requestObj)
+      console.log(result)
+      // if (result.success) {
+      //   console.log(result)
+      //   // todo 通知 app 修改 loginStatus
+      //   // todo 保存 token
+      // } else {
+      //   // todo 弹出失败提示
+      // }
     }
   }
 }
