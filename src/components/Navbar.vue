@@ -14,6 +14,9 @@
       <div class="navbar-login" :class="{hideLoginButton: loginStatus}" @click="showLogin">
         <i class="iconfont icon-jiqiren"></i>登录
       </div>
+      <div class="navbar-login" :class="{hideLoginButton: !loginStatus}" @click="exitLogin">
+        退出
+      </div>
     </div>
   </div>
 </template>
@@ -27,13 +30,10 @@ export default {
   data() {
     return {
       navItems,
+      zindex: 1000
     };
   },
   props: {
-    zindex: {
-      type: Number,
-      default: 1000
-    },
     loginStatus: {
       type: Boolean,
       default: false
@@ -44,7 +44,10 @@ export default {
   },
   methods: {
     showLogin() {
-      this.$emit('changeLoginForm', false);
+      this.$emit('changeLoginFormStatus', false)
+    },
+    exitLogin() {
+      this.$emit('changeLoginStatus', false)
     }
   }
 };

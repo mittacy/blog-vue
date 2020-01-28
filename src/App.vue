@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Navbar :zindex="showRank[0]" :loginStatus="loginStatus" @changeLoginForm="changeLoginForm"/>
-    <Login :bgIndex="showRank[1]" :loginIndex="showRank[2]" :isHideLogin="isHideLogin" @changeLoginForm="changeLoginForm" @changeloginStatus="changeloginStatus"/>
+    <Navbar :loginStatus="loginStatus" @changeLoginFormStatus="changeLoginFormStatus" @changeLoginStatus="changeLoginStatus"/>
+    <Login :loginFormStatus="loginFormStatus" @changeLoginFormStatus="changeLoginFormStatus" @changeLoginStatus="changeLoginStatus"/>
     <router-view></router-view>
   </div>
 </template>
@@ -14,8 +14,7 @@ export default {
   name: "app",
   data () {
     return {
-      showRank: [1000, 1100, 1200],
-      isHideLogin: true,
+      loginFormStatus: true,  // true为隐藏
       loginStatus: false
     }
   },
@@ -24,10 +23,10 @@ export default {
     Login
   },
   methods: {
-    changeLoginForm(status) {
-      this.isHideLogin = status
+    changeLoginFormStatus(status) {
+      this.loginFormStatus = status
     },
-    changeloginStatus(status) {
+    changeLoginStatus(status) {
       this.loginStatus = status
     }
   }

@@ -1,5 +1,5 @@
 <template>
-<div class="login" :class="{hideLogin: isHideLogin}">
+<div class="login" :class="{hideLogin: loginFormStatus}">
   <div class="login-background" :style="{zIndex: bgIndex}"  @click="hideLogin"></div>
   <div class="login-main" :style="{zIndex: loginIndex}">
     <div class="login-main-close" @click="hideLogin">
@@ -32,25 +32,19 @@ export default {
     return {
       username: '',
       password: '',
+      bgIndex: 1100,
+      loginIndex: 1200
     }
   },
   props: {
-    isHideLogin: {
+    loginFormStatus: {
       type: Boolean,
       default: true
-    },
-    loginIndex: {
-      type: Number,
-      default: 2000
-    },
-    bgIndex: {
-      type: Number,
-      default: 1500
     }
   },
   methods: {
     hideLogin() {
-      this.$emit('changeLoginForm', true);
+      this.$emit('changeLoginFormStatus', true);
     },
     async checkPassword() {
       if (!this.username) {
@@ -74,8 +68,8 @@ export default {
       } else {
         console.log(result)
         // todo 通知 app 修改 loginStatus
-        this.$emit('changeLoginForm', true);
-        this.$emit('changeloginStatus', true);
+        this.$emit('changeLoginFormStatus', true);
+        this.$emit('changeLoginStatus', true);
         // todo 保存 token
       }
     }
