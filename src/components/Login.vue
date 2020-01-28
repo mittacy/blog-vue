@@ -53,20 +53,22 @@ export default {
       this.$emit('changeLoginForm', true);
     },
     async checkPassword() {
-      console.log("start")
       let requestObj = {
         name: this.username,
         password: this.password
       }
-      const result = await checkAdmin(requestObj)
-      console.log(result)
-      // if (result.success) {
-      //   console.log(result)
-      //   // todo 通知 app 修改 loginStatus
-      //   // todo 保存 token
-      // } else {
-      //   // todo 弹出失败提示
-      // }
+      let result = await checkAdmin(requestObj)
+      if (result.msg) {
+        if (result.msg === "Password error") {
+          console.log("密码错误")
+        } else if (result.msg === "Name error") {
+          console.log("用户名不存在")
+        }
+      } else {
+        console.log(result)
+        // todo 通知 app 修改 loginStatus
+        // todo 保存 token
+      }
     }
   }
 }
