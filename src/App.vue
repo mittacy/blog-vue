@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar :zindex="showRank[0]" :loginStatus="loginStatus" @changeLoginForm="changeLoginForm"/>
-    <Login :bgIndex="showRank[1]" :loginIndex="showRank[2]" :isHideLogin="isHideLogin" @changeLoginForm="changeLoginForm"/>
+    <Login :bgIndex="showRank[1]" :loginIndex="showRank[2]" :isHideLogin="isHideLogin" @changeLoginForm="changeLoginForm" @changeloginStatus="changeloginStatus"/>
     <router-view></router-view>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       showRank: [1000, 1100, 1200],
-      isHideLogin: false,
+      isHideLogin: true,
       loginStatus: false
     }
   },
@@ -26,6 +26,9 @@ export default {
   methods: {
     changeLoginForm(status) {
       this.isHideLogin = status
+    },
+    changeloginStatus(status) {
+      this.loginStatus = status
     }
   }
 };

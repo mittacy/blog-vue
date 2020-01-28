@@ -53,6 +53,13 @@ export default {
       this.$emit('changeLoginForm', true);
     },
     async checkPassword() {
+      if (!this.username) {
+        alert("请输入用户名")
+        return
+      } else if (!this.password) {
+        alert("请输入密码")
+        return
+      }
       let requestObj = {
         name: this.username,
         password: this.password
@@ -60,13 +67,15 @@ export default {
       let result = await checkAdmin(requestObj)
       if (result.msg) {
         if (result.msg === "Password error") {
-          console.log("密码错误")
+          alert("Password Error")
         } else if (result.msg === "Name error") {
-          console.log("用户名不存在")
+          alert("Admin Error")
         }
       } else {
         console.log(result)
         // todo 通知 app 修改 loginStatus
+        this.$emit('changeLoginForm', true);
+        this.$emit('changeloginStatus', true);
         // todo 保存 token
       }
     }
