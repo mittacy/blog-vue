@@ -71,6 +71,7 @@ export default {
         this.$emit('changeLoginFormStatus', true);
         this.$emit('changeLoginStatus', true);
         // todo 保存 token
+        sessionStorage.setItem('blog', result.data)
       }
     }
   }

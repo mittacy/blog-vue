@@ -5,7 +5,7 @@ ul,ol,ul li,ol li { list-style: none; }/*重置列表*/
 input,button,select,textarea { font-family:inherit;font-size:100%;outline:none; }
 img { border:0; }/*重置图片元素*/
 /* button,input[type="reset"],input[type="button"],input[type="submit"] { line-height:normal !important; } */
-a { text-decoration:none;}
+a { text-decoration:none; cursor: pointer;}
 /* a { color:#666;} */
 /* a:hover { text-decoration:underline; } */
 /* input { _filter:chroma(color=#000000); } */
