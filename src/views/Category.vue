@@ -1,9 +1,14 @@
 <template>
   <div class="cate">
     <div class="cate-lists">
-      <div v-for="cate in categories" :key="cate" class="cate-list">
-        <i class="iconfont icon-biaoqian"></i>
-        {{ cate }}
+      <div v-for="cate in categories" :key="cate.title" class="cate-list">
+        <div class="cate-list-left">
+          <i class="iconfont icon-biaoqian"></i>
+          {{ cate.title }}
+        </div>
+        <div class="cate-list-right">
+          {{ cate.article_count }}篇
+        </div>
       </div>
     </div>
     <Intro/>
@@ -12,15 +17,25 @@
 
 <script>
 import Intro from '@/components/Intro';
+import {apiGetCategories} from '@/request/api';
 
 export default {
   data () {
     return {
-      categories: ["Golang", "JavaScript"]
+      categories: []
     }
   },
   components: {
     Intro,
+  },
+  created () {
+    this.getCategories()
+  },
+  methods: {
+    async getCategories() {
+      let result = await apiGetCategories()
+      this.categories = result.data
+    }
   }
 }
 </script>
@@ -39,7 +54,7 @@ export default {
 }
 .cate-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding-left: 20px;
   height: 50px;
@@ -57,7 +72,15 @@ export default {
 .cate-list:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
-.cate-list>i {
+.cate-list-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.cate-list-right {
+  margin-right: 20px;
+}
+.cate-list-left>i {
   margin-right: 7px;
 }
 </style>

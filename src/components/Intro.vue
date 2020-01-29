@@ -5,10 +5,10 @@
       <img src="http://blog.mittacy.com/introImg.JPG">
     </div>
     <div class="intro-me-information">
-      <div class="intro-me-information-name">Mittacy</div>
+      <div class="intro-me-information-name">{{result.Name}}</div>
       <div class="intro-me-information-links">
-        <a class="intro-me-information-link" href="https://github.com/crazychat" target="_blank"><i class="iconfont icon-github"></i></a>
-        <a class="intro-me-information-link" href="mailto:mail@mittacy.com" target="_blank"><i class="iconfont icon-mail"></i></a>
+        <a class="intro-me-information-link" :href="result.Github" target="_blank"><i class="iconfont icon-github"></i></a>
+        <a class="intro-me-information-link" :href="`mailto:${result.Mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
       </div>
     </div>
   </div>
@@ -16,8 +16,24 @@
 </template>
 
 <script>
+import {apiGetAdminInformation} from '@/request/api';
 export default {
-  
+  data () {
+    return {
+      result: {
+        type: Object
+      }
+    }
+  },
+  created() {
+    this.getAdminInformation()
+  },
+  methods: {
+    async getAdminInformation() {
+      let result = await apiGetAdminInformation()
+      this.result = result.data
+    }
+  }
 }
 </script>
 

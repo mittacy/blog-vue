@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {getAdminInformation} from '@/request/api';
+import {apiGetAdminInformation} from '@/request/api';
 
 export default {
   data () {
@@ -24,11 +24,11 @@ export default {
     }
   },
   created() {
-    this.getInformation()
+    this.getAdminInformation()
   },
   methods: {
-    async getInformation() {
-      let result = await getAdminInformation()
+    async getAdminInformation() {
+      let result = await apiGetAdminInformation()
       this.result = result.data
     }
   }
