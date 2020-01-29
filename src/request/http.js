@@ -1,25 +1,5 @@
 import axios from 'axios';
 
-// 错误信息
-let UNKONWNERROR        = "Unkonwn error"
-let NO_EXIST            = "Resource does not exist"
-let EXISTED             = "Resource already exists"
-let CATE_NO_EXIST       = "Category does not exist"
-let CATE_EXIST          = "Category already exists"
-let ARTICLE_EXIST       = "Article already exists"
-let ARTICLE_NO_EXIST    = "Article does not exists"
-let ADMIN_NO_EXIST      = "Administrators does not exist"
-let NO_POWER            = "Permission denied"
-let SQL_ERROR           = "Database operation error"
-let CONVERSIOIN_ERROR   = "Data conversion error"
-let ANALYSIS_ERROR      = "JSON error"
-let CHECKCONTENT        = "请检查提交数据是否正确或分类是否存在"
-let NO_NULL             = "Data cannot be empty"
-let CONTROLLER_SUCCESS  = "Success"
-let NAMEERROR		        = "Name error"
-let PASSWORDERROR	      = "Password error"
-let CREATETOKENERROR    = "Create token error"
-
 // 请求头
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 // 请求拦截

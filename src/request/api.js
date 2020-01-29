@@ -5,4 +5,5 @@ import opts from './http'
 // function getAdmin(params) {
 //   return get('/admin', params)
 // }
-export const checkAdmin = (data) => { return opts({method: 'post', url: '/admin', data}) }
+export const checkAdmin = (data) => { return opts({method: 'post', url: '/admin', data})}
+export const getAdminInformation = (params) => { return opts({method: 'get', url: '/admin', params })}
