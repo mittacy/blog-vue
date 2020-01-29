@@ -21,7 +21,6 @@ export default {
   display: flex;
   width: 1140px;
   margin: 0 auto;
-  
 }
 .home-list {
   width: 75%;
