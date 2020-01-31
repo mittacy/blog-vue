@@ -14,18 +14,18 @@
     </div>
     <div class="page">
       <span class="page-count">共 {{cateNumber}} 条</span>
-      <div class="page-arrow" :class="leftArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changePage(currentPage-1)">
+      <div class="page-arrow" :class="leftArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changeCategoryPage(currentPage-1)">
         <i class="iconfont icon-icon_right_arrow"></i>
       </div>
       <div v-for="num in pageNumber"
         :key="num"
         class="page-number"
-        :class="{'page-active': currentPage === num}"
+        :class="{'page-active': currentPage === num-1}"
         @click="changePage(num)"
         >
         {{num}}
       </div>
-      <div class="page-arrow" :class="rightArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changePage(currentPage+1)">
+      <div class="page-arrow" :class="rightArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changeCategoryPage(currentPage+1)">
         <i class="iconfont icon-icon_left_arrow"></i>
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {
       categories: [],
       cateNumber: 0,
       pageNumber: 0,
-      currentPage: 1,
+      currentPage: 0,
       leftArrowIsAble: false,
       rightArrowIsAble: false,
     }
@@ -53,28 +53,31 @@ export default {
     Intro,
   },
   async created () {
-    await this.getCategories()
-    this.isArrowAble()
+    this.initCategory()
   },
   methods: {
-    async getCategories() {
-      let result = await apiGetCategories()
-      this.categories = result.data
-      this.cateNumber = this.categories.length
+    async initCategory() {
+      let result = await apiGetCategories(0)
+      this.cateNumber = result.data.categoryCount
+      this.categories = result.data.categories
+      this.currentPage = 0
       if (this.cateNumber%10 === 0) {
         this.pageNumber = parseInt(this.cateNumber/10)
       } else {
         this.pageNumber = parseInt(this.cateNumber/10)+1
       }
-    },
-    isArrowAble() {
-      this.leftArrowIsAble = this.currentPage > 1 ? true : false
       this.rightArrowIsAble = this.currentPage < this.pageNumber ? true : false
     },
-    changePage(num) {
-      this.currentPage = num
+    async changeCategoryPage(page) {
+      let result = await apiGetCategories(page)
+      this.categories = result.data.categories
+      this.currentPage = page
       this.isArrowAble()
-    }
+    },
+    isArrowAble() {
+      this.leftArrowIsAble = this.currentPage > 0 ? true : false
+      this.rightArrowIsAble = this.currentPage < this.pageNumber ? true : false
+    },
   }
 }
 </script>

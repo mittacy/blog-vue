@@ -11,12 +11,11 @@ export const apiGetAdminInformation = (params) => {
 }
 
 /* 分类api */
-// 获取所有分类名称
-export const apiGetCategories = (params) => {
+// 获取某页所有分类
+export const apiGetCategories = (page) => {
   return opts({
     method: 'get',
-    url: '/categories',
-    params
+    url: '/category_page/'+page
   })
 }
 export const apiAddCategory = (data) => {
