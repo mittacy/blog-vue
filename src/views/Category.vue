@@ -1,4 +1,5 @@
 <template>
+<div class="content">
   <div class="cate">
     <div class="cate-lists">
       <div v-for="cate in categories" :key="cate.title" class="cate-list">
@@ -11,8 +12,26 @@
         </div>
       </div>
     </div>
-    <Intro/>
+    <div class="page">
+      <span class="page-count">共 {{cateNumber}} 条</span>
+      <div class="page-arrow" :class="leftArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changePage(currentPage-1)">
+        <i class="iconfont icon-icon_right_arrow"></i>
+      </div>
+      <div v-for="num in pageNumber"
+        :key="num"
+        class="page-number"
+        :class="{'page-active': currentPage === num}"
+        @click="changePage(num)"
+        >
+        {{num}}
+      </div>
+      <div class="page-arrow" :class="rightArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changePage(currentPage+1)">
+        <i class="iconfont icon-icon_left_arrow"></i>
+      </div>
+    </div>
   </div>
+  <Intro/>
+</div>
 </template>
 
 <script>
@@ -22,35 +41,57 @@ import {apiGetCategories} from '@/request/api';
 export default {
   data () {
     return {
-      categories: []
+      categories: [],
+      cateNumber: 0,
+      pageNumber: 0,
+      currentPage: 1,
+      leftArrowIsAble: false,
+      rightArrowIsAble: false,
     }
   },
   components: {
     Intro,
   },
-  created () {
-    this.getCategories()
+  async created () {
+    await this.getCategories()
+    this.isArrowAble()
   },
   methods: {
     async getCategories() {
       let result = await apiGetCategories()
       this.categories = result.data
+      this.cateNumber = this.categories.length
+      if (this.cateNumber%10 === 0) {
+        this.pageNumber = parseInt(this.cateNumber/10)
+      } else {
+        this.pageNumber = parseInt(this.cateNumber/10)+1
+      }
+    },
+    isArrowAble() {
+      this.leftArrowIsAble = this.currentPage > 1 ? true : false
+      this.rightArrowIsAble = this.currentPage < this.pageNumber ? true : false
+    },
+    changePage(num) {
+      this.currentPage = num
+      this.isArrowAble()
     }
   }
 }
 </script>
 
 <style scoped>
-.cate {
-  display: -webkit-box;
+.content {
   display: flex;
   width: 1140px;
   margin: 0 auto;
+  padding-top: 20px;
+}
+.cate {
+  width: 75%;
 }
 .cate-lists {
   display: flex;
   flex-direction: column;
-  width: 75%;
 }
 .cate-list {
   display: flex;
@@ -82,5 +123,41 @@ export default {
 }
 .cate-list-left>i {
   margin-right: 7px;
+}
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.page-count {
+  font-size: 12px;
+  margin-right: 20px;
+  color: #515a6e;
+}
+.page-arrow, .page-number {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 4px;
+  cursor: pointer;
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #ccc;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+.page-arrow-able:hover, .page-number:hover {
+  color: #2d8cf0;
+  border: 1px solid #2d8cf0;
+}
+.page-active {
+  color: #2d8cf0;
+  border: 1px solid #2d8cf0;
+}
+.page-arrow-disabled {
+  pointer-events: none;
 }
 </style>
