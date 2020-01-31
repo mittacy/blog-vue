@@ -21,7 +21,7 @@
         :key="num"
         class="page-number"
         :class="{'page-active': currentPage === num-1}"
-        @click="changePage(num)"
+        @click="changeCategoryPage(num-1)"
         >
         {{num}}
       </div>
