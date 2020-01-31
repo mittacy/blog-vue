@@ -52,7 +52,7 @@ export default {
   components: {
     Intro,
   },
-  async created () {
+  created () {
     this.initCategory()
   },
   methods: {
@@ -66,9 +66,10 @@ export default {
       } else {
         this.pageNumber = parseInt(this.cateNumber/10)+1
       }
-      this.rightArrowIsAble = this.currentPage < this.pageNumber ? true : false
+      this.rightArrowIsAble = this.currentPage < this.pageNumber-1 ? true : false
     },
     async changeCategoryPage(page) {
+      if (page === this.currentPage) return
       let result = await apiGetCategories(page)
       this.categories = result.data.categories
       this.currentPage = page
@@ -76,7 +77,7 @@ export default {
     },
     isArrowAble() {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false
-      this.rightArrowIsAble = this.currentPage < this.pageNumber ? true : false
+      this.rightArrowIsAble = this.currentPage < this.pageNumber-1 ? true : false
     },
   }
 }

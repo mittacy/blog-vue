@@ -39,11 +39,3 @@ export const apiDeleteCategory = (data) => {
     data
   })
 }
-// 获取某个分类的所有文章
-// export const getCateArticles = (params) => {
-//   return opts({
-//     method: 'get',
-//     url: '/api/category/:id',
-//     params
-//   })
-// }
