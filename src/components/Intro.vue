@@ -2,7 +2,7 @@
 <div class="intro">
   <div class="intro-me">
     <div class="intro-me-img">
-      <img src="http://blog.mittacy.com/introImg.JPG">
+      <img src="http://blog.mittacy.com/introImg.jpeg">
     </div>
     <div class="intro-me-information">
       <div class="intro-me-information-name">{{result.Name}}</div>

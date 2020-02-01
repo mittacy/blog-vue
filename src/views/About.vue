@@ -1,14 +1,16 @@
 <template>
-<div class="about">
-  <div class="about-title">About</div>
-  <div class="about-author">作者</div>
-  <p class="abour-info">{{result.Introduce}}</p>
-  <p class="abour-info">github: <a :href="result.Github" target="_blank">{{result.Github}}</a></p>
-  <p class="abour-info">个人邮箱: <a :href="`mailto:${result.Mail}`" target="_blank">{{result.Mail}}</a></p>
-  <div class="about-author">博客相关</div>
-  <p class="abour-info">前端: Vue.js</p>
-  <p class="abour-info">后端: Golang</p>
-  <p class="abour-info">数据库: Mysql</p>
+<div class="content">
+  <div class="about">
+    <div class="about-title">About</div>
+    <div class="about-author">作者</div>
+    <p class="abour-info">{{result.Introduce}}</p>
+    <p class="abour-info">github: <a :href="result.Github" target="_blank">{{result.Github}}</a></p>
+    <p class="abour-info">个人邮箱: <a :href="`mailto:${result.Mail}`" target="_blank">{{result.Mail}}</a></p>
+    <div class="about-author">博客相关</div>
+    <p class="abour-info">前端: Vue.js</p>
+    <p class="abour-info">后端: Golang</p>
+    <p class="abour-info">数据库: Mysql</p>
+  </div>
 </div>
 </template>
 
@@ -36,13 +38,14 @@ export default {
 </script>
 
 <style scoped>
-.about {
-  display: -webkit-box;
+.content {
   display: flex;
-  flex-direction: column;
   width: 1140px;
-  height: 60px;
   margin: 0 auto;
+  padding-top: 20px;
+}
+.about {
+  width: 100%;
 }
 .about a {
   color: #0366d6;

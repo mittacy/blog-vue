@@ -98,11 +98,11 @@ export default {
   flex-direction: column;
 }
 .cate-list {
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 20px;
-  height: 50px;
   margin-bottom: 10px;
   border: 1px solid #e8eaec;
   border-radius: 4px;

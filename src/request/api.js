@@ -39,3 +39,11 @@ export const apiDeleteCategory = (data) => {
     data
   })
 }
+
+/* 文章api */
+export const apiGetArticles = (page) => {
+  return opts({
+    method: 'get',
+    url: '/article_page/'+page
+  })
+}
