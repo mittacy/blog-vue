@@ -15,9 +15,17 @@ export const apiGetAdminInformation = (params) => {
 export const apiGetCategories = (page) => {
   return opts({
     method: 'get',
-    url: '/category_page/'+page
+    url: '/category_page/' + page
   })
 }
+// 获取某个分类所有文章
+export const apiGetArticlesFromCate = (categoryID) => {
+  return opts({
+    method: 'get',
+    url: '/category/' + categoryID
+  })
+}
+// 添加分类
 export const apiAddCategory = (data) => {
   return opts({
     method: 'post',
@@ -25,6 +33,7 @@ export const apiAddCategory = (data) => {
     data
   })
 }
+// 修改分类
 export const apiPutCategory = (data) => {
   return opts({
     method: 'put',
@@ -32,6 +41,7 @@ export const apiPutCategory = (data) => {
     data
   })
 }
+// 删除分类
 export const apiDeleteCategory = (data) => {
   return opts({
     method: 'delete',
@@ -41,9 +51,10 @@ export const apiDeleteCategory = (data) => {
 }
 
 /* 文章api */
+// 分页获取文章
 export const apiGetArticles = (page) => {
   return opts({
     method: 'get',
-    url: '/article_page/'+page
+    url: '/article_page/' + page
   })
 }

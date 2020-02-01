@@ -1,7 +1,7 @@
 <template>
   <div class="cate">
     <div class="cate-lists">
-      <div v-for="cate in categories" :key="cate.title" class="cate-list">
+      <div v-for="cate in categories" :key="cate.title" class="cate-list" @click="turnToCategory(cate.id)">
         <div class="cate-list-left">
           <i class="iconfont icon-biaoqian"></i>
           {{ cate.title }}
@@ -72,6 +72,9 @@ export default {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false
       this.rightArrowIsAble = this.currentPage < this.pageNumber-1 ? true : false
     },
+    turnToCategory(id) {
+      this.$emit('turnCategoryID', id)
+    }
   }
 }
 </script>

@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import {apiGetArticles} from '@/request/api';
+import {apiGetArticles, apiGetArticlesFromCate} from '@/request/api';
 export default {
   data () {
     return {
@@ -41,15 +41,27 @@ export default {
       pageNum: 0,
       currentPage: 0,
       leftArrowIsAble: false,
-      rightArrowIsAble: false
+      rightArrowIsAble: false,
+      fromArticle: true
     }
   },
   created () {
     this.initArticle()
   },
+  props: {
+    categoryID: {
+      type: Number,
+      default: 1
+    }
+  },
   methods: {
     async initArticle() {
-      let result = await apiGetArticles(0)
+      let result = {}
+      if (this.fromArticle) {
+        result = await apiGetArticles(0)
+      } else {
+        result = await apiGetArticlesFromCate(this.categoryID)
+      }
       this.articleNum = result.data.articleCount
       this.articles = result.data.articles
       this.currentPage = 0
@@ -71,6 +83,12 @@ export default {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false
       this.rightArrowIsAble = this.currentPage < this.pageNum-1 ? true : false
     },
+  },
+  watch: {
+    categoryID () {
+      this.fromArticle = false
+      this.initArticle()
+    },
   }
 }
 </script>
@@ -78,6 +96,8 @@ export default {
 <style scoped>
 .article {
   width: 75%;
+  opacity: 1;
+  transition: all .2s ease;
 }
 .article-lists {
   display: flex;

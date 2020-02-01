@@ -1,24 +1,33 @@
 <template>
 <div class="content">
-  <Catelist  :class="{hidden: !showCate}"/>
+  <Catelist  :class="{hidden: !showCate}" @turnCategoryID="showArticle"/>
+  <Articlelist :class="{hidden: showCate}" :categoryID="categoryID"/>
   <Intro/>
 </div>
 </template>
 
 <script>
 import Intro from '@/components/Intro';
-import Catelist from '@/components/Catelist'
+import Catelist from '@/components/Catelist';
+import Articlelist from '@/components/Articlelist';
 export default {
   data () {
     return {
       showCate: true,
-      showArticle: false
+      categoryID: 0
     }
   },
   components: {
     Intro,
     Catelist,
+    Articlelist
   },
+  methods: {
+    showArticle(id) {
+      this.categoryID = id
+      this.showCate = false
+    }
+  }
 }
 </script>
 
@@ -30,7 +39,7 @@ export default {
   padding-top: 20px;
 }
 .hidden {
-  opacity: 0;
-  /* display: none; */
+  /* opacity: 0; */
+  display: none;
 }
 </style>
