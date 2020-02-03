@@ -13,9 +13,9 @@ export default new Router({
       component: () => import('@/views/Home')
     },
     {
-      path: '/article',
-      name: 'article',
-      component: () => import('@/views/Article')
+      path: '/articles',
+      name: 'articles',
+      component: () => import('@/views/Articles')
     },
     {
       path: '/category',
@@ -26,6 +26,11 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: () => import('@/views/About')
+    },
+    {
+      path: '/article/:id',
+      name: 'article',
+      component: () => import('@/views/Article')
     }
   ]
 })

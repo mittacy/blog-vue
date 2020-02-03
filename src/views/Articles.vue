@@ -1,20 +1,18 @@
 <template>
   <div class="content">
-    <div class="article">
-    </div>
+    <Articlelist/>
     <Intro/>
   </div>
 </template>
 
 <script>
-import Intro from '@/components/Intro'
+import Intro from '@/components/Intro';
+import Articlelist from '@/components/Articlelist';
 export default {
   components: {
     Intro,
+    Articlelist
   },
-  created () {
-    console.log(this.$route.params.id)
-  }
 }
 </script>
 
@@ -24,10 +22,5 @@ export default {
   width: 1140px;
   margin: 0 auto;
   padding-top: 20px;
-}
-.article {
-  width: 75%;
-  opacity: 1;
-  transition: all .2s ease;
 }
 </style>

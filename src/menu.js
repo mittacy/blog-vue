@@ -11,7 +11,7 @@ export default [
   {
     content: "文章",
     icon: "icon-16",
-    route: "/article"
+    route: "/articles"
   },
   {
     content: "分类",
