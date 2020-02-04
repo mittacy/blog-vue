@@ -1,7 +1,7 @@
 <template>
   <div class="cate">
     <div class="cate-lists">
-      <div v-for="cate in categories" :key="cate.title" class="cate-list" @click="turnToCategory(cate.id)">
+      <router-link v-for="cate in categories" :key="cate.title" class="cate-list" :to="turnToCategory(cate.id)">
         <div class="cate-list-left">
           <i class="iconfont icon-biaoqian"></i>
           {{ cate.title }}
@@ -9,7 +9,7 @@
         <div class="cate-list-right">
           {{ cate.article_count }}篇
         </div>
-      </div>
+      </router-link>
     </div>
     <div class="page">
       <span class="page-count">共 {{cateNumber}} 条</span>
@@ -72,10 +72,15 @@ export default {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false
       this.rightArrowIsAble = this.currentPage < this.pageNumber-1 ? true : false
     },
-    turnToCategory(id) {
-      this.$emit('turnCategoryID', id)
+    turnToCategory(cateID) {
+      return {
+        name: 'category',
+        params: {
+          id: cateID
+        }
+      }
     }
-  }
+  },
 }
 </script>
 

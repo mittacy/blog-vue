@@ -42,7 +42,6 @@ export default {
       currentPage: 0,
       leftArrowIsAble: false,
       rightArrowIsAble: false,
-      fromArticle: true
     }
   },
   created () {
@@ -50,14 +49,18 @@ export default {
   },
   props: {
     categoryID: {
-      type: Number,
-      default: 1
+      type: String,
+      default: '1'
+    },
+    fromCategory: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     async initArticle() {
       let result = {}
-      if (this.fromArticle) {
+      if (!this.fromCategory) {
         result = await apiGetArticles(0)
       } else {
         result = await apiGetArticlesFromCate(this.categoryID)
@@ -84,12 +87,6 @@ export default {
       this.rightArrowIsAble = this.currentPage < this.pageNum-1 ? true : false
     },
   },
-  watch: {
-    categoryID () {
-      this.fromArticle = false
-      this.initArticle()
-    },
-  }
 }
 </script>
 

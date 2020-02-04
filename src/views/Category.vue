@@ -1,33 +1,30 @@
 <template>
-<div class="content">
-  <Catelist  :class="{hidden: !showCate}" @turnCategoryID="showArticle"/>
-  <Articlelist :class="{hidden: showCate}" :categoryID="categoryID"/>
-  <Intro/>
-</div>
+  <div class="content">
+    <Articlelist :fromCategory="true" :categoryID="categoryID"/>
+    <Intro/>
+  </div>
 </template>
 
 <script>
-import Intro from '@/components/Intro';
-import Catelist from '@/components/Catelist';
-import Articlelist from '@/components/Articlelist';
+import Intro from '@/components/Intro'
+import Articlelist from '@/components/Articlelist'
 export default {
   data () {
     return {
-      showCate: true,
-      categoryID: 0
+      categoryID: {
+        type: Number,
+        default: -1
+      }
     }
+  },
+  created () {
+    this.categoryID = this.$route.params.id
+    console.log('cateID -> ', this.categoryID)
   },
   components: {
     Intro,
-    Catelist,
     Articlelist
   },
-  methods: {
-    showArticle(id) {
-      this.categoryID = id
-      this.showCate = false
-    }
-  }
 }
 </script>
 
@@ -37,9 +34,5 @@ export default {
   width: 1140px;
   margin: 0 auto;
   padding-top: 20px;
-}
-.hidden {
-  /* opacity: 0; */
-  display: none;
 }
 </style>

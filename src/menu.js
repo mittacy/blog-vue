@@ -16,7 +16,7 @@ export default [
   {
     content: "分类",
     icon: "icon-fenlei-copy",
-    route: "/category"
+    route: "/categories"
   },
   {
     content: "关于",
