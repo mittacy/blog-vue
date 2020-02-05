@@ -1,5 +1,5 @@
 <template>
-<div class="login" :class="{hideLogin: loginFormStatus}">
+<div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}">
   <div class="login-background" :style="{zIndex: bgIndex}"  @click="hideLogin"></div>
   <div class="login-main" :style="{zIndex: loginIndex}">
     <div class="login-main-close" @click="hideLogin">
@@ -36,15 +36,9 @@ export default {
       loginIndex: 1200
     }
   },
-  props: {
-    loginFormStatus: {
-      type: Boolean,
-      default: true
-    }
-  },
   methods: {
     hideLogin() {
-      this.$emit('changeLoginFormStatus', true);
+      this.$store.dispatch('changeLoginFormStatus', false)
     },
     async checkPassword() {
       if (!this.username) {
@@ -66,11 +60,10 @@ export default {
           alert("Admin Error")
         }
       } else {
-        console.log(result)
-        // todo 通知 app 修改 loginStatus
-        this.$emit('changeLoginFormStatus', true);
-        this.$emit('changeLoginStatus', true);
-        // todo 保存 token
+        // 修改 loginStatus
+        this.$store.dispatch('changeAdminStatus', true)
+        this.$store.dispatch('changeLoginFormStatus', false)
+        // 保存 token
         sessionStorage.setItem('adminToken', result.data)
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Navbar :loginStatus="loginStatus" @changeLoginFormStatus="changeLoginFormStatus" @changeLoginStatus="changeLoginStatus"/>
-    <Login :loginFormStatus="loginFormStatus" @changeLoginFormStatus="changeLoginFormStatus" @changeLoginStatus="changeLoginStatus"/>
+    <Navbar/>
+    <Login/>
     <router-view></router-view>
   </div>
 </template>
@@ -12,26 +12,12 @@ import Login from "@/components/Login";
 
 export default {
   name: "app",
-  data () {
-    return {
-      loginFormStatus: true,  // true为隐藏
-      loginStatus: false
-    }
+  created() {
+    // todo 测试是否有权限，若有改变 loginStatus
   },
   components: {
     Navbar,
     Login
-  },
-  methods: {
-    changeLoginFormStatus(status) {
-      this.loginFormStatus = status
-    },
-    changeLoginStatus(status) {
-      if (!status) {
-        sessionStorage.removeItem('blog')
-      }
-      this.loginStatus = status
-    }
   }
 };
 </script>

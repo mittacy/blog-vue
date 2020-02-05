@@ -11,11 +11,11 @@
           :key="item.content"
         ></nav-item>
       </div>
-      <div class="navbar-login" :class="{hideLoginButton: loginStatus}" @click="showLogin">
+      <div class="navbar-login" :class="{hideLoginButton: this.$store.state.adminStatus}" @click="showLogin">
         <i class="iconfont icon-jiqiren"></i>登录
       </div>
-      <div class="navbar-login" :class="{hideLoginButton: !loginStatus}" @click="exitLogin">
-        退出
+      <div class="navbar-login" :class="{hideLoginButton: !this.$store.state.adminStatus}">
+        <div @click="exitLogin">退出</div>
       </div>
     </div>
   </div>
@@ -33,21 +33,15 @@ export default {
       zindex: 1000
     };
   },
-  props: {
-    loginStatus: {
-      type: Boolean,
-      default: false
-    }
-  },
   components: {
     NavItem
   },
   methods: {
     showLogin() {
-      this.$emit('changeLoginFormStatus', false)
+      this.$store.dispatch('changeLoginFormStatus', true)
     },
     exitLogin() {
-      this.$emit('changeLoginStatus', false)
+      this.$store.dispatch('changeAdminStatus', false)
     },
   }
 };
