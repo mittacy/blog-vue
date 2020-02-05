@@ -6,7 +6,7 @@ Vue.use(Vuex)
 // 创建Vuex实例
 const store = new Vuex.Store({
   state: {
-    adminStatus: false,
+    adminStatus: true,
     loginFormStatus: false
   },
   mutations: {
