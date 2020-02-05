@@ -13,6 +13,7 @@ export default async opts => {
     const options = {
       baseURL: 'http://localhost:5201/api',
       timeout: 5000,
+      headers: {'adminToken': sessionStorage.getItem('adminToken')},
       ...opts
     }
     let response = await axios(options)

@@ -48,7 +48,7 @@ export default {
     },
     exitLogin() {
       this.$emit('changeLoginStatus', false)
-    }
+    },
   }
 };
 </script>

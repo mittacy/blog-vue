@@ -11,15 +11,11 @@ import Articlelist from '@/components/Articlelist'
 export default {
   data () {
     return {
-      categoryID: {
-        type: Number,
-        default: -1
-      }
+      categoryID: '-1'
     }
   },
   created () {
     this.categoryID = this.$route.params.id
-    console.log('cateID -> ', this.categoryID)
   },
   components: {
     Intro,

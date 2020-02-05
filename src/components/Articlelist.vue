@@ -49,7 +49,7 @@ export default {
   },
   props: {
     categoryID: {
-      type: String,
+      type: [String, Number],
       default: '1'
     },
     fromCategory: {

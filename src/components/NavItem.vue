@@ -1,5 +1,5 @@
 <template>
-  <router-link class="navbar-items-item" :to="route" >
+  <router-link class="navbar-items-item" :to="route">
     <i class="iconfont" :class="icon"></i>
     {{content}}
   </router-link>
@@ -9,6 +9,11 @@
 // import navItems from "@/menu";
 export default {
   name: "nav-item",
+  data () {
+    return {
+      isActive: false
+    }
+  },
   props: {
     route: {
       type: String,
@@ -22,7 +27,7 @@ export default {
       type: String,
       required: true
     },
-  }
+  },
 };
 </script>
 <style scoped>
