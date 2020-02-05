@@ -7,7 +7,9 @@
           {{ cate.title }}
         </div>
         <div class="cate-list-right">
-          {{ cate.article_count }}篇
+          <div class="cate-list-text">{{ cate.article_count }}篇</div>
+          <div class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}">编辑</div>
+          <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}">删除</div>
         </div>
       </router-link>
     </div>
@@ -120,10 +122,32 @@ export default {
   align-items: center;
 }
 .cate-list-right {
-  margin-right: 20px;
+  display: flex;
+  flex-direction: row-reverse;
 }
 .cate-list-left>i {
   margin-right: 7px;
+}
+.cate-list-text,
+.cate-list-edit,
+.cate-list-delete {
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 5px;
+  border: 1px solid #e8eaec;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+}
+.cate-list-text {
+  border: none;
+}
+.cate-list-delete:hover {
+  color: #fff;
+  background-color: red;
+}
+.cate-list-edit:hover {
+  background-color: #2d8cf0;
 }
 .page {
   display: flex;
@@ -160,5 +184,8 @@ export default {
 }
 .page-arrow-disabled {
   pointer-events: none;
+}
+.divHidden {
+  display: none;
 }
 </style>

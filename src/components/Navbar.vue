@@ -11,10 +11,10 @@
           :key="item.content"
         ></nav-item>
       </div>
-      <div class="navbar-login-button" :class="{hideLoginButton: this.$store.state.adminStatus}" @click="showLogin">
-        <i class="iconfont icon-jiqiren"></i>登录
+      <div class="navbar-login navbar-login-button" :class="{hideLoginButton: $store.state.adminStatus}" @click="showLogin">
+        登录<i class="iconfont icon-jiqiren"></i>
       </div>
-      <div class="navbar-login" :class="{hideLoginButton: !this.$store.state.adminStatus}">
+      <div class="navbar-login" :class="{hideLoginButton: !$store.state.adminStatus}">
         <div class="navbar-login-exit" @click="exitLogin">退出</div>
         <div class="navbar-login-controls-wrap">
           <div class="navbar-login-controls">
@@ -96,6 +96,7 @@ export default {
   font-size: 24px;
   color: #333;
 }
+.navbar-login-button:hover,
 .navbar-items-logo:hover,
 .navbar-login-exit:hover {
   color: #2d8cf0;
@@ -112,12 +113,12 @@ export default {
   color: #515a6e;
   width: 80px;
   height: 100%;
+  padding-right: 20px;
   font-size: 14px;
   transition: all 0.2s ease-in-out;
-  justify-content: center;
 }
 .hideLoginButton {
-  display: none;
+  display: none!important;
 }
 .navbar-login {
   display: flex;
