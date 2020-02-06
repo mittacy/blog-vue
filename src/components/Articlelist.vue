@@ -59,14 +59,15 @@ export default {
   },
   methods: {
     async initArticle() {
-      let result = {}
+      let response = {}
       if (!this.fromCategory) {
-        result = await apiGetArticles(0)
+        response = await apiGetArticles(0)
       } else {
-        result = await apiGetArticlesFromCate(this.categoryID)
+        response = await apiGetArticlesFromCate(this.categoryID)
       }
-      this.articleNum = result.data.articleCount
-      this.articles = result.data.articles
+      const result = response.data.data
+      this.articleNum = result.articleCount
+      this.articles = result.articles
       this.currentPage = 0
       if (this.articleNum%10 == 0) {
         this.pageNum = parseInt(this.articleNum/10)
@@ -77,8 +78,9 @@ export default {
     },
     async changePage(page) {
       if (page === this.currentPage) return
-      let result = await apiGetArticles(page)
-      this.articles = result.data.articles
+      const response = await apiGetArticles(page)
+      const result = response.data.data
+      this.articles = result.articles
       this.currentPage = page
       this.isArrowAble()
     },

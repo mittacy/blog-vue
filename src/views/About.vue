@@ -3,9 +3,9 @@
   <div class="about">
     <div class="about-title">About</div>
     <div class="about-author">作者</div>
-    <p class="abour-info">{{result.Introduce}}</p>
-    <p class="abour-info">github: <a :href="result.Github" target="_blank">{{result.Github}}</a></p>
-    <p class="abour-info">个人邮箱: <a :href="`mailto:${result.Mail}`" target="_blank">{{result.Mail}}</a></p>
+    <p class="abour-info">{{result.introduce}}</p>
+    <p class="abour-info">github: <a :href="result.github" target="_blank">{{result.github}}</a></p>
+    <p class="abour-info">个人邮箱: <a :href="`mailto:${result.mail}`" target="_blank">{{result.mail}}</a></p>
     <div class="about-author">博客相关</div>
     <p class="abour-info">前端: Vue.js</p>
     <p class="abour-info">后端: Golang</p>
@@ -30,8 +30,8 @@ export default {
   },
   methods: {
     async getAdminInformation() {
-      let result = await apiGetAdminInformation()
-      this.result = result.data
+      let response = await apiGetAdminInformation()
+      this.result = response.data.data
     }
   }
 }

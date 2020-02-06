@@ -17,7 +17,7 @@ export default async opts => {
       ...opts
     }
     let response = await axios(options)
-    return response.data
+    return response
   } catch (err) {
     return err.response
   }

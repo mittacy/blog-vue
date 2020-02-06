@@ -1,60 +1,115 @@
 <template>
 <div class="content">
+  <div class="tips-box" :class="{msgActive: msgIsActive}">{{message}}</div>
   <div class="edit">
     <div class="edit-title">修改管理员信息</div>
-    <div class="edit-caps">密码</div>
+    <div class="edit-caps" >密码</div>
     <div class="edit-password-cap">
       <div class="edit-text">Password</div>
-      <input class="edit-password-input" type="password">
-      <div class="edit-password-button">确认</div>
+      <input id="edit-password-input" type="password">
+      <div class="edit-password-button" @click="putAdminPwd">确认</div>
     </div>
     <div class="edit-caps">其他</div>
     <div class="edit-else">
       <div class="edit-text">Cname</div>
-      <input class="edit-else-input" type="text">
+      <input class="edit-else-input" type="text" v-model="admin.cname">
     </div>
     <div class="edit-else">
       <div class="edit-text">Introduce</div>
-      <input class="edit-else-input" type="text">
+      <input class="edit-else-input" type="text" v-model="admin.introduce">
     </div>
     <div class="edit-else">
       <div class="edit-text">Github</div>
-      <input class="edit-else-input" type="text">
+      <input class="edit-else-input" type="text" v-model="admin.github">
     </div>
     <div class="edit-else">
       <div class="edit-text">Mail</div>
-      <input class="edit-else-input" type="text">
+      <input class="edit-else-input" type="text" v-model="admin.mail">
     </div>
-    <div class="edit-else-button">确认</div>
+    <div class="edit-else-button" @click="putAdmin">确认</div>
   </div>
 </div>
 </template>
 
 <script>
-
+import {apiGetAdminInformation, apiPutAdmin, apiPutAdminPwd} from '@/request/api'
 export default {
   data () {
     return {
-      result: {
-        type: Object
-      }
+      admin: {},
+      msgIsActive: false,
+      message: '修改成功'
     }
   },
   created() {
-    
+    this.initAdmin()
   },
   methods: {
-    
+    async initAdmin() {
+      const response = await apiGetAdminInformation()
+      this.admin = response.data.data
+      console.log("admin1 -> ", this.admin)
+    },
+    async putAdmin() {
+      const response = await apiPutAdmin(this.admin)
+      if (response.status == 200) {
+        this.setTipsBox("修改成功!")
+      } else {
+        this.setTipsBox("修改失败✖️")
+      }
+    },
+    async putAdminPwd() {
+      const pwd = document.getElementById("edit-password-input").value
+      const isNull = pwd == "" ? true : false
+      console.log(isNull)
+      if (isNull) {
+        this.setTipsBox("密码不能为空")
+        return
+      }
+      this.admin.password = pwd
+      const response = await apiPutAdminPwd(this.admin)
+      if (response.status == 200) {
+        this.setTipsBox("修改成功!")
+      } else {
+        this.setTipsBox("修改失败✖️")
+      }
+    },
+    setTipsBox(msg) {
+      this.message = msg
+      this.msgIsActive = true
+      window.setTimeout(() => {
+        this.msgIsActive = false
+      }, 1400)
+    }
   }
 }
 </script>
 
 <style scoped>
 .content {
+  position: relative;
   display: flex;
   width: 1140px;
   margin: 0 auto;
   padding-top: 20px;
+}
+.tips-box {
+  position: absolute;
+  top: 0px;
+  left: 520px;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #2d8cf0;
+  border: 1px solid #2d8cf0;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px #2d8cf0;
+  transition: all .7s ease-in;
+  opacity: 0;
+}
+.msgActive {
+  top: 10px;
+  opacity: 1;
 }
 .edit {
   width: 100%;
@@ -89,7 +144,7 @@ export default {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-.edit-password-input,
+#edit-password-input,
 .edit-else-input {
   width: 200px;
   height: 30px;
@@ -100,7 +155,7 @@ export default {
   padding-left: 5px;
   font-size: 14px;
 }
-.edit-password-input:focus,
+#edit-password-input:focus,
 .edit-else-input:focus {
   border: 1px solid #2d8cf0;
   box-shadow: 0 1px 3px rgba(0,0,0,.15);

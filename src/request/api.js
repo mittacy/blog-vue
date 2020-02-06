@@ -8,7 +8,7 @@ export const apiverifyAdmin = () => {
     url: '/verify'
   })
 }
-export const checkAdmin = (data) => {
+export const apiCheckAdmin = (data) => {
   return opts({
     method: 'post',
     url: '/admin',
@@ -20,6 +20,20 @@ export const apiGetAdminInformation = (params) => {
     method: 'get',
     url: '/admin',
     params
+  })
+}
+export const apiPutAdmin = (data) => {
+  return opts({
+    method: 'put',
+    url: '/admin',
+    data
+  })
+}
+export const apiPutAdminPwd = (data) => {
+  return opts({
+    method: 'put',
+    url: '/admin/setpwd',
+    data
   })
 }
 

@@ -52,9 +52,10 @@ export default {
   },
   methods: {
     async initCategory() {
-      let result = await apiGetCategories(0)
-      this.cateNumber = result.data.categoryCount
-      this.categories = result.data.categories
+      const response = await apiGetCategories(0)
+      const result = response.data.data
+      this.cateNumber = result.categoryCount
+      this.categories = result.categories
       this.currentPage = 0
       if (this.cateNumber%10 === 0) {
         this.pageNumber = parseInt(this.cateNumber/10)
@@ -65,8 +66,9 @@ export default {
     },
     async changeCategoryPage(page) {
       if (page === this.currentPage) return
-      let result = await apiGetCategories(page)
-      this.categories = result.data.categories
+      const response = await apiGetCategories(page)
+      const result = response.data.data
+      this.categories = result.categories
       this.currentPage = page
       this.isArrowAble()
     },

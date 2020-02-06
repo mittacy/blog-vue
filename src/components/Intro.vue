@@ -5,10 +5,10 @@
       <img src="http://blog.mittacy.com/introImg.jpeg">
     </div>
     <div class="intro-me-information">
-      <div class="intro-me-information-name">{{result.Name}}</div>
+      <div class="intro-me-information-name">{{result.name}}</div>
       <div class="intro-me-information-links">
-        <a class="intro-me-information-link" :href="result.Github" target="_blank"><i class="iconfont icon-github"></i></a>
-        <a class="intro-me-information-link" :href="`mailto:${result.Mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
+        <a class="intro-me-information-link" :href="result.github" target="_blank"><i class="iconfont icon-github"></i></a>
+        <a class="intro-me-information-link" :href="`mailto:${result.mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
       </div>
     </div>
   </div>
@@ -30,8 +30,8 @@ export default {
   },
   methods: {
     async getAdminInformation() {
-      let result = await apiGetAdminInformation()
-      this.result = result.data
+      const response = await apiGetAdminInformation()
+      this.result = response.data.data
     }
   }
 }

@@ -12,9 +12,6 @@ export default {
   components: {
     Intro,
   },
-  created () {
-    console.log(this.$route.params.id)
-  }
 }
 </script>
 

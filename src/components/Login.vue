@@ -26,14 +26,14 @@
 </template>
 
 <script>
-import {checkAdmin} from '@/request/api';
+import {apiCheckAdmin} from '@/request/api';
 export default {
   data () {
     return {
       username: '',
       password: '',
       bgIndex: 1100,
-      loginIndex: 1200
+      loginIndex: 1200,
     }
   },
   methods: {
@@ -52,19 +52,21 @@ export default {
         name: this.username,
         password: this.password
       }
-      const result = await checkAdmin(requestObj)
-      if (result.msg) {
+      const response = await apiCheckAdmin(requestObj)
+      const result = response.data
+      if (response.status == 200) {
+        const token = result.data
+        // 修改 loginStatus
+        this.$store.dispatch('changeAdminStatus', true)
+        this.$store.dispatch('changeLoginFormStatus', false)
+        // 保存 token
+        sessionStorage.setItem('adminToken', token)
+      } else {
         if (result.msg === "Password error") {
           alert("Password Error")
         } else if (result.msg === "Name error") {
           alert("Admin Error")
         }
-      } else {
-        // 修改 loginStatus
-        this.$store.dispatch('changeAdminStatus', true)
-        this.$store.dispatch('changeLoginFormStatus', false)
-        // 保存 token
-        sessionStorage.setItem('adminToken', result.data)
       }
     }
   }

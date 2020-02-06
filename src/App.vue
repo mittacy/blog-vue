@@ -23,8 +23,8 @@ export default {
   },
   methods: {
     async verifyAdmin() {
-      const result = await apiverifyAdmin()
-      if (!result.status) {
+      const response = await apiverifyAdmin()
+      if (response.status == 200) {
         this.$store.state.adminStatus = true
       }
     }
