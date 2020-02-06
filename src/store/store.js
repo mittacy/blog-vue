@@ -11,6 +11,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     changeAdminStatusFunc(state, bool) {
+      console.log('改变登录状态为: ', bool)
       state.adminStatus = bool
     },
     changeLoginFormStatusFunc(state, bool) {

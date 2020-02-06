@@ -13,20 +13,12 @@ export default async opts => {
     const options = {
       baseURL: 'http://localhost:5201/api',
       timeout: 5000,
-      headers: {'adminToken': sessionStorage.getItem('adminToken')},
+      headers: {'adminToken': sessionStorage.getItem('adminToken') === null ? '' : sessionStorage.getItem('adminToken')},
       ...opts
     }
     let response = await axios(options)
     return response.data
   } catch (err) {
-    switch(err.response.status) {
-      case 500: console.log("服务器错误");break;
-      case 400: {
-        return err.response.data
-      }
-      case 404: console.log("资源不存在");break;
-      case 401: console.log("权限不足");break;
-      default: return err.response.data;
-    }
+    return err.response
   }
 }

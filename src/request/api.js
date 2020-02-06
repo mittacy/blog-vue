@@ -1,7 +1,20 @@
 import opts from './http'
 
-// 管理员api
-export const checkAdmin = (data) => { return opts({method: 'post', url: '/admin', data})}
+/* 管理员api */
+// 验证登录状态
+export const apiverifyAdmin = () => {
+  return opts({
+    method: 'get',
+    url: '/verify'
+  })
+}
+export const checkAdmin = (data) => {
+  return opts({
+    method: 'post',
+    url: '/admin',
+    data
+  })
+}
 export const apiGetAdminInformation = (params) => {
   return opts({
     method: 'get',

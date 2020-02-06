@@ -54,6 +54,7 @@ export default {
       this.$store.dispatch('changeLoginFormStatus', true)
     },
     exitLogin() {
+      sessionStorage.removeItem('adminToken')
       this.$store.dispatch('changeAdminStatus', false)
     },
   }

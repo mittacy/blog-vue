@@ -52,7 +52,7 @@ export default {
         name: this.username,
         password: this.password
       }
-      let result = await checkAdmin(requestObj)
+      const result = await checkAdmin(requestObj)
       if (result.msg) {
         if (result.msg === "Password error") {
           alert("Password Error")

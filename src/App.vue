@@ -9,15 +9,25 @@
 <script>
 import Navbar from "@/components/Navbar";
 import Login from "@/components/Login";
+import {apiverifyAdmin} from "@/request/api";
 
 export default {
   name: "app",
   created() {
-    // todo 测试是否有权限，若有改变 loginStatus
+    // 验证是否有权限，若有改变 adminStatus
+    this.verifyAdmin()
   },
   components: {
     Navbar,
     Login
+  },
+  methods: {
+    async verifyAdmin() {
+      const result = await apiverifyAdmin()
+      if (!result.status) {
+        this.$store.state.adminStatus = true
+      }
+    }
   }
 };
 </script>
