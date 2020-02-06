@@ -5,7 +5,7 @@
 export default [
   {
     content: "Admin信息",
-    url: "/"
+    url: "/admin/edit"
   },
   {
     content: "添加分类",
