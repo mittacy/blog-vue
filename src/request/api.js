@@ -1,6 +1,6 @@
 import opts from './http'
 
-/* 管理员api */
+/* --- 管理员 api --- */
 // 验证登录状态
 export const apiverifyAdmin = () => {
   return opts({
@@ -37,7 +37,7 @@ export const apiPutAdminPwd = (data) => {
   })
 }
 
-/* 分类api */
+/* --- 分类 api --- */
 // 获取某页所有分类
 export const apiGetCategories = (page) => {
   return opts({
@@ -77,7 +77,7 @@ export const apiDeleteCategory = (data) => {
   })
 }
 
-/* 文章api */
+/* --- 文章 api --- */
 // 分页获取文章
 export const apiGetArticles = (page) => {
   return opts({

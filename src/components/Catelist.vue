@@ -9,7 +9,7 @@
         <div class="cate-list-right">
           <div class="cate-list-text">{{ cate.article_count }}篇</div>
           <div class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}">编辑</div>
-          <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}">删除</div>
+          <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}" @click="deleteCategory(cate.id)">删除</div>
         </div>
       </router-link>
     </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import {apiGetCategories} from '@/request/api';
+import {apiGetCategories, apiDeleteCategory} from '@/request/api';
 
 export default {
   data () {
@@ -77,6 +77,19 @@ export default {
       this.categories = result.categories
       this.currentPage = page
       this.isArrowAble()
+    },
+    async deleteCategory(e) {
+      //阻止默认浏览器动作(W3C) 
+      // if ( e && e.preventDefault ) {
+      //   e.preventDefault()
+      // } else {
+      //   window.event.returnValue = false
+      // }
+      // return false
+      const response = await apiDeleteCategory({id: cateID})
+      if (response != 200) { return }
+      this.$store.dispatch('changeTipsMsg', '删除成功')
+      return false
     },
     isArrowAble() {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false
@@ -132,6 +145,7 @@ export default {
 .cate-list-right {
   display: flex;
   flex-direction: row-reverse;
+  position: relative;
 }
 .cate-list-left>i {
   margin-right: 7px;
