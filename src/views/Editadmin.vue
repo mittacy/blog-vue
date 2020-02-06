@@ -1,6 +1,5 @@
 <template>
 <div class="content">
-  <div class="tips-box" :class="{msgActive: msgIsActive}">{{message}}</div>
   <div class="edit">
     <div class="edit-title">修改管理员信息</div>
     <div class="edit-caps" >密码</div>
@@ -37,8 +36,6 @@ export default {
   data () {
     return {
       admin: {},
-      msgIsActive: false,
-      message: '修改成功'
     }
   },
   created() {
@@ -47,40 +44,33 @@ export default {
   methods: {
     async initAdmin() {
       const response = await apiGetAdminInformation()
+      if (response.status != 200) { return }
       this.admin = response.data.data
-      console.log("admin1 -> ", this.admin)
     },
     async putAdmin() {
       const response = await apiPutAdmin(this.admin)
       if (response.status == 200) {
-        this.setTipsBox("修改成功!")
-      } else {
-        this.setTipsBox("修改失败✖️")
+        this.$store.dispatch('changeTipsMsg', '修改成功')
+        return
       }
+      this.$store.dispatch('changeTipsMsg', '修改失败')
     },
     async putAdminPwd() {
       const pwd = document.getElementById("edit-password-input").value
       const isNull = pwd == "" ? true : false
       console.log(isNull)
       if (isNull) {
-        this.setTipsBox("密码不能为空")
+        this.$store.dispatch('changeTipsMsg', '密码不能为空')
         return
       }
       this.admin.password = pwd
       const response = await apiPutAdminPwd(this.admin)
       if (response.status == 200) {
-        this.setTipsBox("修改成功!")
-      } else {
-        this.setTipsBox("修改失败✖️")
+        this.$store.dispatch('changeTipsMsg', '修改成功')
+        return
       }
+      this.$store.dispatch('changeTipsMsg', '修改失败')
     },
-    setTipsBox(msg) {
-      this.message = msg
-      this.msgIsActive = true
-      window.setTimeout(() => {
-        this.msgIsActive = false
-      }, 1400)
-    }
   }
 }
 </script>

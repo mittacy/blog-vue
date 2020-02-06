@@ -31,6 +31,7 @@ export default {
   methods: {
     async getAdminInformation() {
       let response = await apiGetAdminInformation()
+      if (response.status != 200) { return }
       this.result = response.data.data
     }
   }

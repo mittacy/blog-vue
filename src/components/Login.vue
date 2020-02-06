@@ -53,21 +53,20 @@ export default {
         password: this.password
       }
       const response = await apiCheckAdmin(requestObj)
-      const result = response.data
-      if (response.status == 200) {
-        const token = result.data
-        // 修改 loginStatus
-        this.$store.dispatch('changeAdminStatus', true)
-        this.$store.dispatch('changeLoginFormStatus', false)
-        // 保存 token
-        sessionStorage.setItem('adminToken', token)
-      } else {
-        if (result.msg === "Password error") {
-          alert("Password Error")
-        } else if (result.msg === "Name error") {
-          alert("Admin Error")
+      if (response.status != 200) {
+        const result = response.data.msg
+        if (result === "Password error" || result === "Name error") {
+          this.$store.dispatch('changeTipsMsg', '用户名或密码错误')
         }
+        return
       }
+      const token = response.data.data
+      // 修改 loginStatus
+      this.$store.dispatch('changeAdminStatus', true)
+      this.$store.dispatch('changeLoginFormStatus', false)
+      this.$store.dispatch('changeTipsMsg', '登录成功')
+      // 保存 token
+      sessionStorage.setItem('adminToken', token)
     }
   }
 }

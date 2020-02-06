@@ -65,6 +65,9 @@ export default {
       } else {
         response = await apiGetArticlesFromCate(this.categoryID)
       }
+      if (response.status != 200) {
+        return
+      }
       const result = response.data.data
       this.articleNum = result.articleCount
       this.articles = result.articles
@@ -79,6 +82,9 @@ export default {
     async changePage(page) {
       if (page === this.currentPage) return
       const response = await apiGetArticles(page)
+      if (response.status != 200) {
+        return
+      }
       const result = response.data.data
       this.articles = result.articles
       this.currentPage = page

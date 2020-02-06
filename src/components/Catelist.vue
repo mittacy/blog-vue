@@ -53,6 +53,9 @@ export default {
   methods: {
     async initCategory() {
       const response = await apiGetCategories(0)
+      if (response.status != 200) {
+        return
+      }
       const result = response.data.data
       this.cateNumber = result.categoryCount
       this.categories = result.categories
@@ -67,6 +70,9 @@ export default {
     async changeCategoryPage(page) {
       if (page === this.currentPage) return
       const response = await apiGetCategories(page)
+      if (response.status != 200) {
+        return
+      }
       const result = response.data.data
       this.categories = result.categories
       this.currentPage = page
