@@ -42,10 +42,10 @@ export default {
     },
     async checkPassword() {
       if (!this.username) {
-        alert("请输入用户名")
+       this.$store.dispatch('changeTipsMsg', '请输入用户名')
         return
       } else if (!this.password) {
-        alert("请输入密码")
+        this.$store.dispatch('changeTipsMsg', '请输入密码')
         return
       }
       let requestObj = {

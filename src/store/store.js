@@ -7,7 +7,9 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     adminStatus: false,
-    loginFormStatus: false
+    loginFormStatus: false,
+    tipsMsg: 'msg',
+    tipsBox: false,
   },
   mutations: {
     changeAdminStatusFunc(state, bool) {
@@ -16,6 +18,13 @@ const store = new Vuex.Store({
     },
     changeLoginFormStatusFunc(state, bool) {
       state.loginFormStatus = bool
+    },
+    changeTipsMsgFunc(state, str) {
+      state.tipsMsg = str
+      state.tipsBox = true
+      window.setTimeout(() => {
+        state.tipsBox = false
+      }, 1400)
     }
   },
   actions: {
@@ -24,6 +33,9 @@ const store = new Vuex.Store({
     },
     changeLoginFormStatus(context, bool) {
       context.commit('changeLoginFormStatusFunc', bool)
+    },
+    changeTipsMsg(context, str) {
+      context.commit('changeTipsMsgFunc', str)
     }
   }
 })
