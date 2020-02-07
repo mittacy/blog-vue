@@ -10,9 +10,8 @@
   </div>
   <div class="edit" :class="{Hidden: !editCate}">
     <div class="edit-caps">修改分类名字</div>
-    <div class="edit-caps">原名字: {{this.$route.query.title}}</div>
     <div class="edit-cap">
-      <div class="edit-cap-title">新名字</div>
+      <div class="edit-cap-title">title</div>
       <input class="edit-cap-input" type="text" v-model="category.title">
       <div class="edit-cap-button" @click="editCategory">确认</div>
     </div>
@@ -32,11 +31,19 @@ export default {
       editCate: false
     }
   },
+  props: {
+    categoryID: {
+      type: Number,
+      default: -1
+    }
+  },
   created() {
-    if(this.$route.query.id) {
-      this.category.id = this.$route.query.id
+    if (this.categoryID != -1) {
+      this.category.id = this.categoryID
       this.editCate = true
     }
+    console.log('this.categoryID -> ', this.categoryID)
+    console.log('this.category.id -> ', this.category.id)
   },
   methods: {
     async editCategory() {

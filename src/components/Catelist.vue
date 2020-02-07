@@ -8,7 +8,7 @@
         </div>
         <div class="cate-list-right">
           <div class="cate-list-text">{{ cate.article_count }}篇</div>
-          <router-link class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}" :categoryID="cate.id" to="/categories/edit">编辑</router-link>
+          <router-link class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'cateEdit', query:{id: cate.id, title: cate.title}}">编辑</router-link>
           <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}" @click="deleteCategory(cate.id)">删除</div>
         </div>
       </router-link>
