@@ -5,14 +5,14 @@
 export default [
   {
     content: "Admin信息",
-    url: "/admin/edit"
+    route: "/admin/edit"
   },
   {
     content: "添加分类",
-    url: "/"
+    route: "/categories/edit"
   },
   {
     content: "添加文章",
-    url: "/"
+    route: "/"
   },
 ];

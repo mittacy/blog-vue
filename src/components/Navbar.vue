@@ -23,7 +23,7 @@
               v-for="item in manageItems"
               class="navbar-login-control"
               :key="item.content"
-              :to="item.url"
+              :to="item.route"
             >{{item.content}}</router-link>
           </div>
         </div>

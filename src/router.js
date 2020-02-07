@@ -41,6 +41,11 @@ export default new Router({
       path: '/admin/edit',
       name: 'adminEdit',
       component: () => import('@/views/Editadmin')
+    },
+    {
+      path: '/categories/edit',
+      name: 'cateEdit',
+      component: () => import('@/views/Editcate')
     }
   ]
 })

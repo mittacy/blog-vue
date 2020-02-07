@@ -8,7 +8,7 @@
         </div>
         <div class="cate-list-right">
           <div class="cate-list-text">{{ cate.article_count }}篇</div>
-          <div class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}">编辑</div>
+          <router-link class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}" :categoryID="cate.id" to="/categories/edit">编辑</router-link>
           <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}" @click="deleteCategory(cate.id)">删除</div>
         </div>
       </router-link>
@@ -134,6 +134,9 @@ export default {
   font-weight: 550;
   box-shadow: 0 1px 3px rgba(0,0,0,.15);
 }
+.cate-list a {
+  color: #17233d;
+}
 .cate-list:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
@@ -169,6 +172,7 @@ export default {
   background-color: red;
 }
 .cate-list-edit:hover {
+  color: #fff;
   background-color: #2d8cf0;
 }
 .page {
