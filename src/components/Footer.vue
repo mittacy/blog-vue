@@ -1,0 +1,14 @@
+<template>
+<div class="footer">© Mittacy Just Do It</div>
+</template>
+
+<style scoped>
+.footer {
+  width: 100%;
+  min-width: 1140px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  color: #515a6e;
+  font-size: 14px;
+}
+</style>

@@ -175,7 +175,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .page-count {
   font-size: 12px;

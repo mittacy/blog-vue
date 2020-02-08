@@ -3,7 +3,8 @@
     <div class="tips-box" :class="{msgActive: $store.state.tipsBox}">{{$store.state.tipsMsg}}</div>
     <Navbar/>
     <Login/>
-    <router-view></router-view>
+    <router-view style="minHeight: 600px"></router-view>
+    <Footer/>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import Navbar from "@/components/Navbar";
 import Login from "@/components/Login";
 import {apiverifyAdmin} from "@/request/api";
+import Footer from '@/components/Footer';
 
 export default {
   name: "app",
@@ -18,9 +20,15 @@ export default {
     // 验证是否有权限，若有改变 adminStatus
     this.verifyAdmin()
   },
+  data() {
+    return {
+      minHeight: 600
+    }
+  },
   components: {
     Navbar,
-    Login
+    Login,
+    Footer
   },
   methods: {
     async verifyAdmin() {

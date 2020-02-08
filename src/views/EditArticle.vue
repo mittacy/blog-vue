@@ -39,11 +39,11 @@ export default {
     async initCategories() {
       const response = await apiGetCategories()
       if (response.status != 200) {
-        console.log(msg)
         this.$store.dispatch('changeTipsMsg', "加载分类失败")
         return
       }
       this.categories = response.data.data
+      console.log("categories -> ", this.categories)
     },
     async addArticle() {
       // 检查是否有空值
