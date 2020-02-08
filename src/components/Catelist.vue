@@ -9,7 +9,7 @@
         <div class="cate-list-right">
           <div class="cate-list-text">{{ cate.article_count }}篇</div>
           <router-link class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'cateEdit', query:{id: cate.id, title: cate.title}}">编辑</router-link>
-          <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}" @click="deleteCategory(cate.id)">删除</div>
+          <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}" @click.prevent="deleteCategory(cate.id)">删除</div>
         </div>
       </router-link>
     </div>
@@ -78,18 +78,14 @@ export default {
       this.currentPage = page
       this.isArrowAble()
     },
-    async deleteCategory(e) {
-      //阻止默认浏览器动作(W3C) 
-      // if ( e && e.preventDefault ) {
-      //   e.preventDefault()
-      // } else {
-      //   window.event.returnValue = false
-      // }
-      // return false
+    async deleteCategory(cateID) {
       const response = await apiDeleteCategory({id: cateID})
-      if (response != 200) { return }
+      if (response.status != 200) { 
+        this.$store.dispatch('changeTipsMsg', '删除失败')
+        return
+      }
       this.$store.dispatch('changeTipsMsg', '删除成功')
-      return false
+      this.initCategory()
     },
     isArrowAble() {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false

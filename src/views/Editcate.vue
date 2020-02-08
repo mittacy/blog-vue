@@ -45,7 +45,7 @@ export default {
         return
       }
       let response = {}
-      if (this.editCate) {
+      if (!this.editCate) {
         response = await apiAddCategory(this.category)
       } else {
         response = await apiPutCategory(this.category)
