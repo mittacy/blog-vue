@@ -7,7 +7,7 @@
           <i class="iconfont icon-16"></i>
           {{article.title}}
         </div>
-        <router-link class="article-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'articleEdit', params:{id: article.id}}">编辑</router-link>
+        <router-link class="article-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'articleEdit', query:{id: article.id}}">编辑</router-link>
       </div>
       <div class="article-list-info">
         <div>发表于{{article.created_at.slice(0,10)}} - {{article.views}}次阅读</div>
@@ -221,5 +221,8 @@ export default {
 }
 .page-arrow-disabled {
   pointer-events: none;
+}
+.divHidden {
+  display: none;
 }
 </style>

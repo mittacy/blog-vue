@@ -1,7 +1,7 @@
 <template>
 <div class="content">
   <div class="edit">
-    <div class="edit-title">添加文章</div>
+    <div class="edit-title">{{title}}</div>
     <div class="edit-cap">信息</div>
     <div class="edit-cap-title">
       <div class="edit-text">Title</div>
@@ -18,32 +18,51 @@
       <div class="edit-text">Content</div>
       <textarea class="edit-cap-content-input" v-model="article.content" placeholder="文章内容"></textarea>
     </div>
-    <div class="edit-cap-button" @click="addArticle">创建</div>
+    <div class="edit-cap-button" @click="addArticle">确认</div>
   </div>
 </div>
 </template>
 
 <script>
-import {apiGetCategories, apiAddArticle} from '@/request/api'
+import {apiGetCategories, apiAddArticle, apiGetArticle} from '@/request/api'
 export default {
   data () {
     return {
+      isAddArticle: true,
+      title: '',
       article: {},
       categories: []
     }
   },
   created() {
-    this.initCategories()
+    if (this.$route.query.id) {
+      this.isAddArticle = false
+      this.title = '修改文章'
+      this.article.id = this.$route.query.id
+    } else {
+      this.isAddArticle = true
+      this.title = '添加文章'
+    }
+    this.initPage()
   },
   methods: {
-    async initCategories() {
-      const response = await apiGetCategories()
+    async initPage() {
+      let response = await apiGetCategories()
       if (response.status != 200) {
         this.$store.dispatch('changeTipsMsg', "加载分类失败")
         return
       }
       this.categories = response.data.data
+      if (!this.isAddArticle) {
+        response = await apiGetArticle(this.article.id)
+        if (response.status != 200) {
+          this.$store.dispatch('changeTipsMsg', "加载文章失败")
+          return
+        }
+        this.article = response.data.data
+      }
       console.log("categories -> ", this.categories)
+      console.log("articles -> ", this.articles)
     },
     async addArticle() {
       // 检查是否有空值

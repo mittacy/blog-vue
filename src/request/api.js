@@ -92,6 +92,13 @@ export const apiGetArticles = (page) => {
     url: '/article_page/' + page
   })
 }
+// 获取一篇文章内容
+export const apiGetArticle = (id) => {
+  return opts({
+    method: 'get',
+    url: '/article/' + id
+  })
+}
 // 添加文章
 export const apiAddArticle = (data) => {
   return opts({
