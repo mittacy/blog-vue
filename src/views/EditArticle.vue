@@ -126,7 +126,7 @@ export default {
 .edit-cap-content {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 20px;
 }
 .edit-cap-content-input {

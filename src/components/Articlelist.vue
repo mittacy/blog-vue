@@ -1,15 +1,19 @@
 <template>
 <div class="article">
   <div class="article-lists">
-    <div v-for="article in articles" :key="article.created_at" class="article-list">
+    <router-link v-for="article in articles" class="article-list" :key="article.created_at" :to="turnToArticle(article.id)">
       <div class="article-list-title">
-        <i class="iconfont icon-16"></i>
-        {{article.title}}
+        <div>
+          <i class="iconfont icon-16"></i>
+          {{article.title}}
+        </div>
+        <router-link class="article-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'articleEdit', params:{id: article.id}}">编辑</router-link>
       </div>
       <div class="article-list-info">
-        <div>发表于{{article.created_at.slice(0,10)}} - {{article.views}}次阅读 - {{article.assists}}人点赞</div>
+        <div>发表于{{article.created_at.slice(0,10)}} - {{article.views}}次阅读</div>
+        <div class="article-list-delete" :class="{divHidden: !$store.state.adminStatus}" @click.prevent="deleteArticle(article.id)">删除</div>
       </div>
-    </div>
+    </router-link>
   </div>
   <div class="page">
     <span class="page-count">共 {{articleNum}} 条</span>
@@ -32,7 +36,7 @@
 </template>
 
 <script>
-import {apiGetArticles, apiGetArticlesFromCate} from '@/request/api';
+import {apiGetArticles, apiGetArticlesFromCate, apiDeleteArticle} from '@/request/api';
 export default {
   data () {
     return {
@@ -94,6 +98,21 @@ export default {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false
       this.rightArrowIsAble = this.currentPage < this.pageNum-1 ? true : false
     },
+    turnToArticle(articleID) {
+      return {
+        name: 'article',
+        params: {
+          id: articleID
+        }
+      }
+    },
+    async deleteArticle(articleID) {
+      const response = await apiDeleteArticle({id: articleID})
+      this.$store.dispatch('changeTipsMsg', response.data.msg)
+      if (response.status == 200) {
+        this.initArticle()
+      }
+    }
   },
 }
 </script>
@@ -127,24 +146,45 @@ export default {
 .article-list-title {
   height: 50px;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e8eaec;
   font-size: 14px;
   color: #17233d;
   font-weight: 550;
 }
-.article-list-title>i {
+.article-list-title i {
   margin-right: 5px;
 }
 .article-list-info {
   height: 60px;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;;
   align-items: center;
   font-size: 12px;
   color: #999;
   letter-spacing: 1px;
+}
+.article-list-edit,
+.article-list-delete {
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 5px;
+  border: 1px solid #e8eaec;
+  border-radius: 4px;
+  color: #17233d;
+  font-size: 14px;
+  font-weight: 550;
+  transition: all 0.2s ease-in;
+}
+.article-list-edit:hover {
+  color: #fff;
+  background-color: #2d8cf0;
+}
+.article-list-delete:hover {
+  color: #fff;
+  background-color: red;
 }
 .page {
   display: flex;

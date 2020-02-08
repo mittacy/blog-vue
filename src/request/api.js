@@ -100,3 +100,11 @@ export const apiAddArticle = (data) => {
     data
   })
 }
+// 删除文章
+export const apiDeleteArticle = (data) => {
+  return opts({
+    method: 'delete',
+    url: '/article',
+    data
+  })
+}
