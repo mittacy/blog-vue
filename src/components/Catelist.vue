@@ -8,7 +8,7 @@
         </div>
         <div class="cate-list-right">
           <div class="cate-list-text">{{ cate.article_count }}篇</div>
-          <router-link class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'cateEdit', query:{id: cate.id, title: cate.title}}">编辑</router-link>
+          <router-link class="cate-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'cateEdit', params:{id: cate.id, title: cate.title}}">编辑</router-link>
           <div class="cate-list-delete" :class="{divHidden: (!$store.state.adminStatus || cate.article_count>0)}" @click.prevent="deleteCategory(cate.id)">删除</div>
         </div>
       </router-link>
@@ -71,6 +71,7 @@ export default {
       if (page === this.currentPage) return
       const response = await apiGetCategories(page)
       if (response.status != 200) {
+        this.$store.dispatch('changeTipsMsg', msg)
         return
       }
       const result = response.data.data
@@ -80,12 +81,10 @@ export default {
     },
     async deleteCategory(cateID) {
       const response = await apiDeleteCategory({id: cateID})
-      if (response.status != 200) { 
-        this.$store.dispatch('changeTipsMsg', '删除失败')
-        return
+      this.$store.dispatch('changeTipsMsg', response.data.msg)
+      if (response.status == 200) { 
+        this.initCategory()
       }
-      this.$store.dispatch('changeTipsMsg', '删除成功')
-      this.initCategory()
     },
     isArrowAble() {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false

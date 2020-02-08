@@ -10,7 +10,7 @@
   </div>
   <div class="edit" :class="{Hidden: !editCate}">
     <div class="edit-caps">修改分类名字</div>
-    <div class="edit-caps">原名字: {{this.$route.query.title}}</div>
+    <div class="edit-caps">原名字: {{this.$route.params.title}}</div>
     <div class="edit-cap">
       <div class="edit-cap-title">新名字</div>
       <input class="edit-cap-input" type="text" v-model="category.title">
@@ -33,8 +33,8 @@ export default {
     }
   },
   created() {
-    if(this.$route.query.id) {
-      this.category.id = this.$route.query.id
+    if(this.$route.params.id) {
+      this.category.id = this.$route.params.id
       this.editCate = true
     }
   },
@@ -50,14 +50,13 @@ export default {
       } else {
         response = await apiPutCategory(this.category)
       }
+      this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
-        this.$store.dispatch('changeTipsMsg', '成功')
         this.$router.push({
           name: 'categories'
         })
         return
       }
-      this.$store.dispatch('changeTipsMsg', response.data.msg)
     },
   }
 }

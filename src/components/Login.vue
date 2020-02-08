@@ -42,7 +42,7 @@ export default {
     },
     async checkPassword() {
       if (!this.username) {
-       this.$store.dispatch('changeTipsMsg', '请输入用户名')
+        this.$store.dispatch('changeTipsMsg', '请输入用户名')
         return
       } else if (!this.password) {
         this.$store.dispatch('changeTipsMsg', '请输入密码')
@@ -54,19 +54,15 @@ export default {
       }
       const response = await apiCheckAdmin(requestObj)
       if (response.status != 200) {
-        const result = response.data.msg
-        if (result === "Password error" || result === "Name error") {
-          this.$store.dispatch('changeTipsMsg', '用户名或密码错误')
-        }
+        this.$store.dispatch('changeTipsMsg', response.data.msg)
         return
       }
-      const token = response.data.data
       // 修改 loginStatus
       this.$store.dispatch('changeAdminStatus', true)
       this.$store.dispatch('changeLoginFormStatus', false)
-      this.$store.dispatch('changeTipsMsg', '登录成功')
+      this.$store.dispatch('changeTipsMsg', response.data.msg)
       // 保存 token
-      sessionStorage.setItem('adminToken', token)
+      sessionStorage.setItem('adminToken', response.data.data)
     }
   }
 }

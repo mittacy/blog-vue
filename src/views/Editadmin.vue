@@ -5,7 +5,7 @@
     <div class="edit-caps" >密码</div>
     <div class="edit-password-cap">
       <div class="edit-text">Password</div>
-      <input id="edit-password-input" type="password">
+      <input id="edit-password-input" type="password" v-model="password">
       <div class="edit-password-button" @click="putAdminPwd">确认</div>
     </div>
     <div class="edit-caps">其他</div>
@@ -36,6 +36,7 @@ export default {
   data () {
     return {
       admin: {},
+      password: '',
     }
   },
   created() {
@@ -49,27 +50,25 @@ export default {
     },
     async putAdmin() {
       const response = await apiPutAdmin(this.admin)
+      this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
-        this.$store.dispatch('changeTipsMsg', '修改成功')
-        return
+        this.$router.push({
+          name: 'home'
+        })
       }
-      this.$store.dispatch('changeTipsMsg', '修改失败')
     },
     async putAdminPwd() {
-      const pwd = document.getElementById("edit-password-input").value
-      const isNull = pwd == "" ? true : false
-      console.log(isNull)
-      if (isNull) {
+      if (this.password === '') {
         this.$store.dispatch('changeTipsMsg', '密码不能为空')
         return
       }
-      this.admin.password = pwd
-      const response = await apiPutAdminPwd(this.admin)
+      const response = await apiPutAdminPwd({password: this.password})
+      this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
-        this.$store.dispatch('changeTipsMsg', '修改成功')
-        return
+        this.$router.push({
+          name: 'home'
+        })
       }
-      this.$store.dispatch('changeTipsMsg', '修改失败')
     },
   }
 }
