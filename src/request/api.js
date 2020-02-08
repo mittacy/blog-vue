@@ -39,7 +39,7 @@ export const apiPutAdminPwd = (data) => {
 
 /* --- 分类 api --- */
 // 获取某页所有分类
-export const apiGetCategories = (page) => {
+export const apiGetCategoriesByPage = (page) => {
   return opts({
     method: 'get',
     url: '/category_page/' + page
@@ -50,6 +50,13 @@ export const apiGetArticlesFromCate = (categoryID) => {
   return opts({
     method: 'get',
     url: '/category/' + categoryID
+  })
+}
+// 获取所有分类id和title
+export const apiGetCategories = () => {
+  return opts({
+    method: 'get',
+    url: '/categories'
   })
 }
 // 添加分类
@@ -83,5 +90,13 @@ export const apiGetArticles = (page) => {
   return opts({
     method: 'get',
     url: '/article_page/' + page
+  })
+}
+// 添加文章
+export const apiAddArticle = (data) => {
+  return opts({
+    method: 'post',
+    url: '/article',
+    data
   })
 }

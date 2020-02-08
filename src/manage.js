@@ -13,6 +13,6 @@ export default [
   },
   {
     content: "添加文章",
-    route: "/"
+    route: "/articles/edit"
   },
 ];

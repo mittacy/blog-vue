@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import {apiGetCategories, apiDeleteCategory} from '@/request/api';
+import {apiGetCategoriesByPage, apiDeleteCategory} from '@/request/api';
 
 export default {
   data () {
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     async initCategory() {
-      const response = await apiGetCategories(0)
+      const response = await apiGetCategoriesByPage(0)
       if (response.status != 200) {
         return
       }
@@ -69,7 +69,7 @@ export default {
     },
     async changeCategoryPage(page) {
       if (page === this.currentPage) return
-      const response = await apiGetCategories(page)
+      const response = await apiGetCategoriesByPage(page)
       if (response.status != 200) {
         this.$store.dispatch('changeTipsMsg', msg)
         return

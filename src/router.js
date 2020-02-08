@@ -51,6 +51,6 @@ export default new Router({
       path: '/articles/edit',
       name: 'articleEdit',
       component: () => import('@/views/EditArticle')
-    }
+    },
   ]
 })
