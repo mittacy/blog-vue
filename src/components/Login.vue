@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="login-main-button">
-      <div class="login-button" @click="checkPassword">登 录</div>
+      <div class="login-button" :class="{'button-disClick': disClick}" @click="checkPassword">登 录</div>
     </div>
   </div>
 </div>
@@ -34,6 +34,7 @@ export default {
       password: '',
       bgIndex: 1100,
       loginIndex: 1200,
+      disClick: false
     }
   },
   methods: {
@@ -41,6 +42,10 @@ export default {
       this.$store.dispatch('changeLoginFormStatus', false)
     },
     async checkPassword() {
+      this.disClick = true
+      window.setTimeout(() => {
+        this.disClick = false
+      }, 1000)
       if (!this.username) {
         this.$store.dispatch('changeTipsMsg', '请输入用户名')
         return
@@ -158,8 +163,6 @@ export default {
   border: 0;
   padding-left: 5px;
 }
-
-
 .login-main-button {
   display: flex;
   flex-direction: column;
@@ -182,5 +185,8 @@ export default {
 .login-button:hover {
   background-color: #57a3f3;
   border-color: #57a3f3;
+}
+.button-disClick {
+  pointer-events: none;
 }
 </style>
