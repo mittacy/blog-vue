@@ -112,10 +112,12 @@ export default {
       }
     },
     async deleteArticle(articleID) {
-      const response = await apiDeleteArticle({id: articleID})
-      this.$store.dispatch('changeTipsMsg', response.data.msg)
-      if (response.status == 200) {
-        this.initArticle()
+      if(confirm("确实要删除？")) {
+        const response = await apiDeleteArticle({id: articleID})
+        this.$store.dispatch('changeTipsMsg', response.data.msg)
+        if (response.status == 200) {
+          this.initArticle()
+        }
       }
     }
   },

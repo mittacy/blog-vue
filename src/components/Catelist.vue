@@ -80,10 +80,12 @@ export default {
       this.isArrowAble()
     },
     async deleteCategory(cateID) {
-      const response = await apiDeleteCategory({id: cateID})
-      this.$store.dispatch('changeTipsMsg', response.data.msg)
-      if (response.status == 200) { 
-        this.initCategory()
+      if(confirm("确实要删除？")) {
+        const response = await apiDeleteCategory({id: cateID})
+        this.$store.dispatch('changeTipsMsg', response.data.msg)
+        if (response.status == 200) { 
+          this.initCategory()
+        }
       }
     },
     isArrowAble() {
