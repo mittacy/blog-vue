@@ -5,7 +5,9 @@
       <div class="article-info">
         <div style="marginRight: 4px">发表: {{article.created_at}} -</div>
         <div style="marginRight: 4px" :class="{divHidden: article.updated_at == ''}">最后修改: {{article.updated_at === '' ? article.updated_at : article.created_at}} - </div>
-        <div>归类于:</div>
+        <div>归类于: 
+          <router-link class="article-category" :to="turnToCategory(article.category_id)">{{category.title}}</router-link>
+        </div>
       </div>
       <div class="article-content markdown-body" v-html="article.content">
         {{article.content}}
@@ -18,11 +20,12 @@
 <script>
 import '@/assets/css/github-markdown.css'
 import Intro from '@/components/Intro'
-import {apiGetArticle} from '@/request/api'
+import {apiGetArticle, apiGetCategoryTitle} from '@/request/api'
 export default {
   data() {
     return {
-      article: {}
+      article: {},
+      category: {}
     }
   },
   async created() {
@@ -35,13 +38,27 @@ export default {
   },
   methods: {
     async initArticle() {
-      const response = await apiGetArticle(this.$route.params.id)
+      let response = await apiGetArticle(this.$route.params.id)
       if (response.status != 200) {
         this.$store.dispatch('changeTipsMsg', '加载文章失败')
         return
       }
       this.article = response.data.data
+      response = await apiGetCategoryTitle(this.article.category_id)
+      if (response.status != 200) {
+        this.$store.dispatch('changeTipsMsg', response.data.msg)
+        return
+      }
+      this.category = response.data.data
       return
+    },
+    turnToCategory(id) {
+      return {
+        name: 'category',
+        params: {
+          id
+        }
+      }
     }
   }
 }
@@ -75,6 +92,9 @@ export default {
 }
 .article-content {
   text-align: left;
+}
+.article-category {
+  color: #2d8cf0;
 }
 
 .divHidden {

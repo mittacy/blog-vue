@@ -52,6 +52,13 @@ export const apiGetArticlesFromCate = (categoryID) => {
     url: '/category/' + categoryID
   })
 }
+// 获取某个分类title
+export const apiGetCategoryTitle = (id) => {
+  return opts({
+    method: 'get',
+    url: '/category_name/' + id
+  })
+}
 // 获取所有分类id和title
 export const apiGetCategories = () => {
   return opts({
