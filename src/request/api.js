@@ -107,6 +107,14 @@ export const apiAddArticle = (data) => {
     data
   })
 }
+// 修改文章
+export const apiPutArticle = (data) => {
+  return opts({
+    method: 'put',
+    url: '/article',
+    data
+  })
+}
 // 删除文章
 export const apiDeleteArticle = (data) => {
   return opts({

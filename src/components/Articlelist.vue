@@ -1,7 +1,7 @@
 <template>
 <div class="article">
   <div class="article-lists">
-    <router-link v-for="article in articles" class="article-list" :key="article.created_at" :to="turnToArticle(article.id)">
+    <router-link v-for="article in articles" class="article-list" :key="article.title" :to="turnToArticle(article.id)">
       <div class="article-list-title">
         <div>
           <i class="iconfont icon-16"></i>
@@ -10,7 +10,11 @@
         <router-link class="article-list-edit" :class="{divHidden: !$store.state.adminStatus}" :to="{name:'articleEdit', query:{id: article.id}}">编辑</router-link>
       </div>
       <div class="article-list-info">
-        <div>发表于{{article.created_at.slice(0,10)}} - {{article.views}}次阅读</div>
+        <div class="article-list-info-text">
+          <div style="marginRight: 4px">发表于{{article.created_at}} -</div>
+          <div style="marginRight: 4px" :class="{divHidden: article.updated_at == ''}">最后修改于{{article.updated_at}} -</div>
+          <div>{{article.views}}次阅读</div>
+        </div>
         <div class="article-list-delete" :class="{divHidden: !$store.state.adminStatus}" @click.prevent="deleteArticle(article.id)">删除</div>
       </div>
     </router-link>
@@ -46,6 +50,7 @@ export default {
       currentPage: 0,
       leftArrowIsAble: false,
       rightArrowIsAble: false,
+      updatedAt: ''
     }
   },
   created () {
@@ -224,5 +229,8 @@ export default {
 }
 .divHidden {
   display: none;
+}
+.article-list-info-text {
+  display: flex;
 }
 </style>

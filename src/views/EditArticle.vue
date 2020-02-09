@@ -18,20 +18,21 @@
       <div class="edit-text">Content</div>
       <textarea class="edit-cap-content-input" v-model="article.content" placeholder="文章内容"></textarea>
     </div>
-    <div class="edit-cap-button" @click="addArticle">确认</div>
+    <div class="edit-cap-button" :class="{divHidden: !isAddArticle}" @click="addArticle">创建</div>
+    <div class="edit-cap-button" :class="{divHidden: isAddArticle}" @click="putArticle">修改</div>
   </div>
 </div>
 </template>
 
 <script>
-import {apiGetCategories, apiAddArticle, apiGetArticle} from '@/request/api'
+import {apiGetCategories, apiAddArticle, apiGetArticle, apiPutArticle} from '@/request/api'
 export default {
   data () {
     return {
       isAddArticle: true,
       title: '',
       article: {},
-      categories: []
+      categories: [],
     }
   },
   created() {
@@ -61,8 +62,6 @@ export default {
         }
         this.article = response.data.data
       }
-      console.log("categories -> ", this.categories)
-      console.log("articles -> ", this.articles)
     },
     async addArticle() {
       // 检查是否有空值
@@ -70,6 +69,8 @@ export default {
         this.$store.dispatch('changeTipsMsg', "检查空值")
         return
       }
+      // 添加文章日期
+      this.article.created_at = this.getNowFormatDate()
       const response = await apiAddArticle(this.article)
       this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
@@ -77,6 +78,37 @@ export default {
           name: 'articles'
         })
       }
+    },
+    async putArticle() {
+      // 检查是否有空值
+      if (!this.article.title || !this.article.category_id || !this.article.content) {
+        this.$store.dispatch('changeTipsMsg', "检查空值")
+        return
+      }
+      // 修改文章日期
+      this.article.updated_at = this.getNowFormatDate()
+      const response = await apiPutArticle(this.article)
+      this.$store.dispatch('changeTipsMsg', response.data.msg)
+      if (response.status == 200) {
+        this.$router.push({
+          name: 'articles'
+        })
+      }
+    },
+    getNowFormatDate() {
+      const date = new Date()
+      const seperator1 = "-"
+      const year = date.getFullYear()
+      let month = date.getMonth() + 1;
+      let strDate = date.getDate()
+      if (month >= 1 && month <= 9) {
+          month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+      }
+      const currentdate = year + seperator1 + month + seperator1 + strDate
+      return currentdate
     }
   }
 }
@@ -172,5 +204,8 @@ export default {
 .edit-cap-button:hover {
   background-color: #2d8cf0;
   color: #fff;
+}
+.divHidden {
+  display: none;
 }
 </style>
