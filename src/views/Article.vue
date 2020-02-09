@@ -20,7 +20,7 @@
 <script>
 import '@/assets/css/github-markdown.css'
 import Intro from '@/components/Intro'
-import {apiGetArticle, apiGetCategoryTitle} from '@/request/api'
+import {apiGetArticle, apiGetCategoryTitle, apiAddArticleView} from '@/request/api'
 export default {
   data() {
     return {
@@ -32,6 +32,7 @@ export default {
     await this.initArticle()
     let md = require('markdown-it')()
     this.article.content = md.render(this.article.content)
+    apiAddArticleView({id: Number(this.$route.params.id)})
   },
   components: {
     Intro,

@@ -36,6 +36,13 @@ export const apiPutAdminPwd = (data) => {
     data
   })
 }
+// 增加博客浏览量
+export const apiAddBlogView = () => {
+  return opts({
+    method: 'get',
+    url: '/admin/addviews',
+  })
+}
 
 /* --- 分类 api --- */
 // 获取某页所有分类
@@ -127,6 +134,14 @@ export const apiDeleteArticle = (data) => {
   return opts({
     method: 'delete',
     url: '/article',
+    data
+  })
+}
+// 增加文章浏览量
+export const apiAddArticleView = (data) => {
+  return opts({
+    method: 'post',
+    url: '/article/addViews',
     data
   })
 }

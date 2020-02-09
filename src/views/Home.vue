@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <div class="home"></div>
     <Intro/>
   </div>
 </template>
@@ -21,5 +22,8 @@ export default {
   width: 1140px;
   margin: 0 auto;
   padding-top: 20px;
+}
+.home {
+  width: 75%;
 }
 </style>
