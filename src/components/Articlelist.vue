@@ -50,7 +50,11 @@ export default {
       currentPage: 0,
       leftArrowIsAble: false,
       rightArrowIsAble: false,
-      updatedAt: ''
+      updatedAt: '',
+      pageRequest: {
+        id: 0,
+        page: 0
+      }
     }
   },
   created () {
@@ -72,7 +76,8 @@ export default {
       if (!this.fromCategory) {
         response = await apiGetArticles(0)
       } else {
-        response = await apiGetArticlesFromCate(this.categoryID)
+        this.pageRequest.id = this.categoryID
+        response = await apiGetArticlesFromCate(this.pageRequest)
       }
       if (response.status != 200) {
         return
@@ -90,7 +95,13 @@ export default {
     },
     async changePage(page) {
       if (page === this.currentPage) return
-      const response = await apiGetArticles(page)
+      let response = {}
+      if (!this.fromCategory) {
+        response = await apiGetArticles(page)
+      } else {
+        this.pageRequest.page = page
+        response = await apiGetArticlesFromCate(this.pageRequest)
+      }
       if (response.status != 200) {
         return
       }

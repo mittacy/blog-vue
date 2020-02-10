@@ -53,10 +53,10 @@ export const apiGetCategoriesByPage = (page) => {
   })
 }
 // 获取某个分类所有文章
-export const apiGetArticlesFromCate = (categoryID) => {
+export const apiGetArticlesFromCate = (pageRequest) => {
   return opts({
     method: 'get',
-    url: '/category/' + categoryID
+    url: '/category/' + pageRequest.id + '/' + pageRequest.page
   })
 }
 // 获取某个分类title
