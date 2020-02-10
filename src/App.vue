@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="tips-box" :class="{msgActive: $store.state.tipsBox}">{{$store.state.tipsMsg}}</div>
+    <Top/>
     <Navbar/>
     <Login/>
     <router-view style="minHeight: 600px"></router-view>
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+import Top from "@/components/Top";
 import Navbar from "@/components/Navbar";
 import Login from "@/components/Login";
 import {apiverifyAdmin} from "@/request/api";
@@ -22,10 +24,11 @@ export default {
   },
   data() {
     return {
-      minHeight: 600
+      minHeight: 600,
     }
   },
   components: {
+    Top,
     Navbar,
     Login,
     Footer
@@ -36,7 +39,7 @@ export default {
       if (response.status == 200) {
         this.$store.state.adminStatus = true
       }
-    }
+    },
   }
 };
 </script>
