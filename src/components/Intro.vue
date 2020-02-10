@@ -8,6 +8,7 @@
       <div class="intro-me-information-name">{{result.name}}</div>
       <div class="intro-me-information-links">
         <a class="intro-me-information-link" :href="result.github" target="_blank"><i class="iconfont icon-github"></i></a>
+        <a class="intro-me-information-link" :href="result.bilibili" target="_black"><i class="iconfont icon-CN_bilibiliB"></i></a>
         <a class="intro-me-information-link" :href="`mailto:${result.mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
       </div>
     </div>
@@ -86,7 +87,7 @@ export default {
   height: 40px;
 }
 .intro-me-information-link {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 .intro-me-information-link>.iconfont{
   font-size: 25px;
