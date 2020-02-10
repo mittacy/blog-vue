@@ -1,5 +1,5 @@
 <template>
-<div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}">
+<div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}" @mousewheel.prevent @touchmove.prevent>
   <div class="login-background" :style="{zIndex: bgIndex}"  @click="hideLogin"></div>
   <div class="login-main" :style="{zIndex: loginIndex}">
     <div class="login-main-close" @click="hideLogin">
@@ -148,7 +148,7 @@ export default {
   border-radius: 4px;
 }
 .login-main-form-icon {
-  padding: 6px 7px;
+  padding: 8.5px 7px;
   font-weight: 500;
   font-size: 14px;
   color: #515a6e;

@@ -1,7 +1,7 @@
 <template>
   <div class="cate">
     <div class="cate-lists">
-      <router-link v-for="cate in categories" :key="cate.title" class="cate-list" :to="turnToCategory(cate.id)">
+      <router-link v-for="cate in categories" :key="cate.title" class="cate-list" :to="turnToCategory(cate.id, cate.title)">
         <div class="cate-list-left">
           <i class="iconfont icon-biaoqian"></i>
           {{ cate.title }}
@@ -92,11 +92,14 @@ export default {
       this.leftArrowIsAble = this.currentPage > 0 ? true : false
       this.rightArrowIsAble = this.currentPage < this.pageNumber-1 ? true : false
     },
-    turnToCategory(cateID) {
+    turnToCategory(cateID, cateTitle) {
       return {
         name: 'category',
         params: {
           id: cateID
+        },
+        query: {
+          title: cateTitle
         }
       }
     }

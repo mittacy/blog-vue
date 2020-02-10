@@ -1,5 +1,9 @@
 <template>
 <div class="article">
+  <div class="cate-title" :class="{divHidden: !this.fromCategory}">
+    <i class="iconfont icon-biaoqian"></i>
+    {{ this.$route.query.title }}
+  </div>
   <div class="article-lists">
     <router-link v-for="article in articles" class="article-list" :key="article.title" :to="turnToArticle(article.id)">
       <div class="article-list-title">
@@ -140,6 +144,18 @@ export default {
   width: 75%;
   opacity: 1;
   transition: all .2s ease;
+}
+.cate-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 200;
+  margin-bottom: 20px;
+  color: #515a6e;
+}
+.icon-biaoqian {
+  margin-right: 5px;
 }
 .article-lists {
   display: flex;
