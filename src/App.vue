@@ -52,7 +52,7 @@ export default {
   position: relative;
 }
 .tips-box {
-  position: absolute;
+  position: fixed;
   top: 50px;
   left: 700px;
   padding: 5px 10px;

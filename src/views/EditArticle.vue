@@ -3,36 +3,48 @@
   <div class="edit">
     <div class="edit-title">{{title}}</div>
     <div class="edit-cap">信息</div>
-    <div class="edit-cap-title">
-      <div class="edit-text">Title</div>
-      <input class="edit-cap-title-input" type="text" v-model="article.title" placeholder="文章标题">
+    <div class="edit-cap-main">
+      <div class="edit-cap-edit">
+        <div class="edit-cap-title">
+          <div class="edit-text">Title</div>
+          <input class="edit-cap-title-input" type="text" v-model="article.title" placeholder="文章标题">
+        </div>
+        <div class="edit-cap-category">
+          <div class="edit-text">Category</div>
+          <select class="edit-cap-category-select" v-model="article.category_id">
+            <option value="" disabled>分类</option>
+            <option v-for="cate in categories" :key="cate.title" :value="cate.id">{{cate.title}}</option>
+          </select>
+        </div>
+        <div class="edit-cap-content">
+          <div class="edit-text">Content</div>
+          <textarea class="edit-cap-content-input" v-model="article.content" placeholder="文章内容"></textarea>
+        </div>
+        <div class="edit-cap-button" :class="{divHidden: !isAddArticle}" @click="addArticle">创建</div>
+        <div class="edit-cap-button" :class="{divHidden: isAddArticle}" @click="putArticle">修改</div>
+      </div>
+      <div class="edit-cap-view markdown-body" v-html="md.render(article.content)">
+        {{md.render(article.content)}}
+      </div>
     </div>
-    <div class="edit-cap-category">
-      <div class="edit-text">Category</div>
-      <select class="edit-cap-category-select" v-model="article.category_id">
-        <option value="" disabled>分类</option>
-        <option v-for="cate in categories" :key="cate.title" :value="cate.id">{{cate.title}}</option>
-      </select>
-    </div>
-    <div class="edit-cap-content">
-      <div class="edit-text">Content</div>
-      <textarea class="edit-cap-content-input" v-model="article.content" placeholder="文章内容"></textarea>
-    </div>
-    <div class="edit-cap-button" :class="{divHidden: !isAddArticle}" @click="addArticle">创建</div>
-    <div class="edit-cap-button" :class="{divHidden: isAddArticle}" @click="putArticle">修改</div>
   </div>
 </div>
 </template>
 
 <script>
+import '@/assets/css/github-markdown.css'
 import {apiGetCategories, apiAddArticle, apiGetArticle, apiPutArticle} from '@/request/api'
 export default {
   data () {
     return {
       isAddArticle: true,
       title: '',
-      article: {},
+      article: {
+        content: ''
+      },
       categories: [],
+      content: '',
+      md: require('markdown-it')()
     }
   },
   created() {
@@ -148,6 +160,17 @@ export default {
   height: 30px;
   margin-top: 20px;
 }
+.edit-cap-main {
+  display: flex;
+}
+.edit-cap-edit {
+  width: 50%;
+}
+.edit-cap-view {
+  width: 50%;
+  text-align: left;
+  margin-top: 20px;
+}
 .edit-text {
   font-size: 20px;
   height: 30px;
@@ -181,7 +204,7 @@ export default {
   margin-top: 20px;
 }
 .edit-cap-content-input {
-  width: 1000px;
+  width: 90%;
   height: 500px;
   margin-top: 10px;
   border: 1px solid #eaecef;
