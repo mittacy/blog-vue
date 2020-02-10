@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="home"></div>
+    <ShowArticle :articleID="defaultArticleID"/>
     <Intro/>
   </div>
 </template>
@@ -8,10 +8,17 @@
 <script>
 import Intro from '@/components/Intro';
 import Articlelist from '@/components/Articlelist';
+import ShowArticle from '@/components/ShowArticle'
 export default {
+  data() {
+    return {
+      defaultArticleID: 8
+    }
+  },
   components: {
     Articlelist,
-    Intro
+    Intro,
+    ShowArticle
   }
 }
 </script>

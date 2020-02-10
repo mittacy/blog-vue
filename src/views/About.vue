@@ -7,8 +7,8 @@
     <p class="abour-info">github: <a :href="result.github" target="_blank">{{result.github}}</a></p>
     <p class="abour-info">个人邮箱: <a :href="`mailto:${result.mail}`" target="_blank">{{result.mail}}</a></p>
     <div class="about-author">博客相关</div>
-    <p class="abour-info">前端: Vue.js</p>
-    <p class="abour-info">后端: Golang</p>
+    <p class="abour-info">前端: JavaScript & Vue.js</p>
+    <p class="abour-info">后端: Golang & Gin</p>
     <p class="abour-info">数据库: Mysql</p>
   </div>
 </div>
