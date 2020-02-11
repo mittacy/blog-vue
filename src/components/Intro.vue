@@ -5,12 +5,16 @@
       <img src="http://blog.mittacy.com/introImg.jpeg">
     </div>
     <div class="intro-me-information">
-      <div class="intro-me-information-name">{{result.name}}</div>
+      <div class="intro-me-information-name">
+        <div>{{result.name}}</div>
+        <div class="intro-me-information-text">Just Do It</div>
+      </div>
       <div class="intro-me-information-links">
         <a class="intro-me-information-link" :href="result.github" target="_blank"><i class="iconfont icon-github"></i></a>
         <a class="intro-me-information-link" :href="result.bilibili" target="_black"><i class="iconfont icon-CN_bilibiliB"></i></a>
         <a class="intro-me-information-link" :href="`mailto:${result.mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
       </div>
+      <div class="intro-me-views">访问人数:</div>
     </div>
   </div>
 </div>
@@ -49,7 +53,7 @@ export default {
 }
 .intro-me {
   width: 100%;
-  height: 380px;
+  height: 400px;
   border: 1px solid #dcdee2;
   border-radius: 4px;
   transition: all .2s ease-in-out;
@@ -59,7 +63,7 @@ export default {
 }
 .intro-me-img {
   width: 100%;
-  height: 72%;
+  height: 70%;
 }
 .intro-me-img>img {
   width: 100%;
@@ -76,9 +80,10 @@ export default {
   margin-bottom: 4px;
 }
 .intro-me-information-name {
+  display: flex;
+  
   font-size: 22px;
   font-weight: 900;
-  text-align: left;
   color: #515a6e;
 }
 .intro-me-information-links {
@@ -92,5 +97,18 @@ export default {
 .intro-me-information-link>.iconfont{
   font-size: 25px;
   color: #585858;
+}
+.intro-me-views {
+  text-align: left;
+  font-size: 13px;
+  color: #515a6e;
+}
+.intro-me-information-text {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
 }
 </style>
