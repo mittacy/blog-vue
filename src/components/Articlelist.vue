@@ -140,11 +140,6 @@ export default {
 </script>
 
 <style scoped>
-.article {
-  width: 75%;
-  opacity: 1;
-  transition: all .2s ease;
-}
 .cate-title {
   display: flex;
   justify-content: flex-start;

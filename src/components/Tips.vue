@@ -21,6 +21,6 @@
 .msgActive {
   top: 70px;
   opacity: 1;
-  z-index: 2000;
+  z-index: 1500;
 }
 </style>

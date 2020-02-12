@@ -1,7 +1,11 @@
 <template>
-  <div class="content">
-    <Articlelist :fromCategory="true" :categoryID="categoryID"/>
-    <Intro/>
+  <div class="main">
+    <div class="main-content">
+      <Articlelist :fromCategory="true" :categoryID="categoryID"/>
+    </div>
+    <div class="main-intro">
+      <Intro/>
+    </div>
   </div>
 </template>
 
@@ -25,12 +29,14 @@ export default {
 </script>
 
 <style scoped>
-.content {
+.main {
   display: flex;
-  width: 1140px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 0 auto;
-  padding-top: 20px;
+  justify-content: space-between;
+}
+.main-content {
+  width: 75%;
+}
+.main-intro {
+  width: 24%;
 }
 </style>

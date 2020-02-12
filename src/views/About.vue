@@ -1,16 +1,14 @@
 <template>
-<div class="content">
-  <div class="about">
-    <div class="about-title">About</div>
-    <div class="about-author">作者</div>
-    <p class="abour-info">{{result.introduce}}</p>
-    <p class="abour-info">github: <a :href="result.github" target="_blank">{{result.github}}</a></p>
-    <p class="abour-info">个人邮箱: <a :href="`mailto:${result.mail}`" target="_blank">{{result.mail}}</a></p>
-    <div class="about-author">博客相关</div>
-    <p class="abour-info">前端: JavaScript & Vue.js</p>
-    <p class="abour-info">后端: Golang & Gin</p>
-    <p class="abour-info">数据库: Mysql</p>
-  </div>
+<div class="about">
+  <div class="about-title">About</div>
+  <div class="about-author">作者</div>
+  <p class="abour-info">{{result.introduce}}</p>
+  <p class="abour-info">github: <a :href="result.github" target="_blank">{{result.github}}</a></p>
+  <p class="abour-info">个人邮箱: <a :href="`mailto:${result.mail}`" target="_blank">{{result.mail}}</a></p>
+  <div class="about-author">博客相关</div>
+  <p class="abour-info">前端: JavaScript & Vue.js</p>
+  <p class="abour-info">后端: Golang & Gin</p>
+  <p class="abour-info">数据库: Mysql</p>
 </div>
 </template>
 
@@ -39,17 +37,6 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  display: flex;
-  width: 1140px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-.about {
-  width: 100%;
-}
 .about a {
   color: #0366d6;
 }

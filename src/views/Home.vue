@@ -1,7 +1,11 @@
 <template>
-  <div class="content">
-    <ShowArticle :isHome="true"/>
-    <Intro/>
+  <div class="main">
+    <div class="main-content">
+      <ShowArticle :isHome="true"/>
+    </div>
+    <div class="main-intro">
+      <Intro/>
+    </div>
   </div>
 </template>
 
@@ -24,15 +28,14 @@ export default {
 </script>
 
 <style scoped>
-.content {
+.main {
   display: flex;
-  width: 1140px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 0 auto;
-  padding-top: 20px;
+  justify-content: space-between;
 }
-.home {
+.main-content {
   width: 75%;
+}
+.main-intro {
+  width: 24%;
 }
 </style>

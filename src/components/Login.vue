@@ -1,7 +1,7 @@
 <template>
-<div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}" @mousewheel.prevent @touchmove.prevent>
+<div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}" @mousewheel.prevent>
   <div class="login-background" @click="hideLogin"></div>
-  <div class="login-main">
+  <div class="login-main" :class="{hideLogin: !this.$store.state.loginFormStatus}">
     <div class="login-main-close" @click="hideLogin">
       <i class="iconfont icon-guanbi"></i>
     </div>
@@ -74,35 +74,40 @@ export default {
 <style scoped>
 .login {
   position: fixed;
-  top: -60px;
-  width: inherit;
-  height: calc(100vh + 60px);
-  transition: all .3s ease-in-out;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   display:flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
   opacity: 1;
-  z-index: 1200;
+  transition: all .3s ease-in-out;
 }
 .login-background {
-  position: absolute;
+  position: fixed;
   top: 0;
-  width: inherit;
-  height: inherit;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 500;
   background-color: rgba(55,55,55,.6);
 }
 .hideLogin {
-  height: 0;
-  overflow: hidden;
+  z-index: 500!important;
+  opacity: 0;
 }
 .login-main {
-  position: relative;
+  position: fixed;
   width: 400px;
   height: 245px;
   background-color: #fff;
   border: 0;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  z-index: 1500;
+  transition: all .3s ease-in-out;
 }
 .login-main-close {
   position: absolute;

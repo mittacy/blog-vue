@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <Tips/>
-    <Top/>
-    <Navbar/>
+    <Top style="zIndex: 1500"/>
+    <Navbar style="zIndex: 1200"/>
     <Login/>
-    <router-view style="minHeight: 600px"></router-view>
-    <Footer/>
+    <div class="content-warp">
+      <div class="content"><router-view></router-view></div>
+    </div>
+    <Footer style="zIndex: 1000"/>
   </div>
 </template>
 
@@ -55,5 +57,17 @@ export default {
   width: 100%;
   text-align: center;
   position: relative;
+}
+.content-warp {
+  position: relative;
+  width: 100%;
+  min-width: 1200px;
+  z-index: 1000;
+}
+.content {
+  width: 1140px;
+  min-height: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
 }
 </style>

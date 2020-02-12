@@ -1,31 +1,29 @@
 <template>
-<div class="content">
-  <div class="edit">
-    <div class="edit-title">{{title}}</div>
-    <div class="edit-cap">信息</div>
-    <div class="edit-cap-main">
-      <div class="edit-cap-edit">
-        <div class="edit-cap-title">
-          <div class="edit-text">Title</div>
-          <input class="edit-cap-title-input" type="text" v-model="article.title" placeholder="文章标题">
-        </div>
-        <div class="edit-cap-category">
-          <div class="edit-text">Category</div>
-          <select class="edit-cap-category-select" v-model="article.category_id">
-            <option value="" disabled>分类</option>
-            <option v-for="cate in categories" :key="cate.title" :value="cate.id">{{cate.title}}</option>
-          </select>
-        </div>
-        <div class="edit-cap-content">
-          <div class="edit-text">Content</div>
-          <textarea class="edit-cap-content-input" v-model="article.content" placeholder="文章内容"></textarea>
-        </div>
-        <div class="edit-cap-button" :class="{divHidden: !isAddArticle}" @click="addArticle">创建</div>
-        <div class="edit-cap-button" :class="{divHidden: isAddArticle}" @click="putArticle">修改</div>
+<div class="edit">
+  <div class="edit-title">{{title}}</div>
+  <div class="edit-cap">信息</div>
+  <div class="edit-cap-main">
+    <div class="edit-cap-edit">
+      <div class="edit-cap-title">
+        <div class="edit-text">Title</div>
+        <input class="edit-cap-title-input" type="text" v-model="article.title" placeholder="文章标题">
       </div>
-      <div class="edit-cap-view markdown-body" v-html="md.render(article.content)">
-        {{md.render(article.content)}}
+      <div class="edit-cap-category">
+        <div class="edit-text">Category</div>
+        <select class="edit-cap-category-select" v-model="article.category_id">
+          <option value="" disabled>分类</option>
+          <option v-for="cate in categories" :key="cate.title" :value="cate.id">{{cate.title}}</option>
+        </select>
       </div>
+      <div class="edit-cap-content">
+        <div class="edit-text">Content</div>
+        <textarea class="edit-cap-content-input" v-model="article.content" placeholder="文章内容"></textarea>
+      </div>
+      <div class="edit-cap-button" :class="{divHidden: !isAddArticle}" @click="addArticle">创建</div>
+      <div class="edit-cap-button" :class="{divHidden: isAddArticle}" @click="putArticle">修改</div>
+    </div>
+    <div class="edit-cap-view markdown-body" v-html="md.render(article.content)">
+      {{md.render(article.content)}}
     </div>
   </div>
 </div>
@@ -127,18 +125,6 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  position: relative;
-  display: flex;
-  width: 1140px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-.edit {
-  width: 100%;
-}
 .edit-title {
   display: flex;
   justify-content: flex-start;

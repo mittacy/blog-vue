@@ -1,5 +1,5 @@
 <template>
-<div class="content">
+<div class="edit">
   <div class="edit" :class="{Hidden: editCate}">
     <div class="edit-caps">添加分类</div>
     <div class="edit-cap">
@@ -63,18 +63,6 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  position: relative;
-  display: flex;
-  width: 1140px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-.edit {
-  width: 100%;
-}
 .Hidden {
   display: none!important;
 }

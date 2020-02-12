@@ -109,10 +109,6 @@ export default {
 </script>
 
 <style scoped>
-.article {
-  width: 75%;
-  padding-left: 20px;
-}
 .set-default {
   width: 200px;
   margin-bottom: 20px;

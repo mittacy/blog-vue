@@ -108,11 +108,6 @@ export default {
 </script>
 
 <style scoped>
-.cate {
-  width: 75%;
-  opacity: 1;
-  transition: all .2s ease;
-}
 .cate-lists {
   display: flex;
   flex-direction: column;

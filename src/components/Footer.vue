@@ -4,6 +4,7 @@
 
 <style scoped>
 .footer {
+  position: relative;
   width: 100%;
   min-width: 1200px;
   padding-top: 24px;

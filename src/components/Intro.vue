@@ -1,21 +1,19 @@
 <template>
 <div class="intro">
-  <div class="intro-me">
-    <div class="intro-me-img">
-      <img src="/intro.png">
+  <div class="intro-img">
+    <img src="/intro.png">
+  </div>
+  <div class="intro-information">
+    <div class="intro-information-name">
+      <div>{{result.name}}</div>
+      <div class="intro-information-text">Just Do It</div>
     </div>
-    <div class="intro-me-information">
-      <div class="intro-me-information-name">
-        <div>{{result.name}}</div>
-        <div class="intro-me-information-text">Just Do It</div>
-      </div>
-      <div class="intro-me-information-links">
-        <a class="intro-me-information-link" :href="result.github" target="_blank"><i class="iconfont icon-github"></i></a>
-        <a class="intro-me-information-link" :href="result.bilibili" target="_black"><i class="iconfont icon-CN_bilibiliB"></i></a>
-        <a class="intro-me-information-link" :href="`mailto:${result.mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
-      </div>
-      <div class="intro-me-views">访问人数:</div>
+    <div class="intro-information-links">
+      <a class="intro-information-link" :href="result.github" target="_blank"><i class="iconfont icon-github"></i></a>
+      <a class="intro-information-link" :href="result.bilibili" target="_black"><i class="iconfont icon-CN_bilibiliB"></i></a>
+      <a class="intro-information-link" :href="`mailto:${result.mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
     </div>
+    <div class="intro-views">访问人数:</div>
   </div>
 </div>
 </template>
@@ -47,63 +45,52 @@ export default {
 
 <style scoped>
 .intro {
-  width: 24%;
-  height: inherit;
-  margin-left: 1%;
-}
-.intro-me {
-  width: 100%;
-  height: 380px;
   border: 1px solid #dcdee2;
   border-radius: 4px;
   transition: all .2s ease-in-out;
 }
-.intro-me:hover {
+.intro:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
-.intro-me-img {
-  width: 100%;
-  height: 67%;
+.intro-img {
+  height: 280px;
 }
-.intro-me-img>img {
-  width: 100%;
-  height: 100%;
+.intro-img>img {
   border-radius: 4px 4px 0 0;
 }
-.intro-me-information {
+.intro-information {
   width: 90%;
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
-.intro-me-information-name, .intro-me-information-links {
-  width: 100%;
+.intro-information-name, .intro-information-links {
   margin-bottom: 4px;
 }
-.intro-me-information-name {
+.intro-information-name {
   display: flex;
-  
   font-size: 22px;
   font-weight: 900;
   color: #515a6e;
 }
-.intro-me-information-links {
+.intro-information-links {
   display: flex;
   align-items: center;
   height: 40px;
 }
-.intro-me-information-link {
+.intro-information-link {
   margin-right: 10px;
 }
-.intro-me-information-link>.iconfont{
+.intro-information-link>.iconfont{
   font-size: 25px;
   color: #585858;
 }
-.intro-me-views {
+.intro-views {
   text-align: left;
   font-size: 13px;
   color: #515a6e;
 }
-.intro-me-information-text {
+.intro-information-text {
   margin-left: 5px;
   font-size: 14px;
   color: #999;

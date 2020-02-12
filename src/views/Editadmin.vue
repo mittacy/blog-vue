@@ -1,36 +1,34 @@
 <template>
-<div class="content">
-  <div class="edit">
-    <div class="edit-title">修改管理员信息</div>
-    <div class="edit-caps" >密码</div>
-    <div class="edit-password-cap">
-      <div class="edit-text">Password</div>
-      <input id="edit-password-input" type="password" v-model="password">
-      <div class="edit-password-button" @click="putAdminPwd">确认</div>
-    </div>
-    <div class="edit-caps">其他</div>
-    <div class="edit-else">
-      <div class="edit-text">Cname</div>
-      <input class="edit-else-input" type="text" v-model="admin.cname">
-    </div>
-    <div class="edit-else">
-      <div class="edit-text">Introduce</div>
-      <input class="edit-else-input" type="text" v-model="admin.introduce">
-    </div>
-    <div class="edit-else">
-      <div class="edit-text">Github</div>
-      <input class="edit-else-input" type="text" v-model="admin.github">
-    </div>
-    <div class="edit-else">
-      <div class="edit-text">Mail</div>
-      <input class="edit-else-input" type="text" v-model="admin.mail">
-    </div>
-    <div class="edit-else">
-      <div class="edit-text">Bilibili</div>
-      <input class="edit-else-input" type="text" v-model="admin.bilibili">
-    </div>
-    <div class="edit-else-button" @click="putAdmin">确认</div>
+<div class="edit">
+  <div class="edit-title">修改管理员信息</div>
+  <div class="edit-caps" >密码</div>
+  <div class="edit-password-cap">
+    <div class="edit-text">Password</div>
+    <input id="edit-password-input" type="password" v-model="password">
+    <div class="edit-password-button" @click="putAdminPwd">确认</div>
   </div>
+  <div class="edit-caps">其他</div>
+  <div class="edit-else">
+    <div class="edit-text">Cname</div>
+    <input class="edit-else-input" type="text" v-model="admin.cname">
+  </div>
+  <div class="edit-else">
+    <div class="edit-text">Introduce</div>
+    <input class="edit-else-input" type="text" v-model="admin.introduce">
+  </div>
+  <div class="edit-else">
+    <div class="edit-text">Github</div>
+    <input class="edit-else-input" type="text" v-model="admin.github">
+  </div>
+  <div class="edit-else">
+    <div class="edit-text">Mail</div>
+    <input class="edit-else-input" type="text" v-model="admin.mail">
+  </div>
+  <div class="edit-else">
+    <div class="edit-text">Bilibili</div>
+    <input class="edit-else-input" type="text" v-model="admin.bilibili">
+  </div>
+  <div class="edit-else-button" @click="putAdmin">确认</div>
 </div>
 </template>
 
@@ -79,36 +77,6 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  position: relative;
-  display: flex;
-  width: 1140px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-.tips-box {
-  position: absolute;
-  top: 0px;
-  left: 520px;
-  padding: 5px 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #2d8cf0;
-  border: 1px solid #2d8cf0;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px #2d8cf0;
-  transition: all .7s ease-in;
-  opacity: 0;
-}
-.msgActive {
-  top: 10px;
-  opacity: 1;
-}
-.edit {
-  width: 100%;
-}
 .edit-title {
   display: flex;
   justify-content: flex-start;

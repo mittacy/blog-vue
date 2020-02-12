@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar" :style="{zIndex: zindex}">
+  <div class="navbar">
     <div class="navbar-main">
       <div class="navbar-items">
         <div class="navbar-items-logo">MITTACY</div>
@@ -11,7 +11,7 @@
           :key="item.content"
         ></nav-item>
       </div>
-      <div class="navbar-login navbar-login-button" :class="{hideLoginButton: $store.state.adminStatus}" @click="showLogin">
+      <div class="navbar-login navbar-login-button phoneClass" :class="{hideLoginButton: $store.state.adminStatus}" @click="showLogin">
         登录<i class="iconfont icon-jiqiren"></i>
       </div>
       <div class="navbar-login" :class="{hideLoginButton: !$store.state.adminStatus}">
@@ -43,7 +43,6 @@ export default {
     return {
       navItems,
       manageItems,
-      zindex: 1000
     };
   },
   components: {
@@ -62,6 +61,21 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width : 1200px) {
+  .phoneClass {
+    z-index: 500!important;
+    opacity: 0;
+  }
+}
+.navbar-login {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  color: #515a6e;
+  width: 200px;
+  height: 100%;
+  font-size: 14px;
+}
 .navbar {
   width: 100%;
   min-width: 1200px;
@@ -71,6 +85,7 @@ export default {
 .navbar-main {
   display: -webkit-flex; /* Safari */
   display: flex;
+  justify-content: space-between;
   width: 1140px;
   height: 60px;
   margin: 0 auto;
@@ -106,7 +121,6 @@ export default {
   margin-right: 6px;
   font-size: 16px;
 }
-
 .navbar-login-button {
   display: flex;
   align-items: center;
@@ -120,15 +134,6 @@ export default {
 }
 .hideLoginButton {
   display: none!important;
-}
-.navbar-login {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  color: #515a6e;
-  width: 200px;
-  height: 100%;
-  font-size: 14px;
 }
 .navbar-login-exit {
   width: 50px;
