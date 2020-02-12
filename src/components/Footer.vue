@@ -5,7 +5,7 @@
 <style scoped>
 .footer {
   width: 100%;
-  min-width: 1140px;
+  min-width: 1200px;
   padding-top: 24px;
   padding-bottom: 24px;
   color: #515a6e;

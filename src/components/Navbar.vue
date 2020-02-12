@@ -64,7 +64,7 @@ export default {
 <style scoped>
 .navbar {
   width: 100%;
-  min-width: 1140px;
+  min-width: 1200px;
   border-bottom: 1px solid #dcdee2;
   position: relative;
 }

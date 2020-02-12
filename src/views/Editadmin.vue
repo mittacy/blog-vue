@@ -25,6 +25,10 @@
       <div class="edit-text">Mail</div>
       <input class="edit-else-input" type="text" v-model="admin.mail">
     </div>
+    <div class="edit-else">
+      <div class="edit-text">Bilibili</div>
+      <input class="edit-else-input" type="text" v-model="admin.bilibili">
+    </div>
     <div class="edit-else-button" @click="putAdmin">确认</div>
   </div>
 </div>
@@ -79,6 +83,8 @@ export default {
   position: relative;
   display: flex;
   width: 1140px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin: 0 auto;
   padding-top: 20px;
 }

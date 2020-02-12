@@ -36,11 +36,17 @@ export const apiPutAdminPwd = (data) => {
     data
   })
 }
-// 增加博客浏览量
-export const apiAddBlogView = () => {
+export const apiPutHomeArticle = (data) => {
+  return opts({
+    method: 'put',
+    url: '/admin/article_id',
+    data
+  })
+}
+export const apiGetHomeArticleID = () => {
   return opts({
     method: 'get',
-    url: '/admin/addviews',
+    url: '/admin/article_id'
   })
 }
 

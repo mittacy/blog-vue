@@ -53,7 +53,7 @@ export default {
 }
 .intro-me {
   width: 100%;
-  height: 400px;
+  height: 380px;
   border: 1px solid #dcdee2;
   border-radius: 4px;
   transition: all .2s ease-in-out;
@@ -63,7 +63,7 @@ export default {
 }
 .intro-me-img {
   width: 100%;
-  height: 70%;
+  height: 67%;
 }
 .intro-me-img>img {
   width: 100%;

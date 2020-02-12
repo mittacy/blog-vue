@@ -67,6 +67,8 @@ export default {
   position: relative;
   display: flex;
   width: 1140px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin: 0 auto;
   padding-top: 20px;
 }

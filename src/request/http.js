@@ -16,7 +16,7 @@ export default async opts => {
       headers: {'adminToken': sessionStorage.getItem('adminToken') === null ? '' : sessionStorage.getItem('adminToken')},
       ...opts
     }
-    let response = await axios(options)
+    const response = await axios(options)
     return response
   } catch (err) {
     return err.response

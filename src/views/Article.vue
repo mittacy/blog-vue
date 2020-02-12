@@ -8,8 +8,6 @@
 <script>
 import ShowArticle from '@/components/ShowArticle'
 import Intro from '@/components/Intro'
-
-
 export default {
   components: {
     ShowArticle,
@@ -22,6 +20,8 @@ export default {
 .content {
   display: flex;
   width: 1140px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin: 0 auto;
   padding-top: 20px;
 }
