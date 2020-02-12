@@ -1,7 +1,7 @@
 <template>
 <div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}" @mousewheel.prevent @touchmove.prevent>
-  <div class="login-background" :style="{zIndex: bgIndex}"  @click="hideLogin"></div>
-  <div class="login-main" :style="{zIndex: loginIndex}">
+  <div class="login-background" @click="hideLogin"></div>
+  <div class="login-main">
     <div class="login-main-close" @click="hideLogin">
       <i class="iconfont icon-guanbi"></i>
     </div>
@@ -32,8 +32,6 @@ export default {
     return {
       username: '',
       password: '',
-      bgIndex: 1100,
-      loginIndex: 1200,
       disClick: false
     }
   },
@@ -75,7 +73,7 @@ export default {
 
 <style scoped>
 .login {
-  position: absolute;
+  position: fixed;
   top: -60px;
   width: inherit;
   height: calc(100vh + 60px);
@@ -84,6 +82,7 @@ export default {
   justify-content:center;
   align-items:center;
   opacity: 1;
+  z-index: 1200;
 }
 .login-background {
   position: absolute;
