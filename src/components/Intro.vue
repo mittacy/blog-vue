@@ -1,7 +1,7 @@
 <template>
 <div class="intro">
   <div class="intro-img">
-    <img src="/intro.png">
+    <img src="@/assets/img/intro.png">
   </div>
   <div class="intro-information">
     <div class="intro-information-name">
@@ -13,7 +13,7 @@
       <a class="intro-information-link" :href="result.bilibili" target="_black"><i class="iconfont icon-CN_bilibiliB"></i></a>
       <a class="intro-information-link" :href="`mailto:${result.mail}`" target="_blank"><i class="iconfont icon-mail"></i></a>
     </div>
-    <div class="intro-views">访问人数:</div>
+    <div class="intro-views">访问人数: {{result.views}}</div>
   </div>
 </div>
 </template>

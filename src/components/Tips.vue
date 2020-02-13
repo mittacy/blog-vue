@@ -6,7 +6,7 @@
 .tips-box {
   position: fixed;
   top: 50px;
-  left: 700px;
+  left: 46%;
   padding: 5px 10px;
   font-size: 16px;
   color: #fff;
@@ -21,6 +21,6 @@
 .msgActive {
   top: 70px;
   opacity: 1;
-  z-index: 1500;
+  z-index: 2000;
 }
 </style>
