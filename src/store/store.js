@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     loginFormStatus: false,
     tipsMsg: 'msg',
     tipsBox: false,
+    page: 0
   },
   mutations: {
     changeAdminStatusFunc(state, bool) {
@@ -25,6 +26,9 @@ const store = new Vuex.Store({
       window.setTimeout(() => {
         state.tipsBox = false
       }, 1400)
+    },
+    changePageFunc(state, int) {
+      state.page = int
     }
   },
   actions: {
@@ -36,6 +40,9 @@ const store = new Vuex.Store({
     },
     changeTipsMsg(context, str) {
       context.commit('changeTipsMsgFunc', str)
+    },
+    changePage(context, int) {
+      context.commit('changePageFunc', int)
     }
   }
 })

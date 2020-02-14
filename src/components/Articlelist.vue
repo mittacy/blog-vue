@@ -23,43 +23,26 @@
       </div>
     </router-link>
   </div>
-  <div class="page">
-    <span class="page-count">共 {{articleNum}} 条</span>
-    <div class="page-arrow" :class="leftArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changePage(currentPage-1)">
-      <i class="iconfont icon-icon_right_arrow"></i>
-    </div>
-    <div v-for="num in pageNum"
-      :key="num"
-      class="page-number"
-      :class="{'page-active': currentPage === num-1}"
-      @click="changePage(num-1)"
-      >
-      {{num}}
-    </div>
-    <div class="page-arrow" :class="rightArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changePage(currentPage+1)">
-      <i class="iconfont icon-icon_left_arrow"></i>
-    </div>
-  </div>
+  <Page :listNums="articleNum"/>
 </div>
 </template>
 
 <script>
 import {apiGetArticles, apiGetArticlesFromCate, apiDeleteArticle} from '@/request/api';
+import Page from '@/components/Page'
 export default {
   data () {
     return {
       articles: [],
       articleNum: 0,
-      pageNum: 0,
-      currentPage: 0,
-      leftArrowIsAble: false,
-      rightArrowIsAble: false,
-      updatedAt: '',
       pageRequest: {
         id: 0,
         page: 0
-      }
+      },
     }
+  },
+  components: {
+    Page
   },
   created () {
     this.initArticle()
@@ -89,16 +72,8 @@ export default {
       const result = response.data.data
       this.articleNum = result.articleCount
       this.articles = result.articles
-      this.currentPage = 0
-      if (this.articleNum%10 == 0) {
-        this.pageNum = parseInt(this.articleNum/10)
-      } else {
-        this.pageNum = parseInt(this.articleNum/10)+1
-      }
-      this.rightArrowIsAble = this.currentPage < this.pageNum-1 ? true :false
     },
     async changePage(page) {
-      if (page === this.currentPage) return
       let response = {}
       if (!this.fromCategory) {
         response = await apiGetArticles(page)
@@ -109,14 +84,7 @@ export default {
       if (response.status != 200) {
         return
       }
-      const result = response.data.data
-      this.articles = result.articles
-      this.currentPage = page
-      this.isArrowAble()
-    },
-    isArrowAble() {
-      this.leftArrowIsAble = this.currentPage > 0 ? true : false
-      this.rightArrowIsAble = this.currentPage < this.pageNum-1 ? true : false
+      this.articles = response.data.data.articles
     },
     turnToArticle(articleID) {
       return {
@@ -136,6 +104,16 @@ export default {
       }
     }
   },
+  computed: {
+    listPage() {
+      return this.$store.state.page
+    }
+  },
+  watch: {
+    listPage() {
+      this.changePage(this.listPage)
+    }
+  }
 }
 </script>
 
@@ -255,41 +233,5 @@ export default {
 }
 .icon-biaoqian {
   margin-right: 5px;
-}
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.page-count {
-  font-size: 12px;
-  margin-right: 20px;
-  color: #515a6e;
-}
-.page-arrow, .page-number {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  margin-right: 4px;
-  cursor: pointer;
-  border: 1px solid #dcdee2;
-  border-radius: 4px;
-  font-family: Arial;
-  color: #ccc;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-}
-.page-arrow-able:hover, .page-number:hover {
-  color: #2d8cf0;
-  border: 1px solid #2d8cf0;
-}
-.page-active {
-  color: #2d8cf0;
-  border: 1px solid #2d8cf0;
-}
-.page-arrow-disabled {
-  pointer-events: none;
 }
 </style>

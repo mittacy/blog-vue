@@ -13,39 +13,22 @@
         </div>
       </router-link>
     </div>
-    <div class="page">
-      <span class="page-count">共 {{cateNumber}} 条</span>
-      <div class="page-arrow" :class="leftArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changeCategoryPage(currentPage-1)">
-        <i class="iconfont icon-icon_right_arrow"></i>
-      </div>
-      <div v-for="num in pageNumber"
-        :key="num"
-        class="page-number"
-        :class="{'page-active': currentPage === num-1}"
-        @click="changeCategoryPage(num-1)"
-        >
-        {{num}}
-      </div>
-      <div class="page-arrow" :class="rightArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="changeCategoryPage(currentPage+1)">
-        <i class="iconfont icon-icon_left_arrow"></i>
-      </div>
-    </div>
+    <Page :listNums="cateNumber"/>
   </div>
 </template>
 
 <script>
 import {apiGetCategoriesByPage, apiDeleteCategory} from '@/request/api';
-
+import Page from '@/components/Page'
 export default {
   data () {
     return {
       categories: [],
       cateNumber: 0,
-      pageNumber: 0,
-      currentPage: 0,
-      leftArrowIsAble: false,
-      rightArrowIsAble: false,
     }
+  },
+  components: {
+    Page
   },
   created () {
     this.initCategory()
@@ -57,27 +40,17 @@ export default {
         return
       }
       const result = response.data.data
-      this.cateNumber = result.categoryCount
       this.categories = result.categories
-      this.currentPage = 0
-      if (this.cateNumber%10 === 0) {
-        this.pageNumber = parseInt(this.cateNumber/10)
-      } else {
-        this.pageNumber = parseInt(this.cateNumber/10)+1
-      }
-      this.rightArrowIsAble = this.currentPage < this.pageNumber-1 ? true : false
+      this.cateNumber = result.categoryCount
     },
-    async changeCategoryPage(page) {
+    async changePage(page) {
       if (page === this.currentPage) return
       const response = await apiGetCategoriesByPage(page)
       if (response.status != 200) {
         this.$store.dispatch('changeTipsMsg', msg)
         return
       }
-      const result = response.data.data
-      this.categories = result.categories
-      this.currentPage = page
-      this.isArrowAble()
+      this.categories = response.data.data.categories
     },
     async deleteCategory(cateID) {
       if(confirm("确实要删除？")) {
@@ -87,10 +60,6 @@ export default {
           this.initCategory()
         }
       }
-    },
-    isArrowAble() {
-      this.leftArrowIsAble = this.currentPage > 0 ? true : false
-      this.rightArrowIsAble = this.currentPage < this.pageNumber-1 ? true : false
     },
     turnToCategory(cateID, cateTitle) {
       return {
@@ -104,6 +73,16 @@ export default {
       }
     }
   },
+  computed: {
+    listPage() {
+      return this.$store.state.page
+    }
+  },
+  watch: {
+    listPage() {
+      this.changePage(this.listPage)
+    }
+  }
 }
 </script>
 
