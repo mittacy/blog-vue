@@ -42,12 +42,35 @@ export default {
 </script>
 
 <style scoped>
-.intro {
-  width: 280px;
-  height: 400px;
-  border: 1px solid #dcdee2;
-  border-radius: 4px;
-  transition: all .2s ease-in-out;
+@media (max-width: 800px) {
+  .intro {
+    width: 100%;
+    height: 400px;
+  }
+  .intro-information {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 800px) {
+  .intro {
+    width: 280px;
+    height: 400px;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    transition: all .2s ease-in-out;
+  }
+  .intro-information {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 }
 .intro:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
@@ -57,12 +80,6 @@ export default {
 }
 .intro-img>img {
   border-radius: 4px 4px 0 0;
-}
-.intro-information {
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 10px;
 }
 .intro-information-name, .intro-information-links {
   margin-bottom: 4px;
