@@ -22,6 +22,10 @@ import Tips from '@/components/Tips';
 export default {
   name: "app",
   created() {
+    // 找回activeItem
+    if (sessionStorage.getItem('activeItem')) {
+      this.$store.dispatch('changeActiveItem', sessionStorage.getItem('activeItem'))
+    }
     // 验证是否有权限，若有改变 adminStatus
     this.verifyAdmin()
   },

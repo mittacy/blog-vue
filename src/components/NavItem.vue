@@ -6,7 +6,6 @@
 </template>
 
 <script>
-// import navItems from "@/menu";
 export default {
   name: "nav-item",
   data () {

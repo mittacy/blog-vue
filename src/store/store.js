@@ -15,7 +15,6 @@ const store = new Vuex.Store({
   },
   mutations: {
     changeAdminStatusFunc(state, bool) {
-      console.log('改变登录状态为: ', bool)
       state.adminStatus = bool
     },
     changeLoginFormStatusFunc(state, bool) {
@@ -33,7 +32,8 @@ const store = new Vuex.Store({
     },
     changeActiveItemFunc(state, str) {
       state.activeItem = str
-      console.log('改变激活item -> ', state.activeItem)
+      // 存入session
+      sessionStorage.setItem('activeItem', state.activeItem)
     }
   },
   actions: {
