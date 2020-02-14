@@ -9,6 +9,8 @@
           :icon="item.icon"
           :route="item.route"
           :key="item.content"
+          :class="{'item-active': $store.state.activeItem === item.route}"
+          @click.native="$store.dispatch('changeActiveItem', item.route)"
         ></nav-item>
       </div>
       <div class="navbar-login navbar-login-button hideClass" :class="{hideLoginButton: $store.state.adminStatus}" @click="showLogin">
@@ -36,7 +38,6 @@
 import NavItem from "@/components/NavItem";
 import navItems from "@/menu";
 import manageItems from "@/manage";
-
 export default {
   name: "navbar",
   data() {
@@ -61,6 +62,10 @@ export default {
 </script>
 
 <style scoped>
+.item-active {
+  color: #2d8cf0;
+  border-bottom: 2px solid #2d8cf0;
+}
 @media (max-width: 800px) {
   .hideClass {
     display: none;

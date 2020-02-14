@@ -67,8 +67,4 @@ export default {
     font-size: 16px;
   }
 }
-.router-link-exact-active {
-  color: #2d8cf0;
-  border-bottom: 2px solid #2d8cf0;
-}
 </style>
