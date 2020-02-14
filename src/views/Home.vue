@@ -1,11 +1,9 @@
 <template>
   <div class="main">
-    <div class="main-content">
+    <div class="main-content hideClass">
       <ShowArticle :isHome="true"/>
     </div>
-    <div class="main-intro">
-      <Intro/>
-    </div>
+    <Intro/>
   </div>
 </template>
 
@@ -28,14 +26,23 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  display: flex;
-  justify-content: space-between;
+@media (max-width: 800px) {
+  .hideClass {
+    display: none;
+  }
+  .main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
-.main-content {
-  width: 75%;
-}
-.main-intro {
-  width: 24%;
+@media (min-width: 800px) {
+  .main {
+    display: flex;
+    justify-content: space-between;
+  }
+  .main-content {
+    width: calc(100% - 292px);
+  }
 }
 </style>

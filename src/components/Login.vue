@@ -83,7 +83,7 @@ export default {
   align-items: center;
   z-index: 1500;
   opacity: 1;
-  transition: all .3s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 .login-background {
   position: fixed;
@@ -92,7 +92,7 @@ export default {
   left: 0;
   bottom: 0;
   z-index: 500;
-  background-color: rgba(55,55,55,.6);
+  background-color: rgba(255,255,255,.6);
 }
 .hideLogin {
   z-index: 500!important;

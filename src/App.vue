@@ -2,12 +2,12 @@
   <div id="app">
     <Tips/>
     <Top style="zIndex: 1500"/>
+    <Login class="divHide"/>
     <Navbar style="zIndex: 1200"/>
-    <Login/>
     <div class="content-warp">
       <div class="content"><router-view></router-view></div>
     </div>
-    <Footer style="zIndex: 1000"/>
+    <Footer style="zIndex: 1000;"/>
   </div>
 </template>
 
@@ -50,24 +50,44 @@ export default {
 
 <style>
 #app {
-  /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  position: relative;
   font: normal 100% Helvetica, Arial, sans-serif;
   width: 100%;
+  min-height: 800px;
   text-align: center;
-  position: relative;
+  z-index: 2000;
 }
-.content-warp {
-  position: relative;
-  width: 100%;
-  min-width: 1200px;
-  z-index: 1000;
+@media (max-width: 800px) {
+  .divHide {
+    display: none!important;
+  }
+  .content-warp {
+    position: relative;
+    width: 100%;
+    min-height: 650px;
+    z-index: 1000;
+    padding-bottom: 60px;
+  }
+  .content {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
 }
-.content {
-  width: 1140px;
-  min-height: 600px;
-  margin: 0 auto;
-  padding-top: 20px;
+@media (min-width: 800px) {
+  .content-warp {
+    position: relative;
+    width: 100%;
+    min-width: 1200px;
+    min-height: 650px;
+    z-index: 1000;
+    padding-bottom: 60px;
+  }
+  .content {
+    width: 80%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
 }
 </style>

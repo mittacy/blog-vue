@@ -140,17 +140,85 @@ export default {
 </script>
 
 <style scoped>
-.cate-title {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 22px;
-  font-weight: 200;
-  margin-bottom: 20px;
-  color: #515a6e;
+@media (max-width: 800px) {
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e8eaec;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  }
+  .article-list-info {
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: left;
+    color: #999;
+    letter-spacing: 1px;
+  }
+  .article-list-title {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e8eaec;
+    font-size: 14px;
+    color: #17233d;
+    font-weight: 550;
+  }
 }
-.icon-biaoqian {
-  margin-right: 5px;
+@media (min-width: 800px) {
+  .article-list-info {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 1px;
+  }
+  .article-list-info-text {
+    display: flex;
+  }
+  .article-list-title {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e8eaec;
+    font-size: 14px;
+    color: #17233d;
+    font-weight: 550;
+  }
+  .article-list-edit,
+  .article-list-delete {
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 5px;
+    border: 1px solid #e8eaec;
+    border-radius: 4px;
+    color: #17233d;
+    font-size: 14px;
+    font-weight: 550;
+    transition: all 0.2s ease-in;
+  }
+  .article-list-edit:hover {
+    color: #fff;
+    background-color: #2d8cf0;
+  }
+  .article-list-delete:hover {
+    color: #fff;
+    background-color: red;
+  }
+}
+.divHidden {
+  display: none!important;
 }
 .article-lists {
   display: flex;
@@ -172,48 +240,21 @@ export default {
 .article-list:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
-.article-list-title {
-  height: 50px;
+.cate-title {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid #e8eaec;
-  font-size: 14px;
-  color: #17233d;
-  font-weight: 550;
+  font-size: 22px;
+  font-weight: 200;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  color: #515a6e;
 }
 .article-list-title i {
   margin-right: 5px;
 }
-.article-list-info {
-  height: 60px;
-  display: flex;
-  justify-content: space-between;;
-  align-items: center;
-  font-size: 12px;
-  color: #999;
-  letter-spacing: 1px;
-}
-.article-list-edit,
-.article-list-delete {
-  width: 50px;
-  height: 30px;
-  line-height: 30px;
+.icon-biaoqian {
   margin-right: 5px;
-  border: 1px solid #e8eaec;
-  border-radius: 4px;
-  color: #17233d;
-  font-size: 14px;
-  font-weight: 550;
-  transition: all 0.2s ease-in;
-}
-.article-list-edit:hover {
-  color: #fff;
-  background-color: #2d8cf0;
-}
-.article-list-delete:hover {
-  color: #fff;
-  background-color: red;
 }
 .page {
   display: flex;
@@ -250,11 +291,5 @@ export default {
 }
 .page-arrow-disabled {
   pointer-events: none;
-}
-.divHidden {
-  display: none;
-}
-.article-list-info-text {
-  display: flex;
 }
 </style>

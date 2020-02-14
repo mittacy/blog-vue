@@ -1,7 +1,10 @@
 <template>
 <div class="about">
   <div class="about-title">About</div>
-  <div class="about-author">作者</div>
+  <div class="about-author">
+    作者
+    <div class="about-name">陈铭涛(Mittacy Chen)</div>
+  </div>
   <p class="abour-info">{{result.introduce}}</p>
   <p class="abour-info">github: <a :href="result.github" target="_blank">{{result.github}}</a></p>
   <p class="abour-info">个人邮箱: <a :href="`mailto:${result.mail}`" target="_blank">{{result.mail}}</a></p>
@@ -55,7 +58,13 @@ export default {
   font-weight: 450;
   margin-top: 20px;
   margin-bottom: 10px;
-
+}
+.about-name {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #999;
+  height: 30px;
+  line-height: 40px;
 }
 .abour-info {
   text-align: left;

@@ -109,6 +109,28 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 800px) {
+  .article-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 800px) {
+  .article-info {
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 20px;
+  }
+}
 .set-default {
   width: 200px;
   margin-bottom: 20px;
@@ -131,15 +153,7 @@ export default {
   font-weight: 300;
   color: #333;
 }
-.article-info {
-  display: flex;
-  justify-content: left;
-  align-content: center;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: #999;
-  margin-bottom: 20px;
-}
+
 .article-content {
   text-align: left;
 }

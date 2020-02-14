@@ -3,9 +3,7 @@
     <div class="main-content">
       <Articlelist :fromCategory="true" :categoryID="categoryID"/>
     </div>
-    <div class="main-intro">
-      <Intro/>
-    </div>
+    <Intro class="divHide"/>
   </div>
 </template>
 
@@ -33,10 +31,17 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.main-content {
-  width: 75%;
+@media (max-width: 800px) {
+  .divHide {
+    display: none;
+  }
+  .main-content {
+    width: 100%;
+  }
 }
-.main-intro {
-  width: 24%;
+@media (min-width: 800px) {
+  .main-content {
+    width: calc(100% - 292px);
+  }
 }
 </style>

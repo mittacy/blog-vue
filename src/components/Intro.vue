@@ -23,9 +23,7 @@ import {apiGetAdminInformation} from '@/request/api';
 export default {
   data () {
     return {
-      result: {
-        type: Object
-      }
+      result: {}
     }
   },
   created() {
@@ -45,6 +43,8 @@ export default {
 
 <style scoped>
 .intro {
+  width: 280px;
+  height: 400px;
   border: 1px solid #dcdee2;
   border-radius: 4px;
   transition: all .2s ease-in-out;
