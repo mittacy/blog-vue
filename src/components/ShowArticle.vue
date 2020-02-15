@@ -1,6 +1,7 @@
 <template>
   <div class="article">
     <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="setDefault">设为主页默认文章</div>
+    <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="editArticle(articleID)">编辑</div>
     <div class="article-title">{{article.title}}</div>
     <div class="article-info">
       <div style="marginRight: 4px">发表: {{article.created_at}} -</div>
@@ -9,9 +10,7 @@
         <router-link class="article-category" :to="turnToCategory()">{{category.title}}</router-link>
       </div>
     </div>
-    <div class="article-content markdown-body" :class="{homeClass: isHome}" v-html="article.content">
-      {{article.content}}
-    </div>
+    <markdown-it-vue class="article-content md-body" :content="article.content"/>
     <div class="article-original" :class="{divHidden: !isHome}">
       <div class="article-original-more">…………</div>
       <router-link class="article-original-route" :to="turnToArticle(article.id)">阅读原文</router-link>
@@ -20,9 +19,13 @@
 </template>
 
 <script>
-import '@/assets/css/github-markdown.css'
+import MarkdownItVue from 'markdown-it-vue'
+import 'markdown-it-vue/dist/markdown-it-vue.css'
 import {apiGetArticle, apiGetCategoryTitle, apiAddArticleView, apiPutHomeArticle, apiGetHomeArticleID} from '@/request/api'
 export default {
+  components: {
+    MarkdownItVue
+  },
   data() {
     return {
       article: {
@@ -67,11 +70,6 @@ export default {
         return
       }
       this.article = response.data.data
-      const md = require('markdown-it')()
-      this.article.content = md.render(this.article.content)
-      // todo 主页截断内容
-      // if (this.isHome) {
-      // }
       apiAddArticleView({id: this.articleID})
       response = await apiGetCategoryTitle(this.article.category_id)
       if (response.status != 200) {
@@ -96,14 +94,22 @@ export default {
       const response = await apiPutHomeArticle({id: this.articleID})
       this.$store.dispatch('changeTipsMsg', response.data.msg)
     },
-    turnToArticle(articleID) {
+    turnToArticle(id) {
       return {
         name: 'article',
         params: {
-          id: articleID
+          id
         }
       }
     },
+    editArticle(id) {
+      this.$router.push({
+        name: 'articleEdit',
+        query: {
+          id
+        }
+      })
+    }
   },
 }
 </script>
@@ -130,21 +136,21 @@ export default {
     color: #999;
     margin-bottom: 20px;
   }
-}
-.set-default {
-  width: 200px;
-  margin-bottom: 20px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 14px;
-  color: #2d8cf0;
-  border: 1px solid #2d8cf0;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.set-default:hover {
-  background-color: #2d8cf0;
-  color: #fff;
+  .set-default {
+    width: 200px;
+    margin-bottom: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #2d8cf0;
+    border: 1px solid #2d8cf0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .set-default:hover {
+    background-color: #2d8cf0;
+    color: #fff;
+  }
 }
 .article-title {
   margin-bottom: 20px;
@@ -153,7 +159,6 @@ export default {
   font-weight: 300;
   color: #333;
 }
-
 .article-content {
   text-align: left;
 }
