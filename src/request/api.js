@@ -36,19 +36,6 @@ export const apiPutAdminPwd = (data) => {
     data
   })
 }
-export const apiPutHomeArticle = (data) => {
-  return opts({
-    method: 'put',
-    url: '/admin/article_id',
-    data
-  })
-}
-export const apiGetHomeArticleID = () => {
-  return opts({
-    method: 'get',
-    url: '/admin/article_id'
-  })
-}
 
 /* --- 分类 api --- */
 // 获取某页所有分类
@@ -105,6 +92,13 @@ export const apiDeleteCategory = (data) => {
 }
 
 /* --- 文章 api --- */
+// 获取首页最新修改五篇文章
+export const apiGetRecentArticles = () => {
+  return opts({
+    method: 'get',
+    url: '/articles_recent'
+  })
+}
 // 分页获取文章
 export const apiGetArticles = (page) => {
   return opts({

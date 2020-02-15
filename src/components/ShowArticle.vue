@@ -1,6 +1,5 @@
 <template>
   <div class="article">
-    <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="setDefault">设为主页默认文章</div>
     <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="editArticle(article.id)">编辑</div>
     <div class="article-title">{{article.title}}</div>
     <div class="article-info">
@@ -22,7 +21,7 @@
 
 <script>
 import '@/assets/css/github-markdown.min.css'
-import {apiGetArticle, apiGetCategoryTitle, apiAddArticleView, apiPutHomeArticle, apiGetHomeArticleID} from '@/request/api'
+import {apiGetArticle, apiGetCategoryTitle, apiAddArticleView, apiGetHomeArticleID} from '@/request/api'
 export default {
   data() {
     return {
@@ -100,10 +99,6 @@ export default {
           title: this.category.title
         }
       }
-    },
-    async setDefault() {
-      const response = await apiPutHomeArticle({id: this.articleID})
-      this.$store.dispatch('changeTipsMsg', response.data.msg)
     },
     turnToArticle(id) {
       return {

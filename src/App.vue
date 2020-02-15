@@ -70,7 +70,7 @@ export default {
     width: 100%;
     min-height: 650px;
     z-index: 1000;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
   }
   .content {
     width: 90%;
@@ -85,7 +85,7 @@ export default {
     min-width: 1200px;
     min-height: 650px;
     z-index: 1000;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
   }
   .content {
     width: 80%;
