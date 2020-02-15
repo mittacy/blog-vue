@@ -9,12 +9,8 @@
         <router-link class="article-category" :to="turnToCategory()">{{category.title}}</router-link>
       </div>
     </div>
-    <div class="article-content markdown-body md-body" :class="{homeClass: isHome}" v-html="article.content">
+    <div class="article-content markdown-body md-body" v-html="article.content">
       {{article.content}}
-    </div>
-    <div class="article-original" :class="{divHidden: !isHome}">
-      <div class="article-original-more">…………</div>
-      <router-link class="article-original-route" :to="turnToArticle(article.id)">阅读原文</router-link>
     </div>
   </div>
 </template>
@@ -41,23 +37,9 @@ export default {
       required: false,
       default: 0
     },
-    isHome: {
-      type: Boolean,
-      default: false
-    }
   },
   async created() {
-    if (this.isHome) {
-      // home主页，请求获取默认主页文章
-      let response = await apiGetHomeArticleID()
-      if (response.status != 200) {
-        this.$store.dispatch('changeTipsMsg', response.data.msg)
-        return
-      }
-      this.initArticle(response.data.data.homearticle)
-    } else {
-      this.initArticle(this.articleID)
-    }
+    this.initArticle(this.articleID)
   },
   methods: {
     async initArticle(id) {
@@ -186,9 +168,5 @@ export default {
 }
 .divHidden {
   display: none;
-}
-.homeClass {
-  height: 1650px;
-  overflow: hidden;
 }
 </style>
