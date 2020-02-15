@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="main-content hideClass">
-      <div class="title"><i class="iconfont icon-16"></i>最近更新</div>
+      <div class="title"><i class="iconfont icon-update"></i>最近更新</div>
       <div class="article-lists">
         <router-link v-for="article in articles" class="article-list" :key="article.title" :to="turnToArticle(article.id)">
           <div class="article-list-title">
@@ -166,7 +166,7 @@ export default {
   .article-list-title i {
     margin-right: 5px;
   }
-  .icon-16 {
+  .icon-update {
     margin-right: 5px;
   }
 }

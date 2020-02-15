@@ -11,7 +11,7 @@
             <router-link class="article-category" :to="turnToCategory()">{{category.title}}</router-link>
           </div>
         </div>
-        <div class="article-content markdown-body md-body" v-html="article.content">
+        <div class="article-content markdown-body" v-html="article.content">
           {{article.content}}
         </div>
       </div>
@@ -23,10 +23,16 @@
 <script>
 import {apiGetArticle, apiGetCategoryTitle, apiAddArticleView, apiGetHomeArticleID} from '@/request/api'
 import Intro from '@/components/Intro'
-import '@/assets/css/github-markdown.min.css'
 export default {
   components: {
     Intro,
+  },
+  mounted () {
+    const link = document.createElement('link')
+    link.type = 'text/css'
+    link.rel = 'stylesheet'
+    link.href = '//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css'
+    document.head.appendChild(link)
   },
   data() {
     return {
@@ -53,17 +59,7 @@ export default {
       }
       this.article = response.data.data
       // markdown 显示
-      var hljs = require('highlight.js')
-      const md = require('markdown-it')({
-        highlight: function (str, lang) {
-          if (lang && hljs.getLanguage(lang)) {
-            try {
-              return hljs.highlight(lang, str).value;
-            } catch (__) {}
-          }
-          return ''; // 使用额外的默认转义
-        }
-      })
+      const md = require('markdown-it')()
       this.article.content = md.render(this.article.content)
       apiAddArticleView({id: this.articleID})
       response = await apiGetCategoryTitle(this.article.category_id)

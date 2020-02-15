@@ -30,9 +30,15 @@
 </template>
 
 <script>
-import '@/assets/css/github-markdown.min.css'
 import {apiGetCategories, apiAddArticle, apiGetArticle, apiPutArticle} from '@/request/api'
 export default {
+  mounted () {
+    const link = document.createElement('link')
+    link.type = 'text/css'
+    link.rel = 'stylesheet'
+    link.href = '//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css'
+    document.head.appendChild(link)
+  },
   data () {
     return {
       isAddArticle: true,
@@ -42,16 +48,7 @@ export default {
       },
       categories: [],
       content: '',
-      md: require('markdown-it')({
-        highlight: function (str, lang) {
-          if (lang && hljs.getLanguage(lang)) {
-            try {
-              return hljs.highlight(lang, str).value;
-            } catch (__) {}
-          }
-          return ''; // 使用额外的默认转义
-        }
-      })
+      md: require('markdown-it')()
     }
   },
   created() {
