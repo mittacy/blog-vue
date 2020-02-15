@@ -1,7 +1,7 @@
 <template>
   <div class="article">
     <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="setDefault">设为主页默认文章</div>
-    <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="editArticle(articleID)">编辑</div>
+    <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="editArticle(article.id)">编辑</div>
     <div class="article-title">{{article.title}}</div>
     <div class="article-info">
       <div style="marginRight: 4px">发表: {{article.created_at}} -</div>
@@ -10,7 +10,9 @@
         <router-link class="article-category" :to="turnToCategory()">{{category.title}}</router-link>
       </div>
     </div>
-    <markdown-it-vue class="article-content md-body" :content="article.content"/>
+    <div class="article-content markdown-body md-body" :class="{homeClass: isHome}" v-html="article.content">
+      {{article.content}}
+    </div>
     <div class="article-original" :class="{divHidden: !isHome}">
       <div class="article-original-more">…………</div>
       <router-link class="article-original-route" :to="turnToArticle(article.id)">阅读原文</router-link>
@@ -19,13 +21,9 @@
 </template>
 
 <script>
-import MarkdownItVue from 'markdown-it-vue'
-import 'markdown-it-vue/dist/markdown-it-vue.css'
+import '@/assets/css/github-markdown.min.css'
 import {apiGetArticle, apiGetCategoryTitle, apiAddArticleView, apiPutHomeArticle, apiGetHomeArticleID} from '@/request/api'
 export default {
-  components: {
-    MarkdownItVue
-  },
   data() {
     return {
       article: {
@@ -70,6 +68,19 @@ export default {
         return
       }
       this.article = response.data.data
+      // markdown 显示
+      var hljs = require('highlight.js')
+      const md = require('markdown-it')({
+        highlight: function (str, lang) {
+          if (lang && hljs.getLanguage(lang)) {
+            try {
+              return hljs.highlight(lang, str).value;
+            } catch (__) {}
+          }
+          return ''; // 使用额外的默认转义
+        }
+      })
+      this.article.content = md.render(this.article.content)
       apiAddArticleView({id: this.articleID})
       response = await apiGetCategoryTitle(this.article.category_id)
       if (response.status != 200) {

@@ -22,19 +22,17 @@
       <div class="edit-cap-button" :class="{divHidden: !isAddArticle}" @click="addArticle">创建</div>
       <div class="edit-cap-button" :class="{divHidden: isAddArticle}" @click="putArticle">修改</div>
     </div>
-    <markdown-it-vue class="edit-cap-view md-body" :content="article.content"/>
+    <div class="edit-cap-view markdown-body" v-html="md.render(article.content)">
+      {{md.render(article.content)}}
+    </div>
   </div>
 </div>
 </template>
 
 <script>
-import MarkdownItVue from 'markdown-it-vue'
-import 'markdown-it-vue/dist/markdown-it-vue.css'
+import '@/assets/css/github-markdown.min.css'
 import {apiGetCategories, apiAddArticle, apiGetArticle, apiPutArticle} from '@/request/api'
 export default {
-  components: {
-    MarkdownItVue
-  },
   data () {
     return {
       isAddArticle: true,
@@ -43,7 +41,17 @@ export default {
         content: ''
       },
       categories: [],
-      content: ''
+      content: '',
+      md: require('markdown-it')({
+        highlight: function (str, lang) {
+          if (lang && hljs.getLanguage(lang)) {
+            try {
+              return hljs.highlight(lang, str).value;
+            } catch (__) {}
+          }
+          return ''; // 使用额外的默认转义
+        }
+      })
     }
   },
   created() {
