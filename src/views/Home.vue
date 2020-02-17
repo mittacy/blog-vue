@@ -31,6 +31,9 @@ import Intro from '@/components/Intro'
 import {apiGetRecentArticles, apiDeleteArticle} from '@/request/api'
 export default {
   created () {
+    if (this.$store.state.activeItem != '/') {
+      this.$store.dispatch('changeActiveItem', '/')
+    }
     this.initArticles()
   },
   data() {

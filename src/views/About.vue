@@ -27,6 +27,9 @@ export default {
     }
   },
   created() {
+    if (this.$store.state.activeItem != '/about') {
+      this.$store.dispatch('changeActiveItem', '/about')
+    }
     this.getAdminInformation()
   },
   methods: {

@@ -8,7 +8,7 @@ export default async opts => {
   // 根据具体业务逻辑制定 如何处置resolve和reject
   try {
     const options = {
-      baseURL: '//blog.mittacy.com/api',
+      baseURL: '/api',
       timeout: 5000,
       headers: {'adminToken': sessionStorage.getItem('adminToken') === null ? '' : sessionStorage.getItem('adminToken')},
       ...opts

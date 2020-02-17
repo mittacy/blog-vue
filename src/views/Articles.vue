@@ -15,6 +15,11 @@ export default {
     Intro,
     Articlelist
   },
+  created() {
+    if (this.$store.state.activeItem != '/articles') {
+      this.$store.dispatch('changeActiveItem', '/articles')
+    }
+  }
 }
 </script>
 

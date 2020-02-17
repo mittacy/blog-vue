@@ -15,6 +15,11 @@ export default {
     Intro,
     Catelist,
   },
+  created() {
+    if (this.$store.state.activeItem != '/categories') {
+      this.$store.dispatch('changeActiveItem', '/categories')
+    }
+  }
 }
 </script>
 
