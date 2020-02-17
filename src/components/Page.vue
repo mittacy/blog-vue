@@ -3,7 +3,10 @@
     <div class="page">
       <span class="page-count">共 {{listNums}} 条</span>
       <div class="page-controller">
-        <div class="page-arrow" :class="leftArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="moveNumbers(false)">
+        <div class="page-arrow" :class="{hideClass: pageNum>5, 'page-arrow-disabled': !leftArrowIsAble}" @click="changePage(currentPage-1)">
+          <i class="iconfont icon-icon_right_arrow"></i>
+        </div>
+        <div class="page-arrow" :class="{hideClass: pageNum<=5, 'page-arrow-disabled': !leftArrowIsAble}" @click="moveNumbers(false)">
           <i class="iconfont icon-icon_right_arrow"></i>
         </div>
         <div class="page-numbers-wrap" :style="{width: buttonWidth +'px'}">
@@ -18,7 +21,10 @@
             </div>
           </div>
         </div>
-        <div class="page-arrow" :class="rightArrowIsAble === true ? 'page-arrow-able' : 'page-arrow-disabled'" @click="moveNumbers(true)">
+        <div class="page-arrow" :class="{hideClass: pageNum>5, 'page-arrow-disabled': !rightArrowIsAble}" @click="changePage(currentPage+1)">
+          <i class="iconfont icon-icon_left_arrow"></i>
+        </div>
+        <div class="page-arrow" :class="{hideClass: pageNum<=5, 'page-arrow-disabled': !rightArrowIsAble}" @click="moveNumbers(true)">
           <i class="iconfont icon-icon_left_arrow"></i>
         </div>
       </div>
@@ -44,9 +50,6 @@ export default {
       required: true
     },
   },
-  created () {
-    this.init()
-  },
   methods: {
     init() {
       this.currentPage = 0
@@ -57,18 +60,20 @@ export default {
         this.pageNum = parseInt(this.listNums/10)+1
       }
       this.buttonWidth = this.pageNum * 36 + 4
-      if (this.pageNum*36 > (-this.moveLeft + 5*36)) {
-        this.rightArrowIsAble = true
-      } else {
-        this.rightArrowIsAble = false
-      }
+      this.isArrowAble()
     },
     isArrowAble() {
-      this.leftArrowIsAble = this.moveLeft < 0 ? true : false
-      if (this.pageNum*36 > (-this.moveLeft + 5*36)) {
-        this.rightArrowIsAble = true
-      } else {
-        this.rightArrowIsAble = false
+      // 按钮功能不同是否可点击不同
+      if (this.pageNum >= 5) {    // 按钮功能为左右平移按钮
+        this.leftArrowIsAble = this.moveLeft < 0 ? true : false
+        if (this.pageNum*36 > (-this.moveLeft + 5*36)) {
+          this.rightArrowIsAble = true
+        } else {
+          this.rightArrowIsAble = false
+        }
+      } else {    // 按钮功能为上/下一页
+        this.leftArrowIsAble = this.currentPage > 0 ? true : false
+        this.rightArrowIsAble = this.currentPage < this.pageNum-1 ? true : false
       }
     },
     async changePage(page) {
@@ -76,6 +81,7 @@ export default {
       // 改变page
       this.currentPage = page
       this.$store.dispatch('changePage', page)
+      this.isArrowAble()
     },
     moveNumbers(isLeft) {
       if (isLeft) {
@@ -97,6 +103,9 @@ export default {
 </script>
 
 <style scoped>
+.hideClass {
+  display: none;
+}
 .page-wrap {
   width: 100%;
   padding-top: 20px;
@@ -142,7 +151,7 @@ export default {
 .page-number {
   margin-left: 4px;
 }
-.page-arrow-able:hover, .page-number:hover {
+.page-arrow:hover, .page-number:hover {
   color: #2d8cf0;
   border: 1px solid #2d8cf0;
 }

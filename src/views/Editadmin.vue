@@ -54,6 +54,7 @@ export default {
       const response = await apiPutAdmin(this.admin)
       this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
+        this.$store.dispatch('changeActiveItem', '/')
         this.$router.push({
           name: 'home'
         })
@@ -67,6 +68,7 @@ export default {
       const response = await apiPutAdminPwd({password: this.password})
       this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
+        this.$store.dispatch('changeActiveItem', '/')
         this.$router.push({
           name: 'home'
         })

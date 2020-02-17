@@ -14,6 +14,7 @@
         <div class="article-content markdown-body" v-html="article.content">
           {{article.content}}
         </div>
+        <div class="contact">End - 若文章有误请联系邮箱: mail@mittacy.com</div>
       </div>
     </div>
     <Intro class="divHide"/>
@@ -61,8 +62,8 @@ export default {
       // markdown 显示
       const md = require('markdown-it')()
       this.article.content = md.render(this.article.content)
-      apiAddArticleView({id: this.articleID})
       response = await apiGetCategoryTitle(this.article.category_id)
+      apiAddArticleView({id: this.article.id})
       if (response.status != 200) {
         this.$store.dispatch('changeTipsMsg', response.data.msg)
         return
@@ -97,6 +98,18 @@ export default {
 .main {
   display: flex;
   justify-content: space-between;
+}
+.contact {
+  display: flex;
+  margin-top: 40px;
+  height: 30px;
+  width: 280px;
+  align-items: center;
+  border-top: 1px solid #999;
+  color: #999;
+}
+.contact a {
+  color: #999;
 }
 @media (max-width: 800px) {
   .divHide {

@@ -170,4 +170,7 @@ export default {
     margin-right: 5px;
   }
 }
+.divHidden {
+  display: none!important;
+}
 </style>

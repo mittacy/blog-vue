@@ -52,6 +52,7 @@ export default {
       }
       this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
+        this.$store.dispatch('changeActiveItem', '/categories')
         this.$router.push({
           name: 'categories'
         })

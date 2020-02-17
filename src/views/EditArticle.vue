@@ -90,6 +90,7 @@ export default {
       const response = await apiAddArticle(this.article)
       this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
+        this.$store.dispatch('changeActiveItem', '/articles')
         this.$router.push({
           name: 'articles'
         })
