@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="main-content">
+    <div class="main-content" id="document">
       <div class="article">
         <div class="set-default" :class="{divHidden: !$store.state.adminStatus}" @click="editArticle">编辑</div>
         <div class="article-title">{{article.title}}</div>
@@ -11,7 +11,7 @@
             <router-link class="article-category" :to="turnToCategory()">{{category.title}}</router-link>
           </div>
         </div>
-        <div class="article-content markdown-body" v-html="article.content">
+        <div class="article-content markdown-body" v-highlight v-html="article.content">
           {{article.content}}
         </div>
         <div class="contact">End - 若文章有误请联系邮箱: mail@mittacy.com</div>
@@ -27,13 +27,6 @@ import Intro from '@/components/Intro'
 export default {
   components: {
     Intro,
-  },
-  mounted () {
-    const link = document.createElement('link')
-    link.type = 'text/css'
-    link.rel = 'stylesheet'
-    link.href = '//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css'
-    document.head.appendChild(link)
   },
   data() {
     return {
