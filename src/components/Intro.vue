@@ -102,6 +102,9 @@ export default {
   font-size: 25px;
   color: #585858;
 }
+.icon-CN_bilibiliB {
+  font-size: 28px!important;
+}
 .intro-views {
   text-align: left;
   font-size: 13px;

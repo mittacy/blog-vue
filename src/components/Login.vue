@@ -78,9 +78,9 @@ export default {
   right: 0;
   left: 0;
   bottom: 0;
-  display:flex;
+  /* display:flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   z-index: 1500;
   opacity: 1;
   transition: all .5s ease-in-out;
@@ -100,6 +100,9 @@ export default {
 }
 .login-main {
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform:translate(-200px, -220px);
   width: 400px;
   height: 245px;
   background-color: #fff;
