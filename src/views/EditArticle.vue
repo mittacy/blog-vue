@@ -32,13 +32,6 @@
 <script>
 import {apiGetCategories, apiAddArticle, apiGetArticle, apiPutArticle} from '@/request/api'
 export default {
-  mounted () {
-    const link = document.createElement('link')
-    link.type = 'text/css'
-    link.rel = 'stylesheet'
-    link.href = '//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css'
-    document.head.appendChild(link)
-  },
   data () {
     return {
       isAddArticle: true,
