@@ -1,5 +1,5 @@
 <template>
-<div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}" @mousewheel.prevent>
+<div class="login" :class="{hideLogin: !this.$store.state.loginFormStatus}" @mousewheel.prevent @DOMMouseScroll.prevent @touchmove.prevent>
   <div class="login-background" @click="hideLogin"></div>
   <div class="login-main" :class="{hideLogin: !this.$store.state.loginFormStatus}">
     <div class="login-main-close" @click="hideLogin">
