@@ -78,9 +78,6 @@ export default {
   right: 0;
   left: 0;
   bottom: 0;
-  /* display:flex;
-  justify-content: center;
-  align-items: center; */
   z-index: 1500;
   opacity: 1;
   transition: all .5s ease-in-out;
