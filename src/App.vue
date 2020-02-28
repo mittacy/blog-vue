@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import Top from "@/components/Top";
-import Navbar from "@/components/Navbar";
-import Login from "@/components/Login";
-import {apiverifyAdmin} from "@/request/api";
-import Footer from '@/components/Footer';
-import Tips from '@/components/Tips';
+import Top from "@/components/Top"
+import Navbar from "@/components/Navbar"
+import Login from "@/components/Login"
+import {apiverifyAdmin} from "@/request/api"
+import Footer from '@/components/Footer'
+import Tips from '@/components/Tips'
 
 export default {
   name: "app",
