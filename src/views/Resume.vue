@@ -35,7 +35,7 @@
         <div class="resume-item-title-two">佛山科学技术学院</div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>2017.9入学
+            <i class="iconfont icon-star"></i>入学: 2017.09
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>专业: 计算机科学与技术
@@ -60,9 +60,6 @@
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>大二下半年转向WEB后端开发
           </div>
-          <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>主要使用语言: Golang & JavaScript
-          </div>
         </div>
       </div>
       <div class="resume-item">
@@ -75,10 +72,16 @@
             <i class="iconfont icon-star"></i>前端使用Vue.js框架
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>后端使用Golang搭配Gin框架
+            <i class="iconfont icon-star"></i>后端Api使用Gin框架
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>项目部署环境为Ubuntu, Nginx代理转发
+            <i class="iconfont icon-star"></i>数据库使用Mysql
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>使用redis缓存访问量、验证登录token等
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>项目部署环境为Ubuntu服务器, Nginx代理转发
           </div>
         </div>
       </div>
@@ -94,19 +97,13 @@
           <div class="resume-item-title-three-text">数据库</div>
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>熟练掌握Redis的配置和应用
+          <i class="iconfont icon-star"></i>熟练掌握Mysql的配置和应用
         </div>
         <div class="resume-item-info">
           <i class="iconfont icon-star"></i>熟练掌握Redis的配置和应用
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>熟练掌握MongoDB的配置和应用
-        </div>
-        <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>有Redis项目登录验证经历
-        </div>
-        <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>有Mysql作为项目数据库经历
+          <i class="iconfont icon-star"></i>了解掌握MongoDB的配置和应用
         </div>
         <div class="resume-item-title-three">
           <div class="resume-item-title-three-circle"></div>
@@ -124,7 +121,7 @@
         <div class="resume-item-title-two">Web前端</div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>了解HTML & CSS
+            <i class="iconfont icon-star"></i>熟悉HTML & CSS
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>了解JavaScript
@@ -139,7 +136,7 @@
         <div class="resume-item-title-two">其他</div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>对代码的美观规范有较高要求
+            <i class="iconfont icon-star"></i>具有自主排错能力
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>熟悉Git命令操作
@@ -151,13 +148,13 @@
             <i class="iconfont icon-star"></i>熟悉前后端分离开发
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>三年Mac使用经验,熟悉终端命令操作
-          </div>
-          <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>具有自主排错能力
-          </div>
-          <div class="resume-item-info">
             <i class="iconfont icon-star"></i>有很高的学习热情
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>对代码的美观规范有较高要求
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>三年Mac使用经验,熟悉终端命令操作
           </div>
         </div>
       </div>

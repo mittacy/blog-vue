@@ -15,4 +15,8 @@ export default [
     content: "添加文章",
     route: "/articles/edit"
   },
+  {
+    content: "查看日志",
+    route: "/errlog"
+  },
 ];

@@ -56,6 +56,11 @@ export default new Router({
       path: '/resume',
       name: 'resume',
       component: () => import('@/views/Resume')
-    }
+    },
+    {
+      path: '/errlog',
+      name: 'errlog',
+      component: () => import('@/views/Errlog')
+    },
   ]
 })

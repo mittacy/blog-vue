@@ -177,7 +177,7 @@ export default {
     transition: all .5s ease-in-out;
   }
   .navbar-login-controls:hover {
-    height: 123px;
+    height: 154px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
   }
   .navbar-login-control-title,

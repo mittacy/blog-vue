@@ -1,13 +1,20 @@
 import opts from './http'
 
 /* --- 管理员 api --- */
-// 验证登录状态
+// 日志文件
+export const apiErrLog = () => {
+  return opts({
+    method: 'get',
+    url: '/errlog'
+  })
+}
 export const apiverifyAdmin = () => {
   return opts({
     method: 'get',
     url: '/verify'
   })
 }
+// 管理员
 export const apiCheckAdmin = (data) => {
   return opts({
     method: 'post',
