@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {apiGetArticle, apiGetCategoryTitle, apiAddArticleView, apiGetHomeArticleID} from '@/request/api'
+import {apiGetArticle, apiGetCategoryTitle, apiGetHomeArticleID} from '@/request/api'
 import Intro from '@/components/Intro'
 export default {
   components: {
@@ -56,7 +56,6 @@ export default {
       const md = require('markdown-it')()
       this.article.content = md.render(this.article.content)
       response = await apiGetCategoryTitle(this.article.category_id)
-      apiAddArticleView({id: this.article.id})
       if (response.status != 200) {
         this.$store.dispatch('changeTipsMsg', response.data.msg)
         return

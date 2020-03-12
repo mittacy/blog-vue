@@ -144,11 +144,3 @@ export const apiDeleteArticle = (data) => {
     data
   })
 }
-// 增加文章浏览量
-export const apiAddArticleView = (data) => {
-  return opts({
-    method: 'post',
-    url: '/article/addViews',
-    data
-  })
-}

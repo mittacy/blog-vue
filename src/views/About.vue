@@ -11,7 +11,7 @@
   <div class="about-author">博客相关</div>
   <p class="abour-info">前端: JavaScript & Vue.js</p>
   <p class="abour-info">后端: Golang & Gin</p>
-  <p class="abour-info">数据库: Mysql</p>
+  <p class="abour-info">数据库: Mysql & Redis缓存</p>
 </div>
 </template>
 
