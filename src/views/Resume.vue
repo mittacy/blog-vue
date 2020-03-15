@@ -75,10 +75,7 @@
             <i class="iconfont icon-star"></i>后端Api使用Gin框架
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>数据库使用Mysql
-          </div>
-          <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>使用redis缓存访问量、验证登录token等
+            <i class="iconfont icon-star"></i>数据库使用Mysql搭配Redis缓存
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>项目部署环境为Ubuntu服务器, Nginx代理转发
@@ -97,13 +94,13 @@
           <div class="resume-item-title-three-text">数据库</div>
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>熟练掌握Mysql的配置和应用
+          <i class="iconfont icon-star"></i>熟悉Mysql的配置和应用
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>熟练掌握Redis的配置和应用
+          <i class="iconfont icon-star"></i>了解掌握Redis的配置和应用
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>了解掌握MongoDB的配置和应用
+          <i class="iconfont icon-star"></i>了解MongoDB
         </div>
         <div class="resume-item-title-three">
           <div class="resume-item-title-three-circle"></div>
@@ -113,15 +110,12 @@
           <i class="iconfont icon-star"></i>api开发经验
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>了解Beego框架
-        </div>
-        <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>熟练使用Gin框架
+          <i class="iconfont icon-star"></i>有使用Gin框架的经验
         </div>
         <div class="resume-item-title-two">Web前端</div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>熟悉HTML & CSS
+            <i class="iconfont icon-star"></i>了解HTML & CSS
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>了解JavaScript
@@ -130,7 +124,7 @@
             <i class="iconfont icon-star"></i>了解Vue.js
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>熟悉响应式布局
+            <i class="iconfont icon-star"></i>了解响应式布局
           </div>
         </div>
         <div class="resume-item-title-two">其他</div>
@@ -152,9 +146,6 @@
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>对代码的美观规范有较高要求
-          </div>
-          <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>三年Mac使用经验,熟悉终端命令操作
           </div>
         </div>
       </div>
