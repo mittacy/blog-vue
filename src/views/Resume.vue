@@ -75,10 +75,13 @@
             <i class="iconfont icon-star"></i>后端Api使用Gin框架
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>数据库使用Mysql搭配Redis缓存
+            <i class="iconfont icon-star"></i>数据库使用Mysql和Redis缓存
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>项目部署环境为Ubuntu服务器, Nginx代理转发
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>HTTPS认证, 使用HTTP/2协议
           </div>
         </div>
       </div>
@@ -97,7 +100,7 @@
           <i class="iconfont icon-star"></i>熟悉Mysql的配置和应用
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>了解掌握Redis的配置和应用
+          <i class="iconfont icon-star"></i>了解Redis的配置和简单应用
         </div>
         <div class="resume-item-info">
           <i class="iconfont icon-star"></i>了解MongoDB

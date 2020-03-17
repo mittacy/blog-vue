@@ -1,7 +1,7 @@
 <template>
 <div class="intro">
   <div class="intro-img">
-    <img src="http://static.mittacy.com/intro.png">
+    <img src="//static.mittacy.com/intro.png">
   </div>
   <div class="intro-information">
     <div class="intro-information-name">
