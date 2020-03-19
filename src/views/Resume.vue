@@ -66,22 +66,25 @@
         <div class="resume-item-title-one">
           <i class="iconfont icon-localoffer"></i>Project. 个人项目
         </div>
-        <div class="resume-item-title-two"><a target="_blank" href="//blog.mittacy.com">我的博客</a></div>
+        <div class="resume-item-title-two"><a target="_blank" href="//blog.mittacy.com">个人博客</a></div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>前端使用Vue.js框架
+            <i class="iconfont icon-star"></i>MVC设计模式
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>后端Api使用Gin框架
+            <i class="iconfont icon-star"></i>前后端完全分离开发
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>服务端采用Gin构建RESTful API
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>数据库使用Mysql和Redis缓存
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>项目部署环境为Ubuntu服务器, Nginx代理转发
+            <i class="iconfont icon-star"></i>HTTPS认证, 使用HTTP/2协议
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>HTTPS认证, 使用HTTP/2协议
+            <i class="iconfont icon-star"></i>项目部署环境为Ubuntu服务器, Nginx代理转发
           </div>
         </div>
       </div>
@@ -97,7 +100,7 @@
           <div class="resume-item-title-three-text">数据库</div>
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>熟悉Mysql的配置和应用
+          <i class="iconfont icon-star"></i>了解Mysql的配置和应用
         </div>
         <div class="resume-item-info">
           <i class="iconfont icon-star"></i>了解Redis的配置和简单应用
@@ -110,10 +113,13 @@
           <div class="resume-item-title-three-text">Golang</div>
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>api开发经验
+          <i class="iconfont icon-star"></i>了解基本语法和使用
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>有使用Gin框架的经验
+          <i class="iconfont icon-star"></i>有api开发经验
+        </div>
+        <div class="resume-item-info">
+          <i class="iconfont icon-star"></i>有Gin框架使用经验
         </div>
         <div class="resume-item-title-two">Web前端</div>
         <div class="abstract-text">
@@ -136,7 +142,7 @@
             <i class="iconfont icon-star"></i>具有自主排错能力
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>熟悉Git命令操作
+            <i class="iconfont icon-star"></i>了解Git命令操作
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>服务器部署项目经验
@@ -158,159 +164,144 @@
 </template>
 
 <style scoped>
-@media (max-width: 800px) {
-  .phoneShow {
-    display: block;
-  }
-  .resume-header {
-    display: none;
-  }
-  .resume-main {
-    display: none;
-  }
+.phoneShow {
+  display: none;
 }
-@media (min-width: 800px) {
-  .phoneShow {
-    display: none;
-  }
-  .resume {
-    min-width: 1152px;
-  }
-  .resume-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    background-color: rgb(37, 195, 139);
-  }
-  .resume-header-left {
-    margin-left: 50px;
-    display: flex;
-    flex-direction: row;
-  }
-  .resume-header-qrcode {}
-  .qrcode {
-    display: block;
-    width: 132px;
-    height: 132px;
-  }
-  .resume-header-links {
-    margin-left: 20px;
-    text-align: left;
-    color: #fff;
-  }
-  .resume-header-link {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    height: 25%;
-  }
-  .iconfont {
-    font-size: 22px;
-    margin-right: 10px;
-  }
-  .resume-header-link a {
-    color: #fff;
-  }
-  .icon-mail {
-    font-size: 23px;
-  }
-  .resume-header-right {
-    margin-bottom: 25px;
-    margin-right: 50px;
-    color: #fff;
-  }
-  .resume-header-name,
-  .resume-header-job {
-    text-align: right;
-  }
-  .resume-header-name {
-    font-size: 60px;
-  }
-  .resume-header-job {
-    font-size: 25px;
-  }
-  .resume-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
-  }
-  .resume-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  .resume-main-left,
-  .resume-main-right {
-    display: flex;
-    flex-direction: column;
-    width: 48%;
-    text-align: left;
-  }
-  .resume-item-title-one {
-    width: 100%;
-    color: rgb(35, 179, 128);
-    font-size: 28px;
-    font-weight: bold;
-    border-bottom: .5px solid rgb(35, 195, 126); 
-  }
-  .resume-item-title-two {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    width: 90%;
-    margin-top: 20px;
-    padding-left: 10px;
-    font-size: 24px;
-    color: rgb(35, 179, 128);
-    border-left: 5px solid rgb(35, 179, 128);
-    background: rgb(227, 247, 240);
-  }
-  .resume-item-title-three {
-    display: flex;
-    align-items: center;
-    width: 86%;
-    height: 30px;
-    margin-top: 10px;
-    font-size: 22px;
-  }
-  .resume-item-title-three-circle {
-    height: 14px;
-    width: 14px;
-    margin-right: 16px;
-    border-radius: 100%;
-    background: rgb(35, 179, 128);
-  }
-  .resume-item-title-three-text {
-    color: rgb(35, 179, 128);
-    font-size: 20px;
-    font-weight: 450;
-  }
-  .resume-item-info {
-    display: flex;
-    align-items: center;
-    width: 86%;
-    height: 30px;
-    font-size: 18px;
-    color: #5d5b5b;
-    align-self: flex-end;
-    margin-right: 10px;
-  }
-  .resume-item-title-two a {
-    color: rgb(35, 179, 128);
-  }
-  .abstract-text {
-    width: 90%;
-    margin-top: 10px;
-    font-size: 18px;
-  }
+.resume {
+  min-width: 1152px;
 }
-
-
+.resume-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  background-color: rgb(37, 195, 139);
+}
+.resume-header-left {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.resume-header-qrcode {}
+.qrcode {
+  display: block;
+  width: 132px;
+  height: 132px;
+}
+.resume-header-links {
+  margin-left: 20px;
+  text-align: left;
+  color: #fff;
+}
+.resume-header-link {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  height: 25%;
+}
+.iconfont {
+  font-size: 22px;
+  margin-right: 10px;
+}
+.resume-header-link a {
+  color: #fff;
+}
+.icon-mail {
+  font-size: 23px;
+}
+.resume-header-right {
+  margin-bottom: 25px;
+  margin-right: 50px;
+  color: #fff;
+}
+.resume-header-name,
+.resume-header-job {
+  text-align: right;
+}
+.resume-header-name {
+  font-size: 60px;
+}
+.resume-header-job {
+  font-size: 25px;
+}
+.resume-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px;
+}
+.resume-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+.resume-main-left,
+.resume-main-right {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  text-align: left;
+}
+.resume-item-title-one {
+  width: 100%;
+  color: rgb(35, 179, 128);
+  font-size: 28px;
+  font-weight: bold;
+  border-bottom: .5px solid rgb(35, 195, 126); 
+}
+.resume-item-title-two {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 90%;
+  margin-top: 20px;
+  padding-left: 10px;
+  font-size: 24px;
+  color: rgb(35, 179, 128);
+  border-left: 5px solid rgb(35, 179, 128);
+  background: rgb(227, 247, 240);
+}
+.resume-item-title-three {
+  display: flex;
+  align-items: center;
+  width: 86%;
+  height: 30px;
+  margin-top: 10px;
+  font-size: 22px;
+}
+.resume-item-title-three-circle {
+  height: 14px;
+  width: 14px;
+  margin-right: 16px;
+  border-radius: 100%;
+  background: rgb(35, 179, 128);
+}
+.resume-item-title-three-text {
+  color: rgb(35, 179, 128);
+  font-size: 20px;
+  font-weight: 450;
+}
+.resume-item-info {
+  display: flex;
+  align-items: center;
+  width: 86%;
+  height: 30px;
+  font-size: 18px;
+  color: #5d5b5b;
+  align-self: flex-end;
+  margin-right: 10px;
+}
+.resume-item-title-two a {
+  color: rgb(35, 179, 128);
+}
+.abstract-text {
+  width: 90%;
+  margin-top: 10px;
+  font-size: 18px;
+}
 </style>
