@@ -1,6 +1,5 @@
 <template>
 <div class="resume">
-  <div class="phoneShow">简历暂不支持小屏版，请使用电脑观看</div>
   <div class="resume-header">
     <div class="resume-header-left">
       <div class="resume-header-qrcode">
@@ -23,42 +22,31 @@
     </div>
     <div class="resume-header-right">
       <div class="resume-header-name">陈铭涛</div>
-      <div class="resume-header-job">Web Backend Engineer</div>
+      <div class="resume-header-job">Backend Engineer</div>
     </div>
   </div>
   <div class="resume-main">
     <div class="resume-main-left">
       <div class="resume-item">
         <div class="resume-item-title-one">
-          <i class="iconfont icon-localoffer"></i>Education. 教育经历
+          <i class="iconfont icon-localoffer"></i>Abstract. 简介
         </div>
-        <div class="resume-item-title-two">佛山科学技术学院</div>
+        <div class="resume-item-title-two">教育经历</div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>入学: 2017.09
+            <i class="iconfont icon-star"></i>佛山科学技术学院
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>入学: 2017.09 ~ 
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>专业: 计算机科学与技术
           </div>
         </div>
-      </div>
-      <div class="resume-item">
-        <div class="resume-item-title-one">
-          <i class="iconfont icon-localoffer"></i>Abstract. 简介
-        </div>
         <div class="resume-item-title-two">就业意向</div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>Web后端开发
-          </div>
-        </div>
-        <div class="resume-item-title-two">自学经历</div>
-        <div class="abstract-text">
-          <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>大一开始学习WEB前端开发
-          </div>
-          <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>大二下半年转向WEB后端开发
+            <i class="iconfont icon-star"></i>后端开发 (Background Development)
           </div>
         </div>
       </div>
@@ -66,25 +54,25 @@
         <div class="resume-item-title-one">
           <i class="iconfont icon-localoffer"></i>Project. 个人项目
         </div>
-        <div class="resume-item-title-two"><a target="_blank" href="//blog.mittacy.com">个人博客</a></div>
+        <div class="resume-item-title-two"><a target="_blank" href="//blog.mittacy.com">个人博客<span style="marginLeft:6px;fontSize:16px;">blog.mittacy.com</span></a></div>
         <div class="abstract-text">
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>MVC设计模式
+            <i class="iconfont icon-star"></i>服务端: Gin
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>前后端完全分离开发
+            <i class="iconfont icon-star"></i>数据库: Mysql
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>服务端采用Gin构建RESTful API
+            <i class="iconfont icon-star"></i>接口规范: RESTful API
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>数据库使用Mysql和Redis缓存
+            <i class="iconfont icon-star"></i>登录安全认证: token认证 & Redis
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>HTTPS认证, 使用HTTP/2协议
+            <i class="iconfont icon-star"></i>网络协议: HTTPS + HTTP2.0
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>项目部署环境为Ubuntu服务器, Nginx代理转发
+            <i class="iconfont icon-star"></i>前端: Vue
           </div>
         </div>
       </div>
@@ -94,16 +82,16 @@
         <div class="resume-item-title-one">
           <i class="iconfont icon-localoffer"></i>Skill. 技能
         </div>
-        <div class="resume-item-title-two">Web后端</div>
+        <div class="resume-item-title-two">后端开发</div>
         <div class="resume-item-title-three">
           <div class="resume-item-title-three-circle"></div>
           <div class="resume-item-title-three-text">数据库</div>
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>了解Mysql的配置和应用
+          <i class="iconfont icon-star"></i>Mysql的配置和应用
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>了解Redis的配置和简单应用
+          <i class="iconfont icon-star"></i>Redis的配置和简单应用
         </div>
         <div class="resume-item-info">
           <i class="iconfont icon-star"></i>了解MongoDB
@@ -113,13 +101,13 @@
           <div class="resume-item-title-three-text">Golang</div>
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>了解基本语法和使用
+          <i class="iconfont icon-star"></i>基本语法和使用
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>有api开发经验
+          <i class="iconfont icon-star"></i>api开发经验
         </div>
         <div class="resume-item-info">
-          <i class="iconfont icon-star"></i>有Gin框架使用经验
+          <i class="iconfont icon-star"></i>Gin框架使用经验
         </div>
         <div class="resume-item-title-two">Web前端</div>
         <div class="abstract-text">
@@ -133,7 +121,7 @@
             <i class="iconfont icon-star"></i>了解Vue.js
           </div>
           <div class="resume-item-info">
-            <i class="iconfont icon-star"></i>了解响应式布局
+            <i class="iconfont icon-star"></i>熟悉响应式布局
           </div>
         </div>
         <div class="resume-item-title-two">其他</div>
@@ -152,6 +140,9 @@
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>有很高的学习热情
+          </div>
+          <div class="resume-item-info">
+            <i class="iconfont icon-star"></i>使用Markdown记录学习笔记
           </div>
           <div class="resume-item-info">
             <i class="iconfont icon-star"></i>对代码的美观规范有较高要求
