@@ -53,11 +53,6 @@ export default new Router({
       component: () => import('@/views/EditArticle')
     },
     {
-      path: '/resume',
-      name: 'resume',
-      component: () => import('@/views/Resume')
-    },
-    {
       path: '/errlog',
       name: 'errlog',
       component: () => import('@/views/Errlog')
