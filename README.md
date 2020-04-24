@@ -1,19 +1,4 @@
-# test
+This is the front-end code of my blog developed by Vue.
 
-## Project setup
-```
-yarn install
-```
+My blog: [https://blog.mittacy.com](https://blog.mittacy.com)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
