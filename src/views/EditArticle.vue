@@ -101,7 +101,10 @@ export default {
       this.$store.dispatch('changeTipsMsg', response.data.msg)
       if (response.status == 200) {
         this.$router.push({
-          name: 'articles'
+          name: 'article',
+          params: {
+            id: this.article.id
+          }
         })
       }
     },

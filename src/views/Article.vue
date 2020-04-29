@@ -17,7 +17,7 @@
         <div class="contact">End - 若文章有误请联系邮箱: mail@mittacy.com</div>
       </div>
     </div>
-    <Intro class="divHide"/>
+    <!-- <Intro class="divHide"/> -->
   </div>
 </template>
 
@@ -104,9 +104,9 @@ export default {
   color: #999;
 }
 @media (max-width: 800px) {
-  .divHide {
+  /* .divHide {
     display: none;
-  }
+  } */
   .main-content {
     width: 100%;
   }
@@ -122,7 +122,8 @@ export default {
 }
 @media (min-width: 800px) {
   .main-content {
-    width: calc(100% - 292px);
+    width: 96%;
+    margin: 0 auto;
   }
   .article-info {
     display: flex;
