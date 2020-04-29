@@ -57,5 +57,9 @@ export default new Router({
       name: 'errlog',
       component: () => import('@/views/Errlog')
     },
+    {
+      path: '*',
+      redirect: '/'
+    }
   ]
 })
