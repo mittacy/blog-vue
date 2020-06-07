@@ -9,6 +9,10 @@
   </div>
   <div class="edit-caps">其他</div>
   <div class="edit-else">
+    <div class="edit-text">name</div>
+    <input class="edit-else-input" type="text" v-model="admin.name">
+  </div>
+  <div class="edit-else">
     <div class="edit-text">Cname</div>
     <input class="edit-else-input" type="text" v-model="admin.cname">
   </div>
