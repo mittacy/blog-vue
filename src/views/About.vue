@@ -3,7 +3,7 @@
   <div class="about-title">About</div>
   <div class="about-author">
     作者
-    <div class="about-name">陈铭涛(Mittacy Chen)</div>
+    <div class="about-name">{{result.cname}}(Mittacy Chen)</div>
   </div>
   <p class="abour-info">{{result.introduce}}</p>
   <p class="abour-info">github: <a :href="result.github" target="_blank">{{result.github}}</a></p>
@@ -12,6 +12,7 @@
   <p class="abour-info">前端: JavaScript & Vue.js</p>
   <p class="abour-info">后端: Golang & Gin</p>
   <p class="abour-info">数据库: Mysql & Redis缓存</p>
+  <p class="abour-info">项目地址: <a href="https://github.com/mittacy/blog-gin" target="_blank">https://github.com/mittacy/blog-gin</a></p>
 </div>
 </template>
 
